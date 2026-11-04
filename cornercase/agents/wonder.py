@@ -84,7 +84,7 @@ def corner_brief(n, today: dict, brief: dict | None = None) -> str:
         f"{r['veh_delay_s_per_veh']:.1f} s/veh, walker wait {r['ped_wait_s']:.0f} s, "
         f"{r['against_ph']:.0f} walkers/h cross against the signal.\n"
         f"Biggest conflict streams: " + ", ".join(f"{k} (risk {v['sev']:.1f})" for k, v in worst) + "."
-        + (f"\nYour brief from the corridor coordinator: priority {brief['priority']}; objective: {brief['objective']}; "
+        + (f"\nYour brief from the corridor coordinator: priority {brief['priority']}; stretch target: {brief['objective']}; "
            f"focus: {brief['focus']}; you may run up to {brief['tests']} simulator tests." if brief else "")
     )
 
@@ -98,14 +98,17 @@ Changes you can test (combine at most three):
 """ + "\n".join(f"- {k}: {v}" for k, v in EFFECTS.items()) + f"""
 
 How to work:
-- Read your brief from the corridor coordinator; it sets your objective and test budget.
+- Read your brief from the corridor coordinator: its objective is a stretch target that guides
+  what to try, NOT a pass/fail gate. The only hard limits are the ones above (car delay and
+  spillover).
 - Start broad, then narrow: your first turn may call simulate 2-3 times in parallel with clearly
   different options; then refine the best one. Stop as soon as a cheap option meets the objective.
 - Read every result: risk before/after, car delay, and risk pushed elsewhere (spillover). A fix
   that pushes risk onto another corner will be rejected by the coordinator.
 - Numbers are simulated near-misses, never injuries.
-Decide "keep" with exactly one combination you simulated, or "drop" with all changes null if
-nothing is worth it within the delay limit. Final answer: the JSON decision."""
+Decide "keep" with the best combination you simulated that respects the hard limits, even if it
+falls short of the stretch target (say how far short). Decide "drop" (all changes null) only if no
+tested option within the hard limits cuts risk by at least 5%. Final answer: the JSON decision."""
 
 
 class CornerAgent:

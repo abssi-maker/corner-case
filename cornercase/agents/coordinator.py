@@ -35,10 +35,13 @@ PLAN_SCHEMA = {
 PLAN_SYSTEM = """You lead a team of street-safety agents, one per intersection of 7th Avenue (W 30th St to
 Central Park South), working for a city traffic-safety engineer. Before they start, write each
 corner agent a brief: priority (high/medium/low), how many simulator tests it may run (high 4-5,
-medium 2-3, low 1-2: spend effort where risk is), a one-sentence objective with a number (e.g.
-"cut simulated risk by a third with under 4 s added car delay"), and a focus (which conflict to
+medium 2-3, low 1-2: spend effort where risk is), a one-sentence stretch target with a number
+(e.g. "aim to cut simulated risk by a third"), and a focus (which conflict to
 attack, and what to avoid, e.g. "left turns onto the eastbound street; do not divert turns into
 W 41 St, which is already high"). Use both the simulated risk and the real crash history.
+Targets guide the agents; they are not gates. The hard limits are fixed by the system and you
+must not tighten them: at most 8 s added car delay per vehicle at a corner, no risk pushed onto other
+corners. Agents keep their best option within those limits even if it misses the target.
 Every corner gets a brief. Reply with the JSON plan."""
 
 PLAN_TOOL = {
