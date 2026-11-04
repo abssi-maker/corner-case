@@ -1,0 +1,2840 @@
+{
+ "models": {
+  "wonder": "muse-wonder-1.0",
+  "spark": "muse-spark-1.3",
+  "sam": "sam-3.1",
+  "image": "muse-image-1.0"
+ },
+ "calls": [
+  {
+   "stage": "sam:image:person@60",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.98,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:39",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:person@48",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.069,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:39",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:person@30",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.171,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:39",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:person@54",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.177,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:39",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:person@66",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.334,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:39",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:person@18",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.349,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:39",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:person@36",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.49,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:39",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:person@0",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.583,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:39",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:person@6",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.616,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:39",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:person@42",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.668,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:39",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:person@24",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.674,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:39",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:person@90",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.881,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:40",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:person@12",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 2.299,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:40",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:person@72",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.338,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:40",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@0",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.099,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:40",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@12",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.954,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:40",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@6",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.115,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:40",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:person@78",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.506,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:40",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:person@84",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.415,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:40",
+   "prompt": "person",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@36",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.981,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:40",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@24",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.109,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:40",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@42",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.029,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:41",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@30",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.443,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:41",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@48",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.042,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:41",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@78",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.817,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:41",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@60",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.962,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:41",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@54",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.146,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:41",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@90",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.944,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:41",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@18",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 2.042,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:41",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@0",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.914,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:41",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@72",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.312,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:41",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@84",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.295,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:41",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@12",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.933,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:42",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@6",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.962,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:42",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:car@66",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.669,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:42",
+   "prompt": "car",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@24",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.882,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:42",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@36",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.911,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:42",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@54",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.788,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:42",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@18",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.11,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:42",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@30",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.06,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:42",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@48",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.964,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:42",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@60",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.145,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:43",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@84",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.813,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:43",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@72",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.095,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:43",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@66",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.296,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:43",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@90",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.971,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:43",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@42",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.746,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:43",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:bus@78",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.33,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:43",
+   "prompt": "bus",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@6",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.072,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:43",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@12",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.196,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:43",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@24",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.119,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:43",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@0",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.387,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:43",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@18",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.459,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:44",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@36",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.024,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:44",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@42",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.912,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:44",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@48",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.256,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:44",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@30",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.531,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:44",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@72",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.098,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:44",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@66",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.225,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:44",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@84",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.91,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:44",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@78",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.975,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:44",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@54",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.461,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:44",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@90",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.984,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:44",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:taxi@60",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.419,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:31:44",
+   "prompt": "yellow taxi",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "upload:clip",
+   "model": "-",
+   "endpoint": "POST /files",
+   "latency_s": 3.283,
+   "usage": {
+    "bytes": 2639181
+   },
+   "retries": 0,
+   "cost_usd": 0.0,
+   "at": "2026-11-04T11:31:50"
+  },
+  {
+   "stage": "sam:track:person@0",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 8.57,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 91
+   },
+   "retries": 0,
+   "cost_usd": 0.0182,
+   "at": "2026-11-04T11:31:59",
+   "prompt": "<0f>1<|box;x1=116;y1=725;x2=132;y2=774;w=540;h=960|>",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:car@0",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 9.476,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 91
+   },
+   "retries": 0,
+   "cost_usd": 0.0182,
+   "at": "2026-11-04T11:31:59",
+   "prompt": "<0f>1<|box;x1=253;y1=782;x2=536;y2=914;w=540;h=960|>,2<|box;x1=371;y1=762;x2=538;y2=835;w=540;h=960|>,3<|box;x1=69;y1=77",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@0",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 19.835,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 91
+   },
+   "retries": 0,
+   "cost_usd": 0.0182,
+   "at": "2026-11-04T11:32:10",
+   "prompt": "<0f>1<|box;x1=248;y1=696;x2=263;y2=734;w=540;h=960|>,2<|box;x1=126;y1=696;x2=145;y2=748;w=540;h=960|>,3<|box;x1=469;y1=7",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@6",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 7.766,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 85
+   },
+   "retries": 0,
+   "cost_usd": 0.017,
+   "at": "2026-11-04T11:32:18",
+   "prompt": "<6f>1<|box;x1=345;y1=694;x2=358;y2=733;w=540;h=960|>",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:car@6",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 8.024,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 85
+   },
+   "retries": 0,
+   "cost_usd": 0.017,
+   "at": "2026-11-04T11:32:18",
+   "prompt": "<6f>1<|box;x1=401;y1=735;x2=538;y2=790;w=540;h=960|>,2<|box;x1=387;y1=772;x2=538;y2=861;w=540;h=960|>",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:car@12",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 8.944,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 79
+   },
+   "retries": 0,
+   "cost_usd": 0.0158,
+   "at": "2026-11-04T11:32:27",
+   "prompt": "<12f>1<|box;x1=413;y1=733;x2=538;y2=799;w=540;h=960|>,2<|box;x1=522;y1=710;x2=538;y2=751;w=540;h=960|>,3<|box;x1=357;y1=",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@12",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 9.013,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 79
+   },
+   "retries": 0,
+   "cost_usd": 0.0158,
+   "at": "2026-11-04T11:32:27",
+   "prompt": "<12f>1<|box;x1=486;y1=848;x2=538;y2=958;w=540;h=960|>",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:car@18",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 9.425,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 73
+   },
+   "retries": 0,
+   "cost_usd": 0.0146,
+   "at": "2026-11-04T11:32:36",
+   "prompt": "<18f>1<|box;x1=351;y1=682;x2=411;y2=705;w=540;h=960|>,2<|box;x1=487;y1=738;x2=538;y2=788;w=540;h=960|>,3<|box;x1=473;y1=",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@18",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 12.548,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 73
+   },
+   "retries": 0,
+   "cost_usd": 0.0146,
+   "at": "2026-11-04T11:32:39",
+   "prompt": "<18f>1<|box;x1=413;y1=528;x2=424;y2=579;w=540;h=960|>,2<|box;x1=411;y1=791;x2=445;y2=904;w=540;h=960|>,3<|box;x1=454;y1=",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:car@24",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 8.359,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 67
+   },
+   "retries": 0,
+   "cost_usd": 0.0134,
+   "at": "2026-11-04T11:32:48",
+   "prompt": "<24f>1<|box;x1=473;y1=642;x2=494;y2=657;w=540;h=960|>,2<|box;x1=518;y1=621;x2=533;y2=635;w=540;h=960|>",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@24",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 12.559,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 67
+   },
+   "retries": 0,
+   "cost_usd": 0.0134,
+   "at": "2026-11-04T11:32:52",
+   "prompt": "<24f>1<|box;x1=496;y1=712;x2=511;y2=756;w=540;h=960|>,2<|box;x1=453;y1=724;x2=470;y2=818;w=540;h=960|>,3<|box;x1=438;y1=",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:car@30",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 7.383,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 61
+   },
+   "retries": 0,
+   "cost_usd": 0.0122,
+   "at": "2026-11-04T11:32:59",
+   "prompt": "<30f>1<|box;x1=392;y1=618;x2=405;y2=633;w=540;h=960|>,2<|box;x1=454;y1=649;x2=535;y2=676;w=540;h=960|>,3<|box;x1=357;y1=",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@30",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 7.551,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 61
+   },
+   "retries": 0,
+   "cost_usd": 0.0122,
+   "at": "2026-11-04T11:33:00",
+   "prompt": "<30f>1<|box;x1=387;y1=770;x2=412;y2=814;w=540;h=960|>,2<|box;x1=467;y1=678;x2=480;y2=726;w=540;h=960|>,3<|box;x1=373;y1=",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@30",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 16.756,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 61
+   },
+   "retries": 0,
+   "cost_usd": 0.0122,
+   "at": "2026-11-04T11:33:09",
+   "prompt": "<30f>1<|box;x1=396;y1=713;x2=415;y2=772;w=540;h=960|>,2<|box;x1=524;y1=481;x2=538;y2=547;w=540;h=960|>,3<|box;x1=443;y1=",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:car@36",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 7.704,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 55
+   },
+   "retries": 0,
+   "cost_usd": 0.011,
+   "at": "2026-11-04T11:33:16",
+   "prompt": "<36f>1<|box;x1=510;y1=660;x2=538;y2=685;w=540;h=960|>,2<|box;x1=418;y1=658;x2=447;y2=678;w=540;h=960|>",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@36",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 12.115,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 55
+   },
+   "retries": 0,
+   "cost_usd": 0.011,
+   "at": "2026-11-04T11:33:21",
+   "prompt": "<36f>1<|box;x1=422;y1=665;x2=437;y2=704;w=540;h=960|>,2<|box;x1=460;y1=695;x2=477;y2=750;w=540;h=960|>,3<|box;x1=343;y1=",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@42",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 9.256,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 50
+   },
+   "retries": 0,
+   "cost_usd": 0.01,
+   "at": "2026-11-04T11:33:30",
+   "prompt": "<42f>1<|box;x1=473;y1=861;x2=538;y2=958;w=540;h=960|>,2<|box;x1=389;y1=488;x2=447;y2=581;w=540;h=960|>,3<|box;x1=475;y1=",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@48",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 9.153,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 50
+   },
+   "retries": 0,
+   "cost_usd": 0.01,
+   "at": "2026-11-04T11:33:39",
+   "prompt": "<48f>1<|box;x1=503;y1=723;x2=517;y2=746;w=540;h=960|>,2<|box;x1=8;y1=702;x2=30;y2=747;w=540;h=960|>,3<|box;x1=250;y1=691",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@54",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 9.095,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 50
+   },
+   "retries": 0,
+   "cost_usd": 0.01,
+   "at": "2026-11-04T11:33:48",
+   "prompt": "<54f>1<|box;x1=385;y1=719;x2=396;y2=747;w=540;h=960|>,2<|box;x1=487;y1=149;x2=538;y2=340;w=540;h=960|>,3<|box;x1=384;y1=",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@60",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 7.03,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 50
+   },
+   "retries": 0,
+   "cost_usd": 0.01,
+   "at": "2026-11-04T11:33:55",
+   "prompt": "<60f>1<|box;x1=437;y1=832;x2=480;y2=956;w=540;h=960|>,2<|box;x1=173;y1=737;x2=186;y2=807;w=540;h=960|>,3<|box;x1=200;y1=",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@66",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 5.047,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 50
+   },
+   "retries": 0,
+   "cost_usd": 0.01,
+   "at": "2026-11-04T11:34:01",
+   "prompt": "<66f>1<|box;x1=497;y1=904;x2=538;y2=958;w=540;h=960|>,2<|box;x1=362;y1=421;x2=490;y2=632;w=540;h=960|>",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@72",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 6.473,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 50
+   },
+   "retries": 0,
+   "cost_usd": 0.01,
+   "at": "2026-11-04T11:34:07",
+   "prompt": "<72f>1<|box;x1=459;y1=888;x2=530;y2=958;w=540;h=960|>,2<|box;x1=213;y1=891;x2=246;y2=947;w=540;h=960|>,3<|box;x1=463;y1=",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@78",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 5.894,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 50
+   },
+   "retries": 0,
+   "cost_usd": 0.01,
+   "at": "2026-11-04T11:34:13",
+   "prompt": "<78f>1<|box;x1=288;y1=887;x2=342;y2=935;w=540;h=960|>,2<|box;x1=439;y1=657;x2=498;y2=873;w=540;h=960|>,3<|box;x1=352;y1=",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@84",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 3.001,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 50
+   },
+   "retries": 0,
+   "cost_usd": 0.01,
+   "at": "2026-11-04T11:34:16",
+   "prompt": "<84f>1<|box;x1=465;y1=866;x2=538;y2=958;w=540;h=960|>,2<|box;x1=416;y1=776;x2=492;y2=928;w=540;h=960|>,3<|box;x1=452;y1=",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "sam:track:person@90",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 2.257,
+   "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0,
+    "video_frames_processed": 50
+   },
+   "retries": 0,
+   "cost_usd": 0.01,
+   "at": "2026-11-04T11:34:18",
+   "prompt": "<90f>1<|box;x1=487;y1=736;x2=538;y2=913;w=540;h=960|>,2<|box;x1=59;y1=701;x2=95;y2=767;w=540;h=960|>,3<|box;x1=460;y1=92",
+   "cost_basis": "frames x published per-frame price"
+  },
+  {
+   "stage": "upload:clock-clip",
+   "model": "-",
+   "endpoint": "POST /files",
+   "latency_s": 4.826,
+   "usage": {
+    "bytes": 2646456
+   },
+   "retries": 0,
+   "cost_usd": 0.0,
+   "at": "2026-11-04T11:34:23"
+  },
+  {
+   "stage": "spark:concepts",
+   "model": "muse-spark-1.3",
+   "endpoint": "POST /responses",
+   "latency_s": 10.871,
+   "usage": {
+    "input_tokens": 4036,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 1298,
+    "output_tokens_details": {
+     "reasoning_tokens": 1111
+    },
+    "total_tokens": 5334
+   },
+   "retries": 0,
+   "cost_usd": 0.010561,
+   "at": "2026-11-04T11:34:34",
+   "status": "completed",
+   "tool_calls": []
+  },
+  {
+   "stage": "spark:watch",
+   "model": "muse-spark-1.3",
+   "endpoint": "POST /responses",
+   "latency_s": 18.655,
+   "usage": {
+    "input_tokens": 4265,
+    "input_tokens_details": {
+     "cached_tokens": 4192
+    },
+    "output_tokens": 2444,
+    "output_tokens_details": {
+     "reasoning_tokens": 1969
+    },
+    "total_tokens": 6709
+   },
+   "retries": 0,
+   "cost_usd": 0.011107,
+   "at": "2026-11-04T11:34:42",
+   "status": "completed",
+   "tool_calls": []
+  },
+  {
+   "stage": "sam:image:spark-concept@30",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.074,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:34:43",
+   "prompt": "stone steps",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:spark-concept@60",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.205,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:34:43",
+   "prompt": "flagpole",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:spark-concept@0",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.224,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:34:43",
+   "prompt": "stone steps",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:spark-concept@0",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.34,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:34:43",
+   "prompt": "flagpole",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:spark-concept@30",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.537,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:34:43",
+   "prompt": "flagpole",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:spark-concept@30",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.97,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:34:44",
+   "prompt": "metal barricade",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:spark-concept@60",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.977,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:34:44",
+   "prompt": "metal barricade",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:spark-concept@0",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.997,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:34:44",
+   "prompt": "metal barricade",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:spark-concept@30",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.948,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:34:44",
+   "prompt": "glass railing",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:spark-concept@60",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.095,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:34:44",
+   "prompt": "glass railing",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:spark-concept@0",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.928,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:34:44",
+   "prompt": "metal bollard",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:spark-concept@0",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.432,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:34:44",
+   "prompt": "glass railing",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:spark-concept@30",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.997,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:34:45",
+   "prompt": "metal bollard",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:spark-concept@60",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.969,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:34:45",
+   "prompt": "stone steps",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:spark-concept@60",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.121,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:34:45",
+   "prompt": "metal bollard",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@24",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.849,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:23",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@0",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.861,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:23",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@12",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.88,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:23",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@36",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.131,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:23",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@42",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.152,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:23",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@6",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.198,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:23",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@30",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.481,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:23",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@54",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.915,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:24",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@18",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.898,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:24",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@78",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.904,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:24",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@60",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.271,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:24",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@72",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.208,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:24",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@48",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.643,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:24",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@90",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 0.894,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:25",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@66",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.581,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:25",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  },
+  {
+   "stage": "sam:image:road@84",
+   "model": "sam-3.1",
+   "endpoint": "POST /responses (stream)",
+   "latency_s": 1.794,
+   "usage": {
+    "images_processed": 1,
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "retries": 0,
+   "cost_usd": 0.0025,
+   "at": "2026-11-04T11:36:25",
+   "prompt": "asphalt road",
+   "cost_basis": "published per-image price"
+  }
+ ],
+ "cost_usd": 0.584,
+ "at": "2026-11-04T11:34:45"
+}

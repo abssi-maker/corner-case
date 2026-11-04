@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corner Case</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141414'/%3E%3Cg fill='%23F4F1EA'%3E%3Crect x='6' y='6' width='4' height='20'/%3E%3Crect x='14' y='6' width='4' height='20'/%3E%3C/g%3E%3Ccircle cx='25' cy='25' r='4' fill='%23E8590C'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<div id="viewport">
+  <div id="app" role="application" aria-label="Corner Case">
+    <header class="top">
+      <a class="brand" href="/" aria-label="Corner Case home">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="currentColor"/><g fill="var(--paper)"><rect x="6" y="6" width="4" height="20"/><rect x="14" y="6" width="4" height="20"/></g><circle cx="25" cy="25" r="4" fill="var(--risk)"/></svg>
+        <span class="name">Corner Case</span>
+        <span class="tagline">Test the fix before the next crash.</span>
+      </a>
+      <div class="where"><b>7th Avenue</b>, W 30th St to Central Park South · for a city street-safety engineer</div>
+      <div class="controls">
+        <select id="runSel" aria-label="Recorded run"></select>
+        <button id="playBtn" class="btn ghost" type="button">▶ Play the story</button>
+        <button id="liveBtn" class="btn ghost" type="button" title="Re-run the agents with live Meta model calls">Run live</button>
+      </div>
+    </header>
+    <nav class="stepper" id="stepper" aria-label="Steps"></nav>
+    <main class="stage" id="stage"><div class="loading"><div class="crosswalk"><i></i><i></i><i></i><i></i><i></i></div><p>Loading the recorded run…</p></div></main>
+    <footer class="caption" id="caption"><span id="capText"></span><span id="capSrc" class="src"></span></footer>
+    <div class="playbar" id="playbar" hidden><div class="fill" id="playfill"></div></div>
+  </div>
+</div>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<dialog id="liveDlg" class="live">
+  <h2>Live run</h2>
+  <p class="muted">The coordinator briefs 30 Muse Wonder corner agents, they test fixes in the simulator, and the coordinator funds a plan. About 5 minutes and a few dollars of API credit.</p>
+  <ol id="liveLog" class="livelog"></ol>
+  <div class="row"><button class="btn" id="liveClose" type="button">Close</button></div>
+</dialog>
+<script src="/static/app.js"></script>
+</body>
+</html>

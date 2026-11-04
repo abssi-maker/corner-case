@@ -1,0 +1,213 @@
+{
+ "requests": [
+  {
+   "label": "person",
+   "seed_frame": 0,
+   "seeds": 16,
+   "file": "vid_person_000_1000.txt",
+   "id_offset": 1000,
+   "tracks": 16
+  },
+  {
+   "label": "person",
+   "seed_frame": 0,
+   "seeds": 1,
+   "file": "vid_person_000_2000.txt",
+   "id_offset": 2000,
+   "tracks": 1
+  },
+  {
+   "label": "car",
+   "seed_frame": 0,
+   "seeds": 3,
+   "file": "vid_car_000_3000.txt",
+   "id_offset": 3000,
+   "tracks": 3
+  },
+  {
+   "label": "person",
+   "seed_frame": 6,
+   "seeds": 1,
+   "file": "vid_person_006_4000.txt",
+   "id_offset": 4000,
+   "tracks": 1
+  },
+  {
+   "label": "car",
+   "seed_frame": 6,
+   "seeds": 2,
+   "file": "vid_car_006_5000.txt",
+   "id_offset": 5000,
+   "tracks": 2
+  },
+  {
+   "label": "person",
+   "seed_frame": 12,
+   "seeds": 1,
+   "file": "vid_person_012_6000.txt",
+   "id_offset": 6000,
+   "tracks": 1
+  },
+  {
+   "label": "car",
+   "seed_frame": 12,
+   "seeds": 3,
+   "file": "vid_car_012_7000.txt",
+   "id_offset": 7000,
+   "tracks": 3
+  },
+  {
+   "label": "person",
+   "seed_frame": 18,
+   "seeds": 8,
+   "file": "vid_person_018_8000.txt",
+   "id_offset": 8000,
+   "tracks": 8
+  },
+  {
+   "label": "car",
+   "seed_frame": 18,
+   "seeds": 5,
+   "file": "vid_car_018_9000.txt",
+   "id_offset": 9000,
+   "tracks": 5
+  },
+  {
+   "label": "person",
+   "seed_frame": 24,
+   "seeds": 11,
+   "file": "vid_person_024_10000.txt",
+   "id_offset": 10000,
+   "tracks": 11
+  },
+  {
+   "label": "car",
+   "seed_frame": 24,
+   "seeds": 2,
+   "file": "vid_car_024_11000.txt",
+   "id_offset": 11000,
+   "tracks": 2
+  },
+  {
+   "label": "person",
+   "seed_frame": 30,
+   "seeds": 16,
+   "file": "vid_person_030_12000.txt",
+   "id_offset": 12000,
+   "tracks": 16
+  },
+  {
+   "label": "person",
+   "seed_frame": 30,
+   "seeds": 3,
+   "file": "vid_person_030_13000.txt",
+   "id_offset": 13000,
+   "tracks": 3
+  },
+  {
+   "label": "car",
+   "seed_frame": 30,
+   "seeds": 3,
+   "file": "vid_car_030_14000.txt",
+   "id_offset": 14000,
+   "tracks": 3
+  },
+  {
+   "label": "person",
+   "seed_frame": 36,
+   "seeds": 14,
+   "file": "vid_person_036_15000.txt",
+   "id_offset": 15000,
+   "tracks": 14
+  },
+  {
+   "label": "car",
+   "seed_frame": 36,
+   "seeds": 2,
+   "file": "vid_car_036_16000.txt",
+   "id_offset": 16000,
+   "tracks": 2
+  },
+  {
+   "label": "person",
+   "seed_frame": 42,
+   "seeds": 10,
+   "file": "vid_person_042_17000.txt",
+   "id_offset": 17000,
+   "tracks": 10
+  },
+  {
+   "label": "person",
+   "seed_frame": 48,
+   "seeds": 12,
+   "file": "vid_person_048_18000.txt",
+   "id_offset": 18000,
+   "tracks": 11
+  },
+  {
+   "label": "person",
+   "seed_frame": 54,
+   "seeds": 15,
+   "file": "vid_person_054_19000.txt",
+   "id_offset": 19000,
+   "tracks": 15
+  },
+  {
+   "label": "person",
+   "seed_frame": 60,
+   "seeds": 7,
+   "file": "vid_person_060_20000.txt",
+   "id_offset": 20000,
+   "tracks": 7
+  },
+  {
+   "label": "person",
+   "seed_frame": 66,
+   "seeds": 2,
+   "file": "vid_person_066_21000.txt",
+   "id_offset": 21000,
+   "tracks": 2
+  },
+  {
+   "label": "person",
+   "seed_frame": 72,
+   "seeds": 15,
+   "file": "vid_person_072_22000.txt",
+   "id_offset": 22000,
+   "tracks": 14
+  },
+  {
+   "label": "person",
+   "seed_frame": 78,
+   "seeds": 11,
+   "file": "vid_person_078_23000.txt",
+   "id_offset": 23000,
+   "tracks": 11
+  },
+  {
+   "label": "person",
+   "seed_frame": 84,
+   "seeds": 11,
+   "file": "vid_person_084_24000.txt",
+   "id_offset": 24000,
+   "tracks": 11
+  },
+  {
+   "label": "person",
+   "seed_frame": 90,
+   "seeds": 6,
+   "file": "vid_person_090_25000.txt",
+   "id_offset": 25000,
+   "tracks": 0
+  }
+ ],
+ "conf_min": {
+  "person": 0.5,
+  "car": 0.5,
+  "bus": 0.6,
+  "taxi": 0.5,
+  "road": 0.4
+ },
+ "batch": 16,
+ "keyframe_every": 6
+}

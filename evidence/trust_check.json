@@ -1,0 +1,946 @@
+{
+ "with_measured_inputs": {
+  "held_out": {
+   "from": "2025-01-01",
+   "to": "2026-10-31",
+   "crashes": 82,
+   "corners": 30,
+   "snap_m": 40.0
+  },
+  "primary_metric": "sev_ph",
+  "use_measured_inputs": true,
+  "methods": [
+   {
+    "id": "simulator",
+    "label": "Simulator: severity-weighted near-misses per hour",
+    "kind": "SIMULATED",
+    "spearman": 0.304,
+    "ci95": [
+     -0.062,
+     0.596
+    ],
+    "p_one_sided": 0.0564,
+    "top5": 1,
+    "top10": 6
+   },
+   {
+    "id": "volume",
+    "label": "Baseline: traffic volume alone",
+    "kind": "REAL inputs",
+    "spearman": 0.418,
+    "ci95": [
+     0.012,
+     0.752
+    ],
+    "p_one_sided": 0.013,
+    "top5": 2,
+    "top10": 8
+   },
+   {
+    "id": "walkers",
+    "label": "Baseline: walker exposure alone (subway + demand + counts)",
+    "kind": "REAL inputs",
+    "spearman": 0.269,
+    "ci95": [
+     -0.072,
+     0.565
+    ],
+    "p_one_sided": 0.0774,
+    "top5": 1,
+    "top10": 6
+   },
+   {
+    "id": "history",
+    "label": "Baseline: crash history 2023-24",
+    "kind": "REAL",
+    "spearman": 0.3,
+    "ci95": [
+     -0.037,
+     0.57
+    ],
+    "p_one_sided": 0.055,
+    "top5": 1,
+    "top10": 8
+   }
+  ],
+  "simulator_secondary_metrics": {
+   "near_miss_ph": 0.352,
+   "serious_ph": 0.398
+  },
+  "verdict": "Simulator's top 5 contains 1 of the real top 5; rank correlation +0.30 (95% CI -0.06 to +0.60).",
+  "lists": {
+   "simulator": [
+    {
+     "id": "w42",
+     "name": "7 Av & W 42 St",
+     "value": 85.258
+    },
+    {
+     "id": "w44",
+     "name": "7 Av & W 44 St",
+     "value": 53.792
+    },
+    {
+     "id": "w46",
+     "name": "7 Av & W 46 St",
+     "value": 48.534
+    },
+    {
+     "id": "w43",
+     "name": "7 Av & W 43 St",
+     "value": 48.127
+    },
+    {
+     "id": "w45",
+     "name": "7 Av & W 45 St",
+     "value": 47.776
+    },
+    {
+     "id": "w47",
+     "name": "7 Av & W 47 St",
+     "value": 47.597
+    },
+    {
+     "id": "w32",
+     "name": "7 Av & W 32 St",
+     "value": 47.575
+    },
+    {
+     "id": "w34",
+     "name": "7 Av & W 34 St",
+     "value": 46.158
+    },
+    {
+     "id": "w57",
+     "name": "7 Av & W 57 St",
+     "value": 35.842
+    },
+    {
+     "id": "w40",
+     "name": "7 Av & W 40 St",
+     "value": 35.605
+    }
+   ],
+   "real": [
+    {
+     "id": "w34",
+     "name": "7 Av & W 34 St",
+     "crashes": 9,
+     "injured": 9,
+     "killed": 0
+    },
+    {
+     "id": "w44",
+     "name": "7 Av & W 44 St",
+     "crashes": 8,
+     "injured": 8,
+     "killed": 0
+    },
+    {
+     "id": "w53",
+     "name": "7 Av & W 53 St",
+     "crashes": 5,
+     "injured": 6,
+     "killed": 0
+    },
+    {
+     "id": "w35",
+     "name": "7 Av & W 35 St",
+     "crashes": 5,
+     "injured": 5,
+     "killed": 0
+    },
+    {
+     "id": "w36",
+     "name": "7 Av & W 36 St",
+     "crashes": 5,
+     "injured": 5,
+     "killed": 0
+    },
+    {
+     "id": "w49",
+     "name": "7 Av & W 49 St",
+     "crashes": 5,
+     "injured": 5,
+     "killed": 0
+    },
+    {
+     "id": "w45",
+     "name": "7 Av & W 45 St",
+     "crashes": 4,
+     "injured": 4,
+     "killed": 0
+    },
+    {
+     "id": "w31",
+     "name": "7 Av & W 31 St",
+     "crashes": 3,
+     "injured": 3,
+     "killed": 0
+    },
+    {
+     "id": "w33",
+     "name": "7 Av & W 33 St",
+     "crashes": 3,
+     "injured": 3,
+     "killed": 0
+    },
+    {
+     "id": "w37",
+     "name": "7 Av & W 37 St",
+     "crashes": 3,
+     "injured": 3,
+     "killed": 0
+    }
+   ]
+  },
+  "per_corner": [
+   {
+    "id": "w30",
+    "name": "7 Av & W 30 St",
+    "sim": 24.671,
+    "heldout": 2,
+    "history": 0,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w31",
+    "name": "7 Av & W 31 St",
+    "sim": 28.99,
+    "heldout": 3,
+    "history": 0,
+    "volume": 1472.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w32",
+    "name": "7 Av & W 32 St",
+    "sim": 47.575,
+    "heldout": 2,
+    "history": 2,
+    "volume": 1322.0,
+    "walkers": 2185.0
+   },
+   {
+    "id": "w33",
+    "name": "7 Av & W 33 St",
+    "sim": 30.358,
+    "heldout": 3,
+    "history": 6,
+    "volume": 1322.0,
+    "walkers": 1967.0
+   },
+   {
+    "id": "w34",
+    "name": "7 Av & W 34 St",
+    "sim": 46.158,
+    "heldout": 9,
+    "history": 7,
+    "volume": 1772.0,
+    "walkers": 2185.0
+   },
+   {
+    "id": "w35",
+    "name": "7 Av & W 35 St",
+    "sim": 31.297,
+    "heldout": 5,
+    "history": 3,
+    "volume": 1472.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w36",
+    "name": "7 Av & W 36 St",
+    "sim": 29.421,
+    "heldout": 5,
+    "history": 3,
+    "volume": 1472.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w37",
+    "name": "7 Av & W 37 St",
+    "sim": 25.549,
+    "heldout": 3,
+    "history": 0,
+    "volume": 1472.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w38",
+    "name": "7 Av & W 38 St",
+    "sim": 24.78,
+    "heldout": 2,
+    "history": 3,
+    "volume": 1472.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w39",
+    "name": "7 Av & W 39 St",
+    "sim": 26.415,
+    "heldout": 2,
+    "history": 2,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w40",
+    "name": "7 Av & W 40 St",
+    "sim": 35.605,
+    "heldout": 3,
+    "history": 1,
+    "volume": 1322.0,
+    "walkers": 2185.0
+   },
+   {
+    "id": "w41",
+    "name": "7 Av & W 41 St",
+    "sim": 26.59,
+    "heldout": 2,
+    "history": 1,
+    "volume": 1322.0,
+    "walkers": 2185.0
+   },
+   {
+    "id": "w42",
+    "name": "7 Av & W 42 St",
+    "sim": 85.258,
+    "heldout": 3,
+    "history": 7,
+    "volume": 1772.0,
+    "walkers": 3933.0
+   },
+   {
+    "id": "w43",
+    "name": "7 Av & W 43 St",
+    "sim": 48.127,
+    "heldout": 3,
+    "history": 4,
+    "volume": 1322.0,
+    "walkers": 2950.0
+   },
+   {
+    "id": "w44",
+    "name": "7 Av & W 44 St",
+    "sim": 53.792,
+    "heldout": 8,
+    "history": 2,
+    "volume": 1472.0,
+    "walkers": 2950.0
+   },
+   {
+    "id": "w45",
+    "name": "7 Av & W 45 St",
+    "sim": 47.776,
+    "heldout": 4,
+    "history": 6,
+    "volume": 1472.0,
+    "walkers": 2950.0
+   },
+   {
+    "id": "w46",
+    "name": "7 Av & W 46 St",
+    "sim": 48.534,
+    "heldout": 2,
+    "history": 1,
+    "volume": 1322.0,
+    "walkers": 2950.0
+   },
+   {
+    "id": "w47",
+    "name": "7 Av & W 47 St",
+    "sim": 47.597,
+    "heldout": 2,
+    "history": 2,
+    "volume": 1322.0,
+    "walkers": 3933.0
+   },
+   {
+    "id": "w48",
+    "name": "7 Av & W 48 St",
+    "sim": 25.965,
+    "heldout": 0,
+    "history": 3,
+    "volume": 1472.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w49",
+    "name": "7 Av & W 49 St",
+    "sim": 25.997,
+    "heldout": 5,
+    "history": 2,
+    "volume": 1472.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w50",
+    "name": "7 Av & W 50 St",
+    "sim": 25.643,
+    "heldout": 3,
+    "history": 0,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w51",
+    "name": "7 Av & W 51 St",
+    "sim": 18.772,
+    "heldout": 1,
+    "history": 2,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w52",
+    "name": "7 Av & W 52 St",
+    "sim": 31.516,
+    "heldout": 1,
+    "history": 0,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w53",
+    "name": "7 Av & W 53 St",
+    "sim": 21.692,
+    "heldout": 5,
+    "history": 4,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w54",
+    "name": "7 Av & W 54 St",
+    "sim": 21.209,
+    "heldout": 0,
+    "history": 2,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w55",
+    "name": "7 Av & W 55 St",
+    "sim": 29.441,
+    "heldout": 2,
+    "history": 4,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w56",
+    "name": "7 Av & W 56 St",
+    "sim": 26.136,
+    "heldout": 0,
+    "history": 3,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w57",
+    "name": "7 Av & W 57 St",
+    "sim": 35.842,
+    "heldout": 0,
+    "history": 3,
+    "volume": 1772.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w58",
+    "name": "7 Av & W 58 St",
+    "sim": 21.08,
+    "heldout": 1,
+    "history": 0,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w59",
+    "name": "7 Av & Central Park S",
+    "sim": 31.835,
+    "heldout": 1,
+    "history": 0,
+    "volume": 850.0,
+    "walkers": 2185.0
+   }
+  ],
+  "notes": [
+   "No crash data is used to build simulator inputs or to tune parameters.",
+   "Small counts (about 3 held-out crashes per corner) make every ranking noisy; read the intervals."
+  ]
+ },
+ "without_measured_inputs": {
+  "held_out": {
+   "from": "2025-01-01",
+   "to": "2026-10-31",
+   "crashes": 82,
+   "corners": 30,
+   "snap_m": 40.0
+  },
+  "primary_metric": "sev_ph",
+  "use_measured_inputs": false,
+  "methods": [
+   {
+    "id": "simulator",
+    "label": "Simulator: severity-weighted near-misses per hour",
+    "kind": "SIMULATED",
+    "spearman": 0.298,
+    "ci95": [
+     -0.076,
+     0.586
+    ],
+    "p_one_sided": 0.0574,
+    "top5": 2,
+    "top10": 6
+   },
+   {
+    "id": "volume",
+    "label": "Baseline: traffic volume alone",
+    "kind": "REAL inputs",
+    "spearman": 0.418,
+    "ci95": [
+     0.012,
+     0.752
+    ],
+    "p_one_sided": 0.013,
+    "top5": 2,
+    "top10": 8
+   },
+   {
+    "id": "walkers",
+    "label": "Baseline: walker exposure alone (subway + demand + counts)",
+    "kind": "REAL inputs",
+    "spearman": 0.269,
+    "ci95": [
+     -0.072,
+     0.565
+    ],
+    "p_one_sided": 0.0774,
+    "top5": 1,
+    "top10": 6
+   },
+   {
+    "id": "history",
+    "label": "Baseline: crash history 2023-24",
+    "kind": "REAL",
+    "spearman": 0.3,
+    "ci95": [
+     -0.037,
+     0.57
+    ],
+    "p_one_sided": 0.055,
+    "top5": 1,
+    "top10": 8
+   }
+  ],
+  "simulator_secondary_metrics": {
+   "near_miss_ph": 0.307,
+   "serious_ph": 0.374
+  },
+  "verdict": "Simulator's top 5 contains 2 of the real top 5; rank correlation +0.30 (95% CI -0.08 to +0.59).",
+  "lists": {
+   "simulator": [
+    {
+     "id": "w42",
+     "name": "7 Av & W 42 St",
+     "value": 85.258
+    },
+    {
+     "id": "w47",
+     "name": "7 Av & W 47 St",
+     "value": 47.597
+    },
+    {
+     "id": "w32",
+     "name": "7 Av & W 32 St",
+     "value": 47.575
+    },
+    {
+     "id": "w44",
+     "name": "7 Av & W 44 St",
+     "value": 46.776
+    },
+    {
+     "id": "w34",
+     "name": "7 Av & W 34 St",
+     "value": 46.158
+    },
+    {
+     "id": "w45",
+     "name": "7 Av & W 45 St",
+     "value": 44.293
+    },
+    {
+     "id": "w43",
+     "name": "7 Av & W 43 St",
+     "value": 39.704
+    },
+    {
+     "id": "w46",
+     "name": "7 Av & W 46 St",
+     "value": 38.953
+    },
+    {
+     "id": "w57",
+     "name": "7 Av & W 57 St",
+     "value": 35.842
+    },
+    {
+     "id": "w40",
+     "name": "7 Av & W 40 St",
+     "value": 35.605
+    }
+   ],
+   "real": [
+    {
+     "id": "w34",
+     "name": "7 Av & W 34 St",
+     "crashes": 9,
+     "injured": 9,
+     "killed": 0
+    },
+    {
+     "id": "w44",
+     "name": "7 Av & W 44 St",
+     "crashes": 8,
+     "injured": 8,
+     "killed": 0
+    },
+    {
+     "id": "w53",
+     "name": "7 Av & W 53 St",
+     "crashes": 5,
+     "injured": 6,
+     "killed": 0
+    },
+    {
+     "id": "w35",
+     "name": "7 Av & W 35 St",
+     "crashes": 5,
+     "injured": 5,
+     "killed": 0
+    },
+    {
+     "id": "w36",
+     "name": "7 Av & W 36 St",
+     "crashes": 5,
+     "injured": 5,
+     "killed": 0
+    },
+    {
+     "id": "w49",
+     "name": "7 Av & W 49 St",
+     "crashes": 5,
+     "injured": 5,
+     "killed": 0
+    },
+    {
+     "id": "w45",
+     "name": "7 Av & W 45 St",
+     "crashes": 4,
+     "injured": 4,
+     "killed": 0
+    },
+    {
+     "id": "w31",
+     "name": "7 Av & W 31 St",
+     "crashes": 3,
+     "injured": 3,
+     "killed": 0
+    },
+    {
+     "id": "w33",
+     "name": "7 Av & W 33 St",
+     "crashes": 3,
+     "injured": 3,
+     "killed": 0
+    },
+    {
+     "id": "w37",
+     "name": "7 Av & W 37 St",
+     "crashes": 3,
+     "injured": 3,
+     "killed": 0
+    }
+   ]
+  },
+  "per_corner": [
+   {
+    "id": "w30",
+    "name": "7 Av & W 30 St",
+    "sim": 24.671,
+    "heldout": 2,
+    "history": 0,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w31",
+    "name": "7 Av & W 31 St",
+    "sim": 28.99,
+    "heldout": 3,
+    "history": 0,
+    "volume": 1472.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w32",
+    "name": "7 Av & W 32 St",
+    "sim": 47.575,
+    "heldout": 2,
+    "history": 2,
+    "volume": 1322.0,
+    "walkers": 2185.0
+   },
+   {
+    "id": "w33",
+    "name": "7 Av & W 33 St",
+    "sim": 30.358,
+    "heldout": 3,
+    "history": 6,
+    "volume": 1322.0,
+    "walkers": 1967.0
+   },
+   {
+    "id": "w34",
+    "name": "7 Av & W 34 St",
+    "sim": 46.158,
+    "heldout": 9,
+    "history": 7,
+    "volume": 1772.0,
+    "walkers": 2185.0
+   },
+   {
+    "id": "w35",
+    "name": "7 Av & W 35 St",
+    "sim": 31.297,
+    "heldout": 5,
+    "history": 3,
+    "volume": 1472.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w36",
+    "name": "7 Av & W 36 St",
+    "sim": 29.421,
+    "heldout": 5,
+    "history": 3,
+    "volume": 1472.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w37",
+    "name": "7 Av & W 37 St",
+    "sim": 25.549,
+    "heldout": 3,
+    "history": 0,
+    "volume": 1472.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w38",
+    "name": "7 Av & W 38 St",
+    "sim": 24.78,
+    "heldout": 2,
+    "history": 3,
+    "volume": 1472.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w39",
+    "name": "7 Av & W 39 St",
+    "sim": 26.415,
+    "heldout": 2,
+    "history": 2,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w40",
+    "name": "7 Av & W 40 St",
+    "sim": 35.605,
+    "heldout": 3,
+    "history": 1,
+    "volume": 1322.0,
+    "walkers": 2185.0
+   },
+   {
+    "id": "w41",
+    "name": "7 Av & W 41 St",
+    "sim": 26.59,
+    "heldout": 2,
+    "history": 1,
+    "volume": 1322.0,
+    "walkers": 2185.0
+   },
+   {
+    "id": "w42",
+    "name": "7 Av & W 42 St",
+    "sim": 85.258,
+    "heldout": 3,
+    "history": 7,
+    "volume": 1772.0,
+    "walkers": 3933.0
+   },
+   {
+    "id": "w43",
+    "name": "7 Av & W 43 St",
+    "sim": 39.704,
+    "heldout": 3,
+    "history": 4,
+    "volume": 1322.0,
+    "walkers": 2950.0
+   },
+   {
+    "id": "w44",
+    "name": "7 Av & W 44 St",
+    "sim": 46.776,
+    "heldout": 8,
+    "history": 2,
+    "volume": 1472.0,
+    "walkers": 2950.0
+   },
+   {
+    "id": "w45",
+    "name": "7 Av & W 45 St",
+    "sim": 44.293,
+    "heldout": 4,
+    "history": 6,
+    "volume": 1472.0,
+    "walkers": 2950.0
+   },
+   {
+    "id": "w46",
+    "name": "7 Av & W 46 St",
+    "sim": 38.953,
+    "heldout": 2,
+    "history": 1,
+    "volume": 1322.0,
+    "walkers": 2950.0
+   },
+   {
+    "id": "w47",
+    "name": "7 Av & W 47 St",
+    "sim": 47.597,
+    "heldout": 2,
+    "history": 2,
+    "volume": 1322.0,
+    "walkers": 3933.0
+   },
+   {
+    "id": "w48",
+    "name": "7 Av & W 48 St",
+    "sim": 25.965,
+    "heldout": 0,
+    "history": 3,
+    "volume": 1472.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w49",
+    "name": "7 Av & W 49 St",
+    "sim": 25.997,
+    "heldout": 5,
+    "history": 2,
+    "volume": 1472.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w50",
+    "name": "7 Av & W 50 St",
+    "sim": 25.643,
+    "heldout": 3,
+    "history": 0,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w51",
+    "name": "7 Av & W 51 St",
+    "sim": 18.772,
+    "heldout": 1,
+    "history": 2,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w52",
+    "name": "7 Av & W 52 St",
+    "sim": 31.516,
+    "heldout": 1,
+    "history": 0,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w53",
+    "name": "7 Av & W 53 St",
+    "sim": 21.692,
+    "heldout": 5,
+    "history": 4,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w54",
+    "name": "7 Av & W 54 St",
+    "sim": 21.209,
+    "heldout": 0,
+    "history": 2,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w55",
+    "name": "7 Av & W 55 St",
+    "sim": 29.441,
+    "heldout": 2,
+    "history": 4,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w56",
+    "name": "7 Av & W 56 St",
+    "sim": 26.136,
+    "heldout": 0,
+    "history": 3,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w57",
+    "name": "7 Av & W 57 St",
+    "sim": 35.842,
+    "heldout": 0,
+    "history": 3,
+    "volume": 1772.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w58",
+    "name": "7 Av & W 58 St",
+    "sim": 21.08,
+    "heldout": 1,
+    "history": 0,
+    "volume": 1322.0,
+    "walkers": 1639.0
+   },
+   {
+    "id": "w59",
+    "name": "7 Av & Central Park S",
+    "sim": 31.835,
+    "heldout": 1,
+    "history": 0,
+    "volume": 850.0,
+    "walkers": 2185.0
+   }
+  ],
+  "notes": [
+   "No crash data is used to build simulator inputs or to tune parameters.",
+   "Small counts (about 3 held-out crashes per corner) make every ranking noisy; read the intervals."
+  ]
+ }
+}

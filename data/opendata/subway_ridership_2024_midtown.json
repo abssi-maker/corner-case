@@ -1,0 +1,38 @@
+[{"station_complex_id":"618","station_complex":"14 St (A,C,E)/8 Av (L)","latitude":"40.740894","longitude":"-74.00169","riders":"11789339.0"}
+,{"station_complex_id":"321","station_complex":"18 St (1)","latitude":"40.74104","longitude":"-73.99787","riders":"1788058.0"}
+,{"station_complex_id":"14","station_complex":"23 St (R,W)","latitude":"40.741302","longitude":"-73.98934","riders":"4518405.0"}
+,{"station_complex_id":"228","station_complex":"23 St (F,M)","latitude":"40.742878","longitude":"-73.99282","riders":"5952821.0"}
+,{"station_complex_id":"404","station_complex":"28 St (6)","latitude":"40.74307","longitude":"-73.98426","riders":"4616020.0"}
+,{"station_complex_id":"320","station_complex":"23 St (1)","latitude":"40.74408","longitude":"-73.99566","riders":"3234461.0"}
+,{"station_complex_id":"13","station_complex":"28 St (R,W)","latitude":"40.745495","longitude":"-73.98869","riders":"2971238.0"}
+,{"station_complex_id":"165","station_complex":"23 St (C,E)","latitude":"40.745907","longitude":"-73.99804","riders":"4939203.0"}
+,{"station_complex_id":"403","station_complex":"33 St (6)","latitude":"40.746082","longitude":"-73.98208","riders":"6169209.0"}
+,{"station_complex_id":"319","station_complex":"28 St (1)","latitude":"40.747215","longitude":"-73.99336","riders":"3093296.0"}
+,{"station_complex_id":"607","station_complex":"34 St-Herald Sq (B,D,F,M,N,Q,R,W)","latitude":"40.749565","longitude":"-73.98795","riders":"3385.0"}
+,{"station_complex_id":"607","station_complex":"34 St-Herald Sq (B,D,F,M,N,Q,R,W)","latitude":"40.749718","longitude":"-73.98782","riders":"25073225.0"}
+,{"station_complex_id":"318","station_complex":"34 St-Penn Station (1,2,3)","latitude":"40.750374","longitude":"-73.99106","riders":"16657086.0"}
+,{"station_complex_id":"610","station_complex":"Grand Central-42 St (S,4,5,6,7)","latitude":"40.751778","longitude":"-73.976845","riders":"33982818.0"}
+,{"station_complex_id":"164","station_complex":"34 St-Penn Station (A,C,E)","latitude":"40.75229","longitude":"-73.99339","riders":"18672456.0"}
+,{"station_complex_id":"609","station_complex":"Bryant Pk (B,D,F,M)/5 Av (7)","latitude":"40.753822","longitude":"-73.981964","riders":"1712.0"}
+,{"station_complex_id":"609","station_complex":"Bryant Pk (B,D,F,M)/5 Av (7)","latitude":"40.754223","longitude":"-73.984566","riders":"41713.0"}
+,{"station_complex_id":"609","station_complex":"Bryant Pk (B,D,F,M)/5 Av (7)","latitude":"40.754223","longitude":"-73.981964","riders":"11885855.0"}
+,{"station_complex_id":"611","station_complex":"Times Sq-42 St (N,Q,R,W,S,1,2,3,7)/42 St (A,C,E)","latitude":"40.754673","longitude":"-73.986755","riders":"303.0"}
+,{"station_complex_id":"611","station_complex":"Times Sq-42 St (N,Q,R,W,S,1,2,3,7)/42 St (A,C,E)","latitude":"40.75529","longitude":"-73.987495","riders":"5118.0"}
+,{"station_complex_id":"611","station_complex":"Times Sq-42 St (N,Q,R,W,S,1,2,3,7)/42 St (A,C,E)","latitude":"40.75529","longitude":"-73.986755","riders":"3012.0"}
+,{"station_complex_id":"471","station_complex":"34 St-Hudson Yards (7)","latitude":"40.755882","longitude":"-74.00191","riders":"6135047.0"}
+,{"station_complex_id":"612","station_complex":"Lexington Av-53 St (E,M)/51 St (6)","latitude":"40.757107","longitude":"-73.97192","riders":"3120.0"}
+,{"station_complex_id":"611","station_complex":"Times Sq-42 St (N,Q,R,W,S,1,2,3,7)/42 St (A,C,E)","latitude":"40.75731","longitude":"-73.98974","riders":"4137.0"}
+,{"station_complex_id":"611","station_complex":"Times Sq-42 St (N,Q,R,W,S,1,2,3,7)/42 St (A,C,E)","latitude":"40.75731","longitude":"-73.987495","riders":"427664.0"}
+,{"station_complex_id":"611","station_complex":"Times Sq-42 St (N,Q,R,W,S,1,2,3,7)/42 St (A,C,E)","latitude":"40.75731","longitude":"-73.986755","riders":"45504302.0"}
+,{"station_complex_id":"225","station_complex":"47-50 Sts-Rockefeller Ctr (B,D,F,M)","latitude":"40.758663","longitude":"-73.98133","riders":"12519036.0"}
+,{"station_complex_id":"10","station_complex":"49 St (N,R,W)","latitude":"40.7599","longitude":"-73.98414","riders":"6573609.0"}
+,{"station_complex_id":"276","station_complex":"5 Av/53 St (E,M)","latitude":"40.760166","longitude":"-73.97523","riders":"4584611.0"}
+,{"station_complex_id":"316","station_complex":"50 St (1)","latitude":"40.761726","longitude":"-73.98385","riders":"5423926.0"}
+,{"station_complex_id":"162","station_complex":"50 St (C,E)","latitude":"40.762455","longitude":"-73.985985","riders":"5560955.0"}
+,{"station_complex_id":"277","station_complex":"7 Av (E,B,D)","latitude":"40.762863","longitude":"-73.981636","riders":"4315489.0"}
+,{"station_complex_id":"224","station_complex":"57 St (F)","latitude":"40.763973","longitude":"-73.97745","riders":"2992682.0"}
+,{"station_complex_id":"9","station_complex":"57 St-7 Av (N,Q,R,W)","latitude":"40.764664","longitude":"-73.98066","riders":"8354132.0"}
+,{"station_complex_id":"8","station_complex":"5 Av/59 St (N,R,W)","latitude":"40.764812","longitude":"-73.97335","riders":"3814728.0"}
+,{"station_complex_id":"614","station_complex":"59 St-Columbus Circle (A,B,C,D,1)","latitude":"40.768246","longitude":"-73.981926","riders":"1066.0"}
+,{"station_complex_id":"614","station_complex":"59 St-Columbus Circle (A,B,C,D,1)","latitude":"40.768295","longitude":"-73.981735","riders":"16999711.0"}
+,{"station_complex_id":"314","station_complex":"66 St-Lincoln Center (1)","latitude":"40.77344","longitude":"-73.98221","riders":"4774161.0"}]

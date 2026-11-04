@@ -1,0 +1,746 @@
+{
+ "corridor": "7th Avenue, W 30th St to Central Park South",
+ "intersections": [
+  {
+   "id": "w30",
+   "name": "7 Av & W 30 St",
+   "street_num": 30,
+   "lat": 40.748478,
+   "lon": -73.992464,
+   "gx": -0.5,
+   "gy": -1210.2,
+   "cross_dirs": [
+    "EB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 9.8,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 0
+  },
+  {
+   "id": "w31",
+   "name": "7 Av & W 31 St",
+   "street_num": 31,
+   "lat": 40.74911,
+   "lon": -73.992007,
+   "gx": -0.9,
+   "gy": -1130.1,
+   "cross_dirs": [
+    "WB"
+   ],
+   "cross_lanes": 2,
+   "cross_width_m": 12.2,
+   "ave_width_m": 23.8,
+   "ave_lanes": 5,
+   "broadway": false,
+   "lpi_installed": [
+    "2016-06-25"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 656169
+  },
+  {
+   "id": "w32",
+   "name": "7 Av & W 32 St",
+   "street_num": 32,
+   "lat": 40.749714,
+   "lon": -73.991564,
+   "gx": -0.8,
+   "gy": -1053.3,
+   "cross_dirs": [
+    "EB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 9.8,
+   "ave_width_m": 23.8,
+   "ave_lanes": 5,
+   "broadway": false,
+   "lpi_installed": [],
+   "exclusive_ped_phase": true,
+   "plaza": null,
+   "demand_rank": 1,
+   "subway_riders_2024_weighted": 3913116
+  },
+  {
+   "id": "w33",
+   "name": "7 Av & W 33 St",
+   "street_num": 33,
+   "lat": 40.750327,
+   "lon": -73.991111,
+   "gx": -0.5,
+   "gy": -975.2,
+   "cross_dirs": [
+    "WB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 12.2,
+   "ave_width_m": 21.9,
+   "ave_lanes": 5,
+   "broadway": false,
+   "lpi_installed": [
+    "2016-06-25"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": "33rd Street Plaza",
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 7600932
+  },
+  {
+   "id": "w34",
+   "name": "7 Av & W 34 St",
+   "street_num": 34,
+   "lat": 40.751,
+   "lon": -73.990623,
+   "gx": -0.7,
+   "gy": -889.8,
+   "cross_dirs": [
+    "EB",
+    "WB"
+   ],
+   "cross_lanes": 4,
+   "cross_width_m": 15.8,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 1,
+   "subway_riders_2024_weighted": 7165889
+  },
+  {
+   "id": "w35",
+   "name": "7 Av & W 35 St",
+   "street_num": 35,
+   "lat": 40.751667,
+   "lon": -73.990135,
+   "gx": -0.6,
+   "gy": -805.0,
+   "cross_dirs": [
+    "WB"
+   ],
+   "cross_lanes": 2,
+   "cross_width_m": 9.1,
+   "ave_width_m": 18.3,
+   "ave_lanes": 3,
+   "broadway": false,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 1793008
+  },
+  {
+   "id": "w36",
+   "name": "7 Av & W 36 St",
+   "street_num": 36,
+   "lat": 40.752289,
+   "lon": -73.989695,
+   "gx": -1.6,
+   "gy": -726.6,
+   "cross_dirs": [
+    "EB"
+   ],
+   "cross_lanes": 2,
+   "cross_width_m": 10.7,
+   "ave_width_m": 18.3,
+   "ave_lanes": 3,
+   "broadway": false,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 0
+  },
+  {
+   "id": "w37",
+   "name": "7 Av & W 37 St",
+   "street_num": 37,
+   "lat": 40.752904,
+   "lon": -73.989245,
+   "gx": -1.6,
+   "gy": -648.4,
+   "cross_dirs": [
+    "WB"
+   ],
+   "cross_lanes": 2,
+   "cross_width_m": 10.7,
+   "ave_width_m": 18.3,
+   "ave_lanes": 3,
+   "broadway": false,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 0
+  },
+  {
+   "id": "w38",
+   "name": "7 Av & W 38 St",
+   "street_num": 38,
+   "lat": 40.753525,
+   "lon": -73.988788,
+   "gx": -1.4,
+   "gy": -569.4,
+   "cross_dirs": [
+    "EB"
+   ],
+   "cross_lanes": 2,
+   "cross_width_m": 12.2,
+   "ave_width_m": 18.3,
+   "ave_lanes": 3,
+   "broadway": false,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 0
+  },
+  {
+   "id": "w39",
+   "name": "7 Av & W 39 St",
+   "street_num": 39,
+   "lat": 40.754139,
+   "lon": -73.988337,
+   "gx": -1.2,
+   "gy": -491.3,
+   "cross_dirs": [
+    "WB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 10.7,
+   "ave_width_m": 18.3,
+   "ave_lanes": 3,
+   "broadway": false,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 1619320
+  },
+  {
+   "id": "w40",
+   "name": "7 Av & W 40 St",
+   "street_num": 40,
+   "lat": 40.754758,
+   "lon": -73.987893,
+   "gx": -1.8,
+   "gy": -413.0,
+   "cross_dirs": [
+    "EB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 9.1,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 1,
+   "subway_riders_2024_weighted": 5750927
+  },
+  {
+   "id": "w41",
+   "name": "7 Av & W 41 St",
+   "street_num": 41,
+   "lat": 40.755381,
+   "lon": -73.987448,
+   "gx": -2.5,
+   "gy": -334.2,
+   "cross_dirs": [
+    "WB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 9.1,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 1,
+   "subway_riders_2024_weighted": 7580111
+  },
+  {
+   "id": "w42",
+   "name": "7 Av & W 42 St",
+   "street_num": 42,
+   "lat": 40.756044,
+   "lon": -73.98695,
+   "gx": -1.6,
+   "gy": -249.4,
+   "cross_dirs": [
+    "EB",
+    "WB"
+   ],
+   "cross_lanes": 4,
+   "cross_width_m": 16.8,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [],
+   "exclusive_ped_phase": false,
+   "plaza": "Times Square Plaza",
+   "demand_rank": 1,
+   "subway_riders_2024_weighted": 8870475
+  },
+  {
+   "id": "w43",
+   "name": "7 Av & W 43 St",
+   "street_num": 43,
+   "lat": 40.756718,
+   "lon": -73.98646,
+   "gx": -1.7,
+   "gy": -163.8,
+   "cross_dirs": [
+    "WB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 10.7,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": true,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": "Times Square Plaza",
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 2782420
+  },
+  {
+   "id": "w44",
+   "name": "7 Av & W 44 St",
+   "street_num": 44,
+   "lat": 40.757348,
+   "lon": -73.986016,
+   "gx": -2.9,
+   "gy": -84.5,
+   "cross_dirs": [
+    "EB"
+   ],
+   "cross_lanes": 2,
+   "cross_width_m": 9.1,
+   "ave_width_m": 15.2,
+   "ave_lanes": 4,
+   "broadway": true,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": "Times Square Plaza",
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 0
+  },
+  {
+   "id": "w45",
+   "name": "7 Av & W 45 St",
+   "street_num": 45,
+   "lat": 40.757982,
+   "lon": -73.985539,
+   "gx": -1.8,
+   "gy": -3.4,
+   "cross_dirs": [
+    "WB"
+   ],
+   "cross_lanes": 2,
+   "cross_width_m": 12.2,
+   "ave_width_m": 12.8,
+   "ave_lanes": 5,
+   "broadway": true,
+   "lpi_installed": [
+    "2022-08-30"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": "Times Square Plaza",
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 0
+  },
+  {
+   "id": "w46",
+   "name": "7 Av & W 46 St",
+   "street_num": 46,
+   "lat": 40.758582,
+   "lon": -73.985051,
+   "gx": 1.8,
+   "gy": 74.9,
+   "cross_dirs": [
+    "EB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 10.4,
+   "ave_width_m": 15.2,
+   "ave_lanes": 5,
+   "broadway": true,
+   "lpi_installed": [
+    "2024-10-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": "Times Square Plaza",
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 673324
+  },
+  {
+   "id": "w47",
+   "name": "7 Av & W 47 St",
+   "street_num": 47,
+   "lat": 40.759208,
+   "lon": -73.984621,
+   "gx": -0.2,
+   "gy": 153.3,
+   "cross_dirs": [
+    "WB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 9.1,
+   "ave_width_m": 18.3,
+   "ave_lanes": 3,
+   "broadway": false,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": "Times Square Plaza",
+   "demand_rank": 1,
+   "subway_riders_2024_weighted": 2127348
+  },
+  {
+   "id": "w48",
+   "name": "7 Av & W 48 St",
+   "street_num": 48,
+   "lat": 40.75985,
+   "lon": -73.984175,
+   "gx": -1.9,
+   "gy": 234.0,
+   "cross_dirs": [
+    "EB"
+   ],
+   "cross_lanes": 2,
+   "cross_width_m": 9.8,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 2181543
+  },
+  {
+   "id": "w49",
+   "name": "7 Av & W 49 St",
+   "street_num": 49,
+   "lat": 40.760465,
+   "lon": -73.983731,
+   "gx": -2.4,
+   "gy": 311.9,
+   "cross_dirs": [
+    "WB"
+   ],
+   "cross_lanes": 2,
+   "cross_width_m": 9.8,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [
+    "2017-01-07"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 3926725
+  },
+  {
+   "id": "w50",
+   "name": "7 Av & W 50 St",
+   "street_num": 50,
+   "lat": 40.761102,
+   "lon": -73.983264,
+   "gx": -2.2,
+   "gy": 392.9,
+   "cross_dirs": [
+    "EB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 9.1,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 3695858
+  },
+  {
+   "id": "w51",
+   "name": "7 Av & W 51 St",
+   "street_num": 51,
+   "lat": 40.761727,
+   "lon": -73.982809,
+   "gx": -2.3,
+   "gy": 472.3,
+   "cross_dirs": [
+    "WB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 9.1,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 831152
+  },
+  {
+   "id": "w52",
+   "name": "7 Av & W 52 St",
+   "street_num": 52,
+   "lat": 40.762351,
+   "lon": -73.982352,
+   "gx": -2.3,
+   "gy": 551.6,
+   "cross_dirs": [
+    "EB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 9.8,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 949800
+  },
+  {
+   "id": "w53",
+   "name": "7 Av & W 53 St",
+   "street_num": 53,
+   "lat": 40.762977,
+   "lon": -73.981896,
+   "gx": -2.3,
+   "gy": 631.1,
+   "cross_dirs": [
+    "WB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 9.8,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 2635729
+  },
+  {
+   "id": "w54",
+   "name": "7 Av & W 54 St",
+   "street_num": 54,
+   "lat": 40.763603,
+   "lon": -73.981435,
+   "gx": -2.1,
+   "gy": 710.7,
+   "cross_dirs": [
+    "EB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 12.2,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [
+    "2017-01-07"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 2172888
+  },
+  {
+   "id": "w55",
+   "name": "7 Av & W 55 St",
+   "street_num": 55,
+   "lat": 40.764231,
+   "lon": -73.980982,
+   "gx": -2.5,
+   "gy": 790.3,
+   "cross_dirs": [
+    "WB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 10.4,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 3323916
+  },
+  {
+   "id": "w56",
+   "name": "7 Av & W 56 St",
+   "street_num": 56,
+   "lat": 40.764852,
+   "lon": -73.980529,
+   "gx": -2.6,
+   "gy": 869.2,
+   "cross_dirs": [
+    "EB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 9.8,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [
+    "2018-08-11"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 2590266
+  },
+  {
+   "id": "w57",
+   "name": "7 Av & W 57 St",
+   "street_num": 57,
+   "lat": 40.765529,
+   "lon": -73.980037,
+   "gx": -2.8,
+   "gy": 955.2,
+   "cross_dirs": [
+    "EB",
+    "WB"
+   ],
+   "cross_lanes": 4,
+   "cross_width_m": 18.3,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [
+    "2015-03-28"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 3225327
+  },
+  {
+   "id": "w58",
+   "name": "7 Av & W 58 St",
+   "street_num": 58,
+   "lat": 40.766206,
+   "lon": -73.979545,
+   "gx": -3.0,
+   "gy": 1041.0,
+   "cross_dirs": [
+    "EB"
+   ],
+   "cross_lanes": 1,
+   "cross_width_m": 12.2,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [
+    "2015-03-28"
+   ],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 2,
+   "subway_riders_2024_weighted": 1022708
+  },
+  {
+   "id": "w59",
+   "name": "7 Av & Central Park S",
+   "street_num": 59,
+   "lat": 40.766884,
+   "lon": -73.979078,
+   "gx": -5.0,
+   "gy": 1126.1,
+   "cross_dirs": [
+    "EB",
+    "WB"
+   ],
+   "cross_lanes": 4,
+   "cross_width_m": 21.3,
+   "ave_width_m": 18.3,
+   "ave_lanes": 4,
+   "broadway": false,
+   "lpi_installed": [],
+   "exclusive_ped_phase": false,
+   "plaza": null,
+   "demand_rank": 1,
+   "subway_riders_2024_weighted": 0
+  }
+ ],
+ "sources": "see data/opendata/SOURCES.md",
+ "ped_count_anchors": [
+  {
+   "loc": "51",
+   "where": "Seventh Avenue (West 32 Street to West 33rd Street)",
+   "mean_count_2023_24": 7221,
+   "n": 12,
+   "lat": 40.749996387066574,
+   "lon": -73.99134284997088
+  },
+  {
+   "loc": "57",
+   "where": "West 34th Street (Broadway to Seventh Avenue)",
+   "mean_count_2023_24": 12396,
+   "n": 12,
+   "lat": 40.75045405486473,
+   "lon": -73.98934552114228
+  },
+  {
+   "loc": "67",
+   "where": "Seventh Avenue (50th Street to 51st Street)",
+   "mean_count_2023_24": 7010,
+   "n": 12,
+   "lat": 40.76140611887666,
+   "lon": -73.98303507483828
+  }
+ ]
+}

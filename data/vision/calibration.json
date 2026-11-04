@@ -1,0 +1,6 @@
+{
+ "frame": 0,
+ "note": "Four street-plane points confirmed by hand on frame 0 (540x960 display coordinates, pan-stabilised to frame 0): the near curb line and the first lane line of 7th Ave. Length from the taxi in frame (4.9 m long, ~200 px); width is one standard NYC lane (3.0 m, assumption).",
+ "image_px": [[20, 785], [520, 760], [20, 900], [520, 870]],
+ "world_m": [[0, 0], [12.2, 0], [0, 3.0], [12.2, 3.0]]
+}

@@ -1,0 +1,28 @@
+[project]
+name = "cornercase"
+version = "0.1.0"
+description = "Test the fix before the next crash: a corridor safety simulator checked against real NYC crashes, planned by Meta Muse agents."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115",
+  "uvicorn>=0.30",
+  "pydantic>=2.8",
+  "numpy>=2.0",
+  "requests>=2.32",
+  "meta-sam-parser>=0.1.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3", "httpx>=0.27"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["cornercase"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

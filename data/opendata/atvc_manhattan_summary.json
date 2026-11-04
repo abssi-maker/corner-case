@@ -1,0 +1,483 @@
+[{"street":"10 AVENUE","fromst":"Broadway/ 7 Avenue Line","tost":"Broadway/ 7 Avenue Line","direction":"EB","yr":"2017","segmentid":"72733","n":"2","v":"7.0000000000000000"}
+,{"street":"10 AVENUE","fromst":"Broadway/ 7 Avenue Line","tost":"Broadway/ 7 Avenue Line","direction":"NB","yr":"2016","segmentid":"72898","n":"480","v":"70.5666666666666667"}
+,{"street":"10 AVENUE","fromst":"Broadway/ 7 Avenue Line","tost":"Broadway/ 7 Avenue Line","direction":"SB","yr":"2016","segmentid":"72902","n":"509","v":"49.4970530451866405"}
+,{"street":"10 AVENUE","fromst":"Broadway/ 7 Avenue Line","tost":"Broadway/ 7 Avenue Line","direction":"SB","yr":"2017","segmentid":"72747","n":"1534","v":"28.5052151238591917"}
+,{"street":"10 AVENUE","fromst":"West 54 Street","tost":"West 55 Street","direction":"NB","yr":"2018","segmentid":"33982","n":"192","v":"313.3593750000000000"}
+,{"street":"11 AVENUE","fromst":"West 23 Street","tost":"West 24 Street","direction":"NB","yr":"2019","segmentid":"33395","n":"672","v":"64.9553571428571429"}
+,{"street":"11 AVENUE","fromst":"West 23 Street","tost":"West 24 Street","direction":"SB","yr":"2019","segmentid":"33395","n":"384","v":"179.1145833333333333"}
+,{"street":"11 AVENUE","fromst":"West 41 Street","tost":"West 42 Street","direction":"SB","yr":"2022","segmentid":"33609","n":"672","v":"135.2321428571428571"}
+,{"street":"11 AVENUE","fromst":"West 58 Street","tost":"Amtrak-northeast Line","direction":"NB","yr":"2016","segmentid":"34307","n":"96","v":"87.6875000000000000"}
+,{"street":"11 AVENUE","fromst":"West 58 Street","tost":"Amtrak-northeast Line","direction":"SB","yr":"2016","segmentid":"34307","n":"96","v":"146.6875000000000000"}
+,{"street":"12 AVENUE","fromst":"Dead End","tost":"Dead end","direction":"NB","yr":"2018","segmentid":"9009491","n":"1344","v":"508.0163690476190476"}
+,{"street":"12 AVENUE","fromst":"Dead End","tost":"Dead end","direction":"NB","yr":"2022","segmentid":"9009491","n":"288","v":"549.0590277777777778"}
+,{"street":"12 AVENUE","fromst":"Dead End","tost":"Dead end","direction":"NB","yr":"2025","segmentid":"9009491","n":"96","v":"523.4166666666666667"}
+,{"street":"12 AVENUE","fromst":"Dead End","tost":"Dead end","direction":"SB","yr":"2020","segmentid":"9009495","n":"192","v":"553.7656250000000000"}
+,{"street":"12 AVENUE","fromst":"Dead End","tost":"Dead end","direction":"SB","yr":"2022","segmentid":"9009495","n":"288","v":"631.8888888888888889"}
+,{"street":"12 AVENUE","fromst":"West 44 Street","tost":"West 45 Street","direction":"NB","yr":"2018","segmentid":"159023","n":"190","v":"447.6947368421052632"}
+,{"street":"145 STREET BRIDGE","fromst":"Dead End","tost":"Harlem River Shoreline","direction":"EB","yr":"2018","segmentid":"173249","n":"1677","v":"152.2039355992844365"}
+,{"street":"145 STREET BRIDGE","fromst":"Dead End","tost":"Harlem River Shoreline","direction":"EB","yr":"2021","segmentid":"173249","n":"960","v":"132.3739583333333333"}
+,{"street":"145 STREET BRIDGE","fromst":"Dead End","tost":"Harlem River Shoreline","direction":"WB","yr":"2015","segmentid":"173249","n":"2","v":"255.5000000000000000"}
+,{"street":"145 STREET BRIDGE","fromst":"Dead End","tost":"Harlem River Shoreline","direction":"WB","yr":"2018","segmentid":"173249","n":"2205","v":"142.1777777777777778"}
+,{"street":"1 AVENUE","fromst":"Astoria Line","tost":"East 61 Street","direction":"NB","yr":"2016","segmentid":"36403","n":"1056","v":"261.6534090909090909"}
+,{"street":"1 AVENUE","fromst":"Astoria Line","tost":"East 61 Street","direction":"NB","yr":"2018","segmentid":"36403","n":"6","v":"60.6666666666666667"}
+,{"street":"1 AVENUE","fromst":"Dead End","tost":"East 42 Street","direction":"NB","yr":"2021","segmentid":"147489","n":"672","v":"60.4211309523809524"}
+,{"street":"1 AVENUE","fromst":"EAST 124 STREET","tost":"RFK BRIDGE ENTRANCE RAMP","direction":"NB","yr":"2014","segmentid":"69450","n":"4","v":"0.00000000000000000000"}
+,{"street":"1 AVENUE","fromst":"East 33 Street","tost":"East 34 Street","direction":"NB","yr":"2017","segmentid":"35887","n":"480","v":"227.8520833333333333"}
+,{"street":"1 AVENUE","fromst":"East 45 Street","tost":"East 46 Street","direction":"NB","yr":"2018","segmentid":"146126","n":"1445","v":"208.6027681660899654"}
+,{"street":"1 AVENUE","fromst":"East 47 Street","tost":"Dead end","direction":"NB","yr":"2024","segmentid":"145850","n":"672","v":"48.9047619047619048"}
+,{"street":"2 AVENUE","fromst":"Astoria Line","tost":"East 61 Street","direction":"SB","yr":"2025","segmentid":"36375","n":"96","v":"320.4270833333333333"}
+,{"street":"2 AVENUE","fromst":"East 117 Street","tost":"East 116 Street","direction":"SB","yr":"2015","segmentid":"68458","n":"6","v":"357.1666666666666667"}
+,{"street":"2 AVENUE","fromst":"East 34 Street","tost":"East 35 Street","direction":"SB","yr":"2015","segmentid":"35746","n":"508","v":"481.7283464566929134"}
+,{"street":"2 AVENUE","fromst":"East 37 Street","tost":"East 38 Street","direction":"SB","yr":"2018","segmentid":"35914","n":"246","v":"416.1300813008130081"}
+,{"street":"2 AVENUE","fromst":"East 41 Street","tost":"East 42 Street","direction":"SB","yr":"2019","segmentid":"35942","n":"1344","v":"295.5416666666666667"}
+,{"street":"2 AVENUE","fromst":"East 57 Street","tost":"East 58 Street","direction":"SB","yr":"2022","segmentid":"36263","n":"192","v":"351.9531250000000000"}
+,{"street":"2 AVENUE","fromst":"East 90 Street","tost":"East 91 Street","direction":"SB","yr":"2021","segmentid":"37877","n":"672","v":"154.2574404761904762"}
+,{"street":"3 AV BR","fromst":"BOROUGH BOUNDARY","tost":"BODY OF WATER","direction":"SB","yr":"2014","segmentid":"69318","n":"203","v":"358.4679802955665025"}
+,{"street":"3 AV BR","fromst":"BOROUGH BOUNDARY","tost":"BODY OF WATER","direction":"WB","yr":"2014","segmentid":"69318","n":"634","v":"278.1829652996845426"}
+,{"street":"3 AVENUE","fromst":"Dead End","tost":"East 57 Street","direction":"NB","yr":"2025","segmentid":"134999","n":"672","v":"185.6250000000000000"}
+,{"street":"3 AVENUE","fromst":"East 24 Street","tost":"East 23 Street","direction":"SB","yr":"2023","segmentid":"33172","n":"192","v":"9.0989583333333333"}
+,{"street":"3 AVENUE","fromst":"East 33 Street","tost":"East 34 Street","direction":"NB","yr":"2023","segmentid":"35738","n":"192","v":"280.3645833333333333"}
+,{"street":"3 AVENUE","fromst":"East 46 Street","tost":"East 47 Street","direction":"NB","yr":"2017","segmentid":"35960","n":"25","v":"249.6000000000000000"}
+,{"street":"3 AVENUE BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"SB","yr":"2015","segmentid":"69318","n":"86","v":"0.00000000000000000000"}
+,{"street":"5 AV","fromst":"E 124 ST/W 124 ST","tost":"W 125 ST/E 125 ST","direction":"NB","yr":"2014","segmentid":"69070","n":"773","v":"121.5329883570504528"}
+,{"street":"5 AV","fromst":"E 124 ST/W 124 ST","tost":"W 125 ST/E 125 ST","direction":"SB","yr":"2014","segmentid":"69070","n":"775","v":"97.1393548387096774"}
+,{"street":"5 AV","fromst":"TER DR/E 72 ST","tost":"E 73 ST","direction":"SB","yr":"2014","segmentid":"37371","n":"485","v":"172.9319587628865979"}
+,{"street":"5 AVENUE","fromst":"East 116 Street","tost":"East 117 Street","direction":"SB","yr":"2017","segmentid":"38808","n":"96","v":"71.8020833333333333"}
+,{"street":"5 AVENUE","fromst":"East 35 Street","tost":"East 34 Street","direction":"SB","yr":"2021","segmentid":"34029","n":"672","v":"204.1026785714285714"}
+,{"street":"5 AVENUE","fromst":"East 46 Street","tost":"East 47 Street","direction":"SB","yr":"2017","segmentid":"35806","n":"7","v":"351.5714285714285714"}
+,{"street":"5 AVENUE","fromst":"East 52 Street","tost":"East 51 Street","direction":"SB","yr":"2017","segmentid":"35846","n":"672","v":"272.6220238095238095"}
+,{"street":"5 AVENUE","fromst":"East 61 Street","tost":"Astoria Line","direction":"SB","yr":"2017","segmentid":"36026","n":"644","v":"208.9472049689440994"}
+,{"street":"79 ST TRANSVERSE","fromst":"Dead end","tost":"Dead End","direction":"WB","yr":"2018","segmentid":"146736","n":"192","v":"98.5937500000000000"}
+,{"street":"7 AVENUE","fromst":"Broadway/ 7 Avenue Line","tost":"Broadway/ 7 Avenue Line","direction":"SB","yr":"2017","segmentid":"33821","n":"672","v":"428.1011904761904762"}
+,{"street":"7 AVENUE","fromst":"Broadway/ 7 Avenue Line","tost":"Broadway/ 7 Avenue Line","direction":"SB","yr":"2022","segmentid":"33941","n":"480","v":"202.1166666666666667"}
+,{"street":"8 AV","fromst":"W 43 ST","tost":"W 44 ST","direction":"NB","yr":"2014","segmentid":"33955","n":"286","v":"312.3216783216783217"}
+,{"street":"8 AV","fromst":"W 56 ST","tost":"W 57 ST","direction":"NB","yr":"2014","segmentid":"34113","n":"6","v":"232.3333333333333333"}
+,{"street":"8 AVENUE","fromst":"8 Avenue Line","tost":"8 Avenue Line","direction":"NB","yr":"2017","segmentid":"33656","n":"672","v":"354.4107142857142857"}
+,{"street":"97 ST TRANSVERSE","fromst":"Dead End","tost":"Dead end","direction":"EB","yr":"2023","segmentid":"106224","n":"480","v":"122.4125000000000000"}
+,{"street":"97 ST TRANSVERSE","fromst":"Dead End","tost":"Dead end","direction":"WB","yr":"2023","segmentid":"106224","n":"480","v":"142.9708333333333333"}
+,{"street":"9 AV","fromst":"W 44 ST","tost":"W 45 ST","direction":"SB","yr":"2014","segmentid":"33846","n":"303","v":"299.3795379537953795"}
+,{"street":"9 AVENUE","fromst":"West 218 Street","tost":"West 219 Street","direction":"SB","yr":"2025","segmentid":"73021","n":"672","v":"13.8541666666666667"}
+,{"street":"9 AVENUE","fromst":"West 219 Street","tost":"West 220 Street","direction":"NB","yr":"2025","segmentid":"73023","n":"672","v":"7.3988095238095238"}
+,{"street":"9 AVENUE","fromst":"West 219 Street","tost":"West 220 Street","direction":"SB","yr":"2024","segmentid":"73023","n":"672","v":"17.6130952380952381"}
+,{"street":"9 AVENUE","fromst":"West 35 Street","tost":"West 34 Street","direction":"EB","yr":"2023","segmentid":"33662","n":"288","v":"91.8541666666666667"}
+,{"street":"9 AVENUE","fromst":"West 35 Street","tost":"West 34 Street","direction":"SB","yr":"2023","segmentid":"33662","n":"288","v":"196.7812500000000000"}
+,{"street":"9 AVENUE","fromst":"West 35 Street","tost":"West 34 Street","direction":"WB","yr":"2023","segmentid":"33662","n":"288","v":"84.7777777777777778"}
+,{"street":"9 AVENUE","fromst":"West 40 Street","tost":"West 39 Street","direction":"SB","yr":"2017","segmentid":"33699","n":"96","v":"307.3541666666666667"}
+,{"street":"ADAM C POWELL BOULEVARD","fromst":"Dead End","tost":"West 117 Street","direction":"NB","yr":"2024","segmentid":"190295","n":"652","v":"61.5138036809815951"}
+,{"street":"ADAM C POWELL BOULEVARD","fromst":"Dead End","tost":"West 117 Street","direction":"SB","yr":"2024","segmentid":"190295","n":"672","v":"60.0892857142857143"}
+,{"street":"ADAM C POWELL BOULEVARD","fromst":"West 119 Street","tost":"West 120 Street","direction":"NB","yr":"2015","segmentid":"158940","n":"80","v":"98.7875000000000000"}
+,{"street":"ADAM C POWELL BOULEVARD","fromst":"West 119 Street","tost":"West 120 Street","direction":"SB","yr":"2015","segmentid":"158940","n":"88","v":"92.9204545454545455"}
+,{"street":"ALEXANDER HAMILTON BRIDGE","fromst":"Dead End","tost":"Harlem River Shoreline","direction":"EB","yr":"2018","segmentid":"140062","n":"58","v":"1064.2068965517241379"}
+,{"street":"ALEXANDER HAMILTON BRIDGE","fromst":"Dead End","tost":"Harlem River Shoreline","direction":"EB","yr":"2022","segmentid":"140064","n":"288","v":"745.4895833333333333"}
+,{"street":"ALEXANDER HAMILTON BRIDGE","fromst":"Dead End","tost":"Harlem River Shoreline","direction":"EB","yr":"2023","segmentid":"140064","n":"288","v":"639.7708333333333333"}
+,{"street":"ALEXANDER HAMILTON BRIDGE","fromst":"Dead End","tost":"Harlem River Shoreline","direction":"EB","yr":"2025","segmentid":"140064","n":"288","v":"780.5243055555555556"}
+,{"street":"ALEXANDER HAMILTON BRIDGE","fromst":"Dead End","tost":"Harlem River Shoreline","direction":"WB","yr":"2018","segmentid":"140064","n":"1344","v":"816.1674107142857143"}
+,{"street":"ALEXANDER HAMILTON BRIDGE","fromst":"Dead End","tost":"Harlem River Shoreline","direction":"WB","yr":"2022","segmentid":"140062","n":"288","v":"662.9687500000000000"}
+,{"street":"ALEXANDER HAMILTON BRIDGE","fromst":"Dead End","tost":"Harlem River Shoreline","direction":"WB","yr":"2023","segmentid":"140062","n":"96","v":"661.1041666666666667"}
+,{"street":"ALEXANDER HAMILTON BRIDGE","fromst":"Dead End","tost":"Harlem River Shoreline","direction":"WB","yr":"2025","segmentid":"140062","n":"288","v":"666.8888888888888889"}
+,{"street":"ALLEN STREET","fromst":"Delancey Street","tost":"Rivington Street","direction":"NB","yr":"2019","segmentid":"164301","n":"96","v":"58.3750000000000000"}
+,{"street":"AMSTERDAM AV","fromst":"W 105 ST","tost":"W 106 ST","direction":"NB","yr":"2014","segmentid":"38168","n":"886","v":"42.2291196388261851"}
+,{"street":"AMSTERDAM AV","fromst":"W 171 ST/EDGECOMBE AV","tost":"W 172 ST","direction":"NB","yr":"2014","segmentid":"71072","n":"194","v":"79.3092783505154639"}
+,{"street":"AMSTERDAM AV","fromst":"W 171 ST/EDGECOMBE AV","tost":"W 172 ST","direction":"SB","yr":"2014","segmentid":"71072","n":"198","v":"98.0303030303030303"}
+,{"street":"AMSTERDAM AVENUE","fromst":"Cross Bronx Expressway","tost":"West 178 Street","direction":"SB","yr":"2016","segmentid":"173860","n":"672","v":"79.0208333333333333"}
+,{"street":"AMSTERDAM AVENUE","fromst":"WEST 110 STREET","tost":"WEST 111 STREET","direction":"SB","yr":"2014","segmentid":"38237","n":"672","v":"54.2842261904761905"}
+,{"street":"AMSTERDAM AVENUE","fromst":"West 113 Street","tost":"West 112 Street","direction":"SB","yr":"2016","segmentid":"38243","n":"600","v":"51.2200000000000000"}
+,{"street":"AMSTERDAM AVENUE","fromst":"West 120 Street","tost":"West 121 Street","direction":"NB","yr":"2016","segmentid":"38371","n":"600","v":"95.7083333333333333"}
+,{"street":"AMSTERDAM AVENUE","fromst":"West 177 Street","tost":"West 178 Street","direction":"NB","yr":"2021","segmentid":"108162","n":"672","v":"106.8809523809523810"}
+,{"street":"AMSTERDAM AVENUE","fromst":"West 177 Street","tost":"West 178 Street","direction":"SB","yr":"2021","segmentid":"108162","n":"672","v":"91.6011904761904762"}
+,{"street":"AMSTERDAM AVENUE","fromst":"West 179 Street","tost":"West 180 Street","direction":"NB","yr":"2016","segmentid":"71297","n":"384","v":"133.3828125000000000"}
+,{"street":"AMSTERDAM AVENUE","fromst":"West 60 Street","tost":"West 61 Street","direction":"NB","yr":"2023","segmentid":"34338","n":"66","v":"232.1212121212121212"}
+,{"street":"AMSTERDAM AVENUE","fromst":"West 73 Street","tost":"West 74 Street","direction":"NB","yr":"2019","segmentid":"34512","n":"672","v":"47.1279761904761905"}
+,{"street":"AMSTERDAM AVENUE","fromst":"West 79 Street","tost":"West 80 Street","direction":"NB","yr":"2025","segmentid":"37101","n":"192","v":"179.3177083333333333"}
+,{"street":"AMSTERDAM AVENUE","fromst":"West 85 Street","tost":"West 86 Street","direction":"NB","yr":"2017","segmentid":"37220","n":"96","v":"210.5416666666666667"}
+,{"street":"ASTOR PLACE","fromst":"Broadway","tost":"Lafayette Street","direction":"EB","yr":"2025","segmentid":"32762","n":"672","v":"7.0937500000000000"}
+,{"street":"ASTOR PLACE","fromst":"Broadway","tost":"Lafayette Street","direction":"WB","yr":"2025","segmentid":"32762","n":"672","v":"12.5818452380952381"}
+,{"street":"AUDUBON AVENUE","fromst":"West 172 Street","tost":"West 173 Street","direction":"NB","yr":"2016","segmentid":"70931","n":"192","v":"19.7500000000000000"}
+,{"street":"AVENUE B","fromst":"East 11 Street","tost":"East 12 Street","direction":"NB","yr":"2020","segmentid":"33255","n":"864","v":"14.5196759259259259"}
+,{"street":"AVENUE B","fromst":"East 11 Street","tost":"East 12 Street","direction":"SB","yr":"2020","segmentid":"33255","n":"864","v":"7.8229166666666667"}
+,{"street":"AVENUE OF THE AMERICAS","fromst":"63 Street Line","tost":"63 Street Line","direction":"NB","yr":"2017","segmentid":"35868","n":"672","v":"229.7693452380952381"}
+,{"street":"AVENUE OF THE AMERICAS","fromst":"6 Avenue Line","tost":"6 Avenue Line","direction":"NB","yr":"2017","segmentid":"34048","n":"672","v":"380.5193452380952381"}
+,{"street":"AVENUE OF THE AMERICAS","fromst":"6 Avenue Line","tost":"6 Avenue Line","direction":"NB","yr":"2017","segmentid":"34052","n":"672","v":"423.4553571428571429"}
+,{"street":"AVENUE OF THE AMERICAS","fromst":"6 Avenue Line","tost":"6 Avenue Line","direction":"NB","yr":"2021","segmentid":"33913","n":"672","v":"261.6056547619047619"}
+,{"street":"AVE OF THE AMERICAS","fromst":"W 58 ST","tost":"CENTER DR/CENTRAL PARK S","direction":"NB","yr":"2014","segmentid":"35868","n":"2","v":"286.0000000000000000"}
+,{"street":"BROADWAY","fromst":"8 Avenue Line","tost":"8 Avenue Line","direction":"EB","yr":"2020","segmentid":"72608","n":"672","v":"126.6666666666666667"}
+,{"street":"BROADWAY","fromst":"8 Avenue Line","tost":"8 Avenue Line","direction":"NB","yr":"2015","segmentid":"70915","n":"648","v":"68.7777777777777778"}
+,{"street":"BROADWAY","fromst":"8 Avenue Line","tost":"8 Avenue Line","direction":"NB","yr":"2017","segmentid":"70894","n":"576","v":"63.3298611111111111"}
+,{"street":"BROADWAY","fromst":"8 Avenue Line","tost":"8 Avenue Line","direction":"SB","yr":"2015","segmentid":"70915","n":"648","v":"90.5493827160493827"}
+,{"street":"BROADWAY","fromst":"8 Avenue Line","tost":"8 Avenue Line","direction":"SB","yr":"2017","segmentid":"70915","n":"576","v":"93.0920138888888889"}
+,{"street":"BROADWAY","fromst":"8 Avenue Line","tost":"8 Avenue Line","direction":"SB","yr":"2023","segmentid":"70915","n":"480","v":"61.4666666666666667"}
+,{"street":"BROADWAY","fromst":"BODY OF WATER","tost":"BODY OF WATER","direction":"NB","yr":"2014","segmentid":"73031","n":"93","v":"184.8172043010752688"}
+,{"street":"BROADWAY","fromst":"BODY OF WATER","tost":"BODY OF WATER","direction":"SB","yr":"2014","segmentid":"73031","n":"93","v":"178.1935483870967742"}
+,{"street":"BROADWAY","fromst":"Broadway Bridge","tost":"Dead end","direction":"NB","yr":"2016","segmentid":"270796","n":"303","v":"165.9108910891089109"}
+,{"street":"BROADWAY","fromst":"Broadway Line","tost":"Astor Place","direction":"SB","yr":"2025","segmentid":"32759","n":"672","v":"189.0922619047619048"}
+,{"street":"BROADWAY","fromst":"Broadway Line","tost":"Broadway Line","direction":"SB","yr":"2017","segmentid":"33933","n":"672","v":"42.7961309523809524"}
+,{"street":"BROADWAY","fromst":"Broadway Line","tost":"Broadway Line","direction":"SB","yr":"2020","segmentid":"31783","n":"576","v":"122.0000000000000000"}
+,{"street":"BROADWAY","fromst":"DUANE ST","tost":"THOMAS ST","direction":"SB","yr":"2014","segmentid":"23407","n":"36","v":"102.1111111111111111"}
+,{"street":"BROADWAY","fromst":"W 72 ST","tost":"W 73 ST","direction":"SB","yr":"2014","segmentid":"34506","n":"1","v":"188.0000000000000000"}
+,{"street":"BROADWAY","fromst":"West 153 Street","tost":"West 155 Street","direction":"NB","yr":"2017","segmentid":"158733","n":"7","v":"105.1428571428571429"}
+,{"street":"BROADWAY","fromst":"West 219 Street","tost":"West 220 Street","direction":"SB","yr":"2018","segmentid":"270739","n":"96","v":"159.5208333333333333"}
+,{"street":"BROADWAY","fromst":"West 225 Street","tost":"West 225 Street","direction":"SB","yr":"2016","segmentid":"270800","n":"300","v":"176.3533333333333333"}
+,{"street":"BROADWAY","fromst":"West 60 Street","tost":"West 61 Street","direction":"SB","yr":"2016","segmentid":"158858","n":"1633","v":"150.0293937538273117"}
+,{"street":"BROADWAY","fromst":"West 60 Street","tost":"West 61 Street","direction":"SB","yr":"2017","segmentid":"158858","n":"1734","v":"152.3212226066897347"}
+,{"street":"BROADWAY","fromst":"West 60 Street","tost":"West 61 Street","direction":"SB","yr":"2019","segmentid":"158858","n":"1","v":"56.0000000000000000"}
+,{"street":"BROADWAY","fromst":"West 64 Street","tost":"Dead end","direction":"NB","yr":"2017","segmentid":"151913","n":"632","v":"106.0490506329113924"}
+,{"street":"BROADWAY","fromst":"West 99 Street","tost":"West 100 Street","direction":"NB","yr":"2019","segmentid":"158767","n":"672","v":"75.0565476190476190"}
+,{"street":"BROADWAY","fromst":"West 99 Street","tost":"West 100 Street","direction":"SB","yr":"2019","segmentid":"159040","n":"480","v":"88.7479166666666667"}
+,{"street":"BROADWAY BRIDGE","fromst":"Broadway","tost":"Harlem River Shoreline","direction":"NB","yr":"2018","segmentid":"270776","n":"1439","v":"162.6233495482974288"}
+,{"street":"BROADWAY BRIDGE","fromst":"Broadway","tost":"Harlem River Shoreline","direction":"NB","yr":"2024","segmentid":"270776","n":"480","v":"133.5291666666666667"}
+,{"street":"BROADWAY BRIDGE","fromst":"Broadway","tost":"Harlem River Shoreline","direction":"SB","yr":"2018","segmentid":"270779","n":"1922","v":"127.6175858480749220"}
+,{"street":"BROADWAY BRIDGE","fromst":"Broadway","tost":"Harlem River Shoreline","direction":"SB","yr":"2024","segmentid":"270779","n":"768","v":"165.8398437500000000"}
+,{"street":"BROOKLYN BRIDGE","fromst":"Dead End","tost":"East River Shoreline","direction":"EB","yr":"2016","segmentid":"9014212","n":"27","v":"757.5185185185185185"}
+,{"street":"BROOKLYN BRIDGE","fromst":"Dead End","tost":"East River Shoreline","direction":"EB","yr":"2020","segmentid":"9014212","n":"96","v":"592.8958333333333333"}
+,{"street":"BROOKLYN BRIDGE","fromst":"Dead End","tost":"East River Shoreline","direction":"NB","yr":"2025","segmentid":"9014216","n":"288","v":"508.8020833333333333"}
+,{"street":"BROOKLYN BRIDGE","fromst":"Dead End","tost":"East River Shoreline","direction":"SB","yr":"2022","segmentid":"9014212","n":"288","v":"589.4340277777777778"}
+,{"street":"BROOKLYN BRIDGE","fromst":"Dead End","tost":"East River Shoreline","direction":"SB","yr":"2025","segmentid":"9014212","n":"288","v":"584.0000000000000000"}
+,{"street":"BROOKLYN BRIDGE","fromst":"Dead End","tost":"East River Shoreline","direction":"WB","yr":"2020","segmentid":"9014216","n":"96","v":"588.1770833333333333"}
+,{"street":"BROOKLYN BRIDGE","fromst":"East River Shoreline","tost":"Dead End","direction":"WB","yr":"2016","segmentid":"9014216","n":"283","v":"628.2756183745583039"}
+,{"street":"CANAL ST","fromst":"ELIZABETH ST","tost":"BOWERY/MN BR APPR","direction":"EB","yr":"2016","segmentid":"32478","n":"96","v":"287.6458333333333333"}
+,{"street":"CANAL ST","fromst":"ELIZABETH ST","tost":"BOWERY/MN BR APPR","direction":"WB","yr":"2016","segmentid":"32478","n":"96","v":"1.9166666666666667"}
+,{"street":"CANAL STREET","fromst":"Manhattan Bridge Line","tost":"Manhattan Bridge Line","direction":"EB","yr":"2023","segmentid":"32321","n":"2118","v":"164.2795089707271010"}
+,{"street":"CBE SB ENTRANCE WASHINGTON BRDG","fromst":"Washington Bridge","tost":"Dead End","direction":"SB","yr":"2015","segmentid":"234191","n":"221","v":"66.1628959276018100"}
+,{"street":"CENTER DR","fromst":"AVENUE OF THE AMERICAS","tost":"AVE OF THE AMERICAS/CENTRAL PARK S","direction":"NB","yr":"2014","segmentid":"35876","n":"92","v":"39.0434782608695652"}
+,{"street":"CENTRAL PARK NORTH","fromst":"Frawley Circle","tost":"Central Park Lenox Avenue Appr","direction":"EB","yr":"2024","segmentid":"166137","n":"672","v":"40.2500000000000000"}
+,{"street":"CENTRAL PARK NORTH","fromst":"Frawley Circle","tost":"Central Park Lenox Avenue Appr","direction":"WB","yr":"2024","segmentid":"166137","n":"672","v":"24.5252976190476190"}
+,{"street":"CENTRAL PARK S","fromst":"7 AV/C P 7 AV APPR","tost":"CENTER DR/AVE OF THE AMERICAS","direction":"EB","yr":"2014","segmentid":"35875","n":"773","v":"103.2794307891332471"}
+,{"street":"CENTRAL PARK S","fromst":"7 AV/C P 7 AV APPR","tost":"CENTER DR/AVE OF THE AMERICAS","direction":"WB","yr":"2014","segmentid":"35875","n":"773","v":"168.8318240620957309"}
+,{"street":"CENTRAL PARK S","fromst":"COLUMBUS CIR","tost":"7 AV/C P 7 AV APPR","direction":"EB","yr":"2014","segmentid":"35869","n":"1","v":"203.0000000000000000"}
+,{"street":"CENTRAL PARK SOUTH","fromst":"63 Street Line","tost":"Astoria Line","direction":"EB","yr":"2017","segmentid":"257468","n":"384","v":"99.3307291666666667"}
+,{"street":"CENTRAL PARK SOUTH","fromst":"Astoria Line","tost":"63 Street Line","direction":"WB","yr":"2015","segmentid":"257468","n":"9","v":"0.00000000000000000000"}
+,{"street":"CENTRAL PARK SOUTH","fromst":"Astoria Line","tost":"63 Street Line","direction":"WB","yr":"2017","segmentid":"257463","n":"384","v":"94.6562500000000000"}
+,{"street":"CENTRAL PARK SOUTH","fromst":"Columbus Circle","tost":"63 Street Line","direction":"EB","yr":"2015","segmentid":"35869","n":"7","v":"112.0000000000000000"}
+,{"street":"CENTRAL PARK SOUTH","fromst":"Grand Army Plaza","tost":"Astoria Line","direction":"EB","yr":"2017","segmentid":"257462","n":"259","v":"120.3166023166023166"}
+,{"street":"CENTRAL PARK W","fromst":"CPW 72 APPR/W 72 ST","tost":"W 73 ST","direction":"SB","yr":"2014","segmentid":"37089","n":"4","v":"119.7500000000000000"}
+,{"street":"CENTRAL PARK W","fromst":"C P W 85 APPR/W 85 ST","tost":"W 86 ST/86 ST TRANSVERSE","direction":"NB","yr":"2014","segmentid":"37312","n":"2","v":"138.0000000000000000"}
+,{"street":"CENTRAL PARK W","fromst":"W 71 ST","tost":"CPW 72 APPR/W 72 ST","direction":"NB","yr":"2014","segmentid":"37081","n":"6","v":"146.8333333333333333"}
+,{"street":"CENTRAL PARK WEST","fromst":"8 Avenue Line","tost":"8 Avenue Line","direction":"NB","yr":"2018","segmentid":"9009549","n":"53","v":"126.3396226415094340"}
+,{"street":"CENTRAL PARK WEST","fromst":"8 Avenue Line","tost":"8 Avenue Line","direction":"NB","yr":"2023","segmentid":"34257","n":"1344","v":"92.9977678571428571"}
+,{"street":"CENTRE STREET","fromst":"Brooklyn Brdg Ped And Bike Path","tost":"Lexington Avenue Line","direction":"NB","yr":"2017","segmentid":"23392","n":"2","v":"202.0000000000000000"}
+,{"street":"CENTRE STREET","fromst":"Brooklyn Brdg Ped And Bike Path","tost":"Lexington Avenue Line","direction":"SB","yr":"2017","segmentid":"23392","n":"2","v":"121.5000000000000000"}
+,{"street":"CENTRE STREET","fromst":"Chambers Street","tost":"Lafayette Street","direction":"NB","yr":"2017","segmentid":"23557","n":"103","v":"169.2330097087378641"}
+,{"street":"CENTRE STREET","fromst":"Chambers Street","tost":"Lafayette Street","direction":"SB","yr":"2017","segmentid":"23557","n":"120","v":"86.3500000000000000"}
+,{"street":"CHATHAM SQUARE","fromst":"East Broadway","tost":"Dead End","direction":"SB","yr":"2017","segmentid":"251844","n":"384","v":"81.5937500000000000"}
+,{"street":"CHRYSTIE STREET","fromst":"6 Avenue Line","tost":"6 Avenue Line","direction":"NB","yr":"2017","segmentid":"164289","n":"384","v":"114.2187500000000000"}
+,{"street":"CHRYSTIE STREET","fromst":"6 Avenue Line","tost":"6 Avenue Line","direction":"SB","yr":"2017","segmentid":"164289","n":"489","v":"120.7893660531697342"}
+,{"street":"CHRYSTIE STREET","fromst":"6 Avenue Line","tost":"East Houston Street","direction":"NB","yr":"2015","segmentid":"164304","n":"576","v":"85.5486111111111111"}
+,{"street":"CHRYSTIE STREET","fromst":"6 Avenue Line","tost":"East Houston Street","direction":"SB","yr":"2015","segmentid":"164304","n":"908","v":"124.0848017621145374"}
+,{"street":"CLINTON STREET","fromst":"Stanton Street","tost":"Rivington Street","direction":"NB","yr":"2023","segmentid":"33068","n":"384","v":"116.2708333333333333"}
+,{"street":"COLUMBIA STREET","fromst":"Dead End","tost":"Dead end","direction":"NB","yr":"2019","segmentid":"9003111","n":"322","v":"28.4223602484472050"}
+,{"street":"COLUMBIA STREET","fromst":"Dead End","tost":"Dead end","direction":"SB","yr":"2019","segmentid":"9003111","n":"321","v":"28.8286604361370717"}
+,{"street":"COLUMBUS AV","fromst":"W 60 ST","tost":"W 61 ST","direction":"SB","yr":"2014","segmentid":"34122","n":"4","v":"215.7500000000000000"}
+,{"street":"COLUMBUS AV","fromst":"W 72 ST","tost":"W 73 ST","direction":"SB","yr":"2014","segmentid":"37083","n":"79","v":"199.4683544303797468"}
+,{"street":"COLUMBUS AVENUE","fromst":"West 70 Street","tost":"West 71 Street","direction":"SB","yr":"2015","segmentid":"34502","n":"82","v":"193.8048780487804878"}
+,{"street":"COLUMBUS AVENUE","fromst":"West 73 Street","tost":"West 72 Street","direction":"SB","yr":"2017","segmentid":"37083","n":"672","v":"202.5565476190476190"}
+,{"street":"COLUMBUS AVENUE","fromst":"West 79 Street","tost":"West 80 Street","direction":"SB","yr":"2025","segmentid":"37204","n":"672","v":"176.5148809523809524"}
+,{"street":"COLUMBUS AVENUE","fromst":"West 97 Street","tost":"West 96 Street","direction":"SB","yr":"2025","segmentid":"37427","n":"672","v":"140.9538690476190476"}
+,{"street":"C P 7 AVENUE APPROACH","fromst":"63 Street Line","tost":"63 Street Line","direction":"SB","yr":"2016","segmentid":"111161","n":"96","v":"15.3645833333333333"}
+,{"street":"CPW 72 APPROACH","fromst":"West Drive","tost":"8 Avenue Line","direction":"EB","yr":"2015","segmentid":"37175","n":"89","v":"5.8764044943820225"}
+,{"street":"CROSS BRONX EXPWY NB ET 1 B","fromst":"Dead End","tost":"Washington Bridge","direction":"EB","yr":"2015","segmentid":"234193","n":"214","v":"71.5420560747663551"}
+,{"street":"DELANCEY STREET","fromst":"Bowery","tost":"6 Avenue Line","direction":"EB","yr":"2015","segmentid":"158690","n":"80","v":"223.3750000000000000"}
+,{"street":"DELANCEY STREET","fromst":"Forsyth Street","tost":"6 Avenue Line","direction":"WB","yr":"2015","segmentid":"159070","n":"91","v":"281.8351648351648352"}
+,{"street":"DELANCEY STREET","fromst":"Forsyth Street","tost":"Eldridge Street","direction":"EB","yr":"2024","segmentid":"158913","n":"96","v":"196.4479166666666667"}
+,{"street":"DESBROSSES STREET","fromst":"Hudson Street","tost":"Greenwich Street","direction":"WB","yr":"2015","segmentid":"31827","n":"136","v":"13.3161764705882353"}
+,{"street":"DYCKMAN STREET","fromst":"Sherman Avenue","tost":"Vermilyea Avenue","direction":"NB","yr":"2020","segmentid":"72596","n":"576","v":"58.2638888888888889"}
+,{"street":"E 106 ST","fromst":"5 AVE","tost":"MADISON AV","direction":"EB","yr":"2014","segmentid":"37837","n":"1","v":"0.00000000000000000000"}
+,{"street":"E 106 ST","fromst":"5 AVE","tost":"MADISON AV","direction":"WB","yr":"2014","segmentid":"37837","n":"1","v":"0.00000000000000000000"}
+,{"street":"E 125 ST","fromst":"RFK BRIDGE MANHATTAN ENTRANCE RP/RFK BRIDGE EXIT *","tost":"1 AV","direction":"EB","yr":"2014","segmentid":"119730","n":"179","v":"67.1396648044692737"}
+,{"street":"E 125 ST","fromst":"RFK BRIDGE MANHATTAN ENTRANCE RP/RFK BRIDGE EXIT *","tost":"1 AV","direction":"WB","yr":"2014","segmentid":"119730","n":"180","v":"47.5611111111111111"}
+,{"street":"EAST 106 STREET","fromst":"1 AVENUE","tost":"F D R DRIVE","direction":"EB","yr":"2014","segmentid":"68359","n":"1259","v":"6.9086576648133439"}
+,{"street":"EAST 106 STREET","fromst":"1 AVENUE","tost":"F D R DRIVE","direction":"WB","yr":"2014","segmentid":"68359","n":"1258","v":"22.3219395866454690"}
+,{"street":"EAST 106 STREET","fromst":"2 AVENUE","tost":"3 AVENUE","direction":"EB","yr":"2014","segmentid":"38080","n":"1","v":"0.00000000000000000000"}
+,{"street":"EAST 116 STREET","fromst":"1 Avenue","tost":"Pleasant Avenue","direction":"EB","yr":"2023","segmentid":"68530","n":"864","v":"57.7789351851851852"}
+,{"street":"EAST 116 STREET","fromst":"1 Avenue","tost":"Pleasant Avenue","direction":"WB","yr":"2023","segmentid":"68530","n":"864","v":"35.3090277777777778"}
+,{"street":"EAST 124 STREET","fromst":"1 AVENUE","tost":"2 AVENUE","direction":"WB","yr":"2014","segmentid":"110982","n":"287","v":"9.5226480836236934"}
+,{"street":"EAST 125 STREET","fromst":"Rfk Bridge Exit Ramp","tost":"1 Avenue","direction":"WB","yr":"2015","segmentid":"119730","n":"98","v":"24.2244897959183673"}
+,{"street":"EAST 12 STREET","fromst":"4 Avenue","tost":"3 Avenue","direction":"EB","yr":"2019","segmentid":"32939","n":"16","v":"13.2500000000000000"}
+,{"street":"EAST 14 STREET","fromst":"14 Street/canarsie Line","tost":"14 Street/canarsie Line","direction":"WB","yr":"2024","segmentid":"32807","n":"96","v":"12.8854166666666667"}
+,{"street":"EAST 16 STREET","fromst":"5 Avenue","tost":"Union Square West","direction":"EB","yr":"2019","segmentid":"32799","n":"75","v":"29.3466666666666667"}
+,{"street":"EAST 23 STREET","fromst":"Lexington Avenue","tost":"3 Avenue","direction":"EB","yr":"2023","segmentid":"33167","n":"192","v":"105.1145833333333333"}
+,{"street":"EAST 25 STREET","fromst":"2 Avenue","tost":"3 Avenue","direction":"WB","yr":"2023","segmentid":"33288","n":"192","v":"35.7447916666666667"}
+,{"street":"EAST 25 STREET","fromst":"Asser Levy Place","tost":"East 25 Street Pedestrian Ovps","direction":"EB","yr":"2017","segmentid":"193541","n":"283","v":"1.1236749116607774"}
+,{"street":"EAST 25 STREET","fromst":"East 25 Street Pedestrian Ovps","tost":"Asser Levy Place","direction":"WB","yr":"2017","segmentid":"193541","n":"3","v":"71.0000000000000000"}
+,{"street":"EAST 34 STREET","fromst":"1 Avenue","tost":"F D R Drive","direction":"EB","yr":"2024","segmentid":"35889","n":"96","v":"139.1354166666666667"}
+,{"street":"EAST 34 STREET","fromst":"1 Avenue","tost":"F D R Drive","direction":"WB","yr":"2024","segmentid":"35889","n":"96","v":"76.1458333333333333"}
+,{"street":"EAST 34 STREET","fromst":"F D R Drive","tost":"1 Avenue","direction":"WB","yr":"2017","segmentid":"35889","n":"480","v":"90.8500000000000000"}
+,{"street":"EAST 34 STREET","fromst":"Queens Midtown Tunnel Approach","tost":"1 Avenue","direction":"EB","yr":"2017","segmentid":"35882","n":"480","v":"111.2125000000000000"}
+,{"street":"EAST 36 STREET","fromst":"5 Avenue","tost":"Madison Avenue","direction":"EB","yr":"2021","segmentid":"34041","n":"672","v":"117.9122023809523810"}
+,{"street":"EAST 49 STREET","fromst":"Alley","tost":"Lexington Avenue","direction":"WB","yr":"2017","segmentid":"127616","n":"384","v":"110.6692708333333333"}
+,{"street":"EAST 50 STREET","fromst":"Park Avenue","tost":"Lexington Avenue","direction":"EB","yr":"2017","segmentid":"165394","n":"384","v":"65.6875000000000000"}
+,{"street":"EAST 57 STREET","fromst":"2 Avenue","tost":"Ed Koch Queensboro Bridge Appr","direction":"EB","yr":"2015","segmentid":"36262","n":"157","v":"160.2165605095541401"}
+,{"street":"EAST 57 STREET","fromst":"2 Avenue","tost":"Ed Koch Queensboro Bridge Appr","direction":"WB","yr":"2015","segmentid":"36262","n":"157","v":"70.4203821656050955"}
+,{"street":"EAST 58 STREET","fromst":"Ed Koch Queensboro Bridge Appr","tost":"2 Avenue","direction":"NB","yr":"2023","segmentid":"36369","n":"96","v":"233.4375000000000000"}
+,{"street":"EAST 58 STREET","fromst":"Ed Koch Queensboro Bridge Appr","tost":"2 Avenue","direction":"NB","yr":"2025","segmentid":"36369","n":"192","v":"23.8229166666666667"}
+,{"street":"EAST 58 STREET","fromst":"Ed Koch Queensboro Bridge Appr","tost":"2 Avenue","direction":"SB","yr":"2023","segmentid":"36369","n":"78","v":"32.0641025641025641"}
+,{"street":"EAST 58 STREET","fromst":"Ed Koch Queensboro Bridge Appr","tost":"2 Avenue","direction":"SB","yr":"2024","segmentid":"36369","n":"288","v":"38.2048611111111111"}
+,{"street":"EAST 58 STREET","fromst":"Ed Koch Queensboro Bridge Appr","tost":"2 Avenue","direction":"SB","yr":"2025","segmentid":"36369","n":"288","v":"23.7916666666666667"}
+,{"street":"EAST 59 STREET","fromst":"5 Avenue","tost":"Madison Avenue","direction":"EB","yr":"2017","segmentid":"36024","n":"2","v":"85.5000000000000000"}
+,{"street":"EAST 59 STREET","fromst":"Ed Koch Queensboro Bridge Appr","tost":"1 Avenue","direction":"EB","yr":"2023","segmentid":"165612","n":"288","v":"52.2222222222222222"}
+,{"street":"EAST 59 STREET","fromst":"Ed Koch Queensboro Bridge Appr","tost":"1 Avenue","direction":"WB","yr":"2016","segmentid":"165612","n":"672","v":"81.3214285714285714"}
+,{"street":"EAST 60 STREET","fromst":"Astoria Line","tost":"1 Avenue","direction":"EB","yr":"2016","segmentid":"36388","n":"672","v":"135.4761904761904762"}
+,{"street":"EAST 72 STREET","fromst":"Madison Avenue","tost":"5 Avenue","direction":"WB","yr":"2017","segmentid":"37372","n":"257","v":"31.1478599221789883"}
+,{"street":"EAST 72 STREET","fromst":"Park Avenue","tost":"Madison Avenue","direction":"WB","yr":"2017","segmentid":"165985","n":"1","v":"63.0000000000000000"}
+,{"street":"EAST 96 STREET","fromst":"Dead End","tost":"F D R Drive","direction":"EB","yr":"2022","segmentid":"132937","n":"288","v":"172.3402777777777778"}
+,{"street":"EAST BROADWAY","fromst":"Catherine Street","tost":"Dead End","direction":"WB","yr":"2017","segmentid":"23788","n":"384","v":"63.1041666666666667"}
+,{"street":"EAST HOUSTON STREET","fromst":"2 Avenue","tost":"Forsyth Street","direction":"EB","yr":"2015","segmentid":"152198","n":"672","v":"156.2142857142857143"}
+,{"street":"EAST HOUSTON STREET","fromst":"2 Avenue","tost":"Forsyth Street","direction":"WB","yr":"2015","segmentid":"152198","n":"672","v":"114.8928571428571429"}
+,{"street":"EAST HOUSTON STREET","fromst":"Broadway","tost":"Crosby Street","direction":"EB","yr":"2018","segmentid":"159016","n":"1056","v":"189.1344696969696970"}
+,{"street":"EAST HOUSTON STREET","fromst":"Broadway","tost":"Crosby Street","direction":"EB","yr":"2025","segmentid":"159016","n":"384","v":"150.9869791666666667"}
+,{"street":"EAST HOUSTON STREET","fromst":"Houston/essex Street Line","tost":"Essex Street","direction":"EB","yr":"2019","segmentid":"261799","n":"322","v":"38.1211180124223602"}
+,{"street":"EAST HOUSTON STREET","fromst":"Norfolk Street","tost":"Avenue A","direction":"WB","yr":"2019","segmentid":"152192","n":"321","v":"54.8785046728971963"}
+,{"street":"EDGAR STREET","fromst":"Broadway Line","tost":"Broadway/ 7 Avenue Line","direction":"WB","yr":"2016","segmentid":"23053","n":"27","v":"3.0370370370370370"}
+,{"street":"EDGECOMBE AVENUE","fromst":"West 162 Street","tost":"West 163 Street","direction":"NB","yr":"2015","segmentid":"70866","n":"192","v":"45.6406250000000000"}
+,{"street":"EDGECOMBE AVENUE","fromst":"West 162 Street","tost":"West 163 Street","direction":"SB","yr":"2015","segmentid":"70866","n":"192","v":"36.5468750000000000"}
+,{"street":"ED KOCH QUEENSBORO BRIDGE","fromst":"East River West Channel Shl","tost":"Dead end","direction":"EB","yr":"2021","segmentid":"138891","n":"288","v":"313.4791666666666667"}
+,{"street":"ED KOCH QUEENSBORO BRIDGE","fromst":"East River West Channel Shl","tost":"Dead end","direction":"WB","yr":"2021","segmentid":"138891","n":"288","v":"41.8263888888888889"}
+,{"street":"ED KOCH QUEENSBORO BRIDGE","fromst":"Ed Koch Queensboro Bridge Exit","tost":"Dead end","direction":"NB","yr":"2020","segmentid":"140031","n":"672","v":"89.6875000000000000"}
+,{"street":"ED KOCH QUEENSBORO BRIDGE","fromst":"Ed Koch Queensboro Bridge Exit","tost":"Dead end","direction":"NB","yr":"2022","segmentid":"140031","n":"288","v":"148.3923611111111111"}
+,{"street":"ED KOCH QUEENSBORO BRIDGE","fromst":"Ed Koch Queensboro Bridge Exit","tost":"Dead end","direction":"WB","yr":"2023","segmentid":"140031","n":"96","v":"152.3541666666666667"}
+,{"street":"ED KOCH QUEENSBORO BRIDGE","fromst":"Ed Koch Queensboro Bridge Exit","tost":"Dead end","direction":"WB","yr":"2025","segmentid":"140031","n":"96","v":"112.4583333333333333"}
+,{"street":"ED KOCH QUEENSBORO BRIDGE APPR","fromst":"2 Avenue","tost":"Dead end","direction":"EB","yr":"2022","segmentid":"165609","n":"288","v":"392.0763888888888889"}
+,{"street":"ED KOCH QUEENSBORO BRIDGE APPR","fromst":"2 Avenue","tost":"Dead end","direction":"EB","yr":"2025","segmentid":"165609","n":"96","v":"322.2812500000000000"}
+,{"street":"ED KOCH QUEENSBORO BRIDGE EXIT","fromst":"Dead End","tost":"2 Avenue","direction":"WB","yr":"2022","segmentid":"165618","n":"288","v":"317.5243055555555556"}
+,{"street":"E HOUSTON ST","fromst":"LAFAYETTE ST","tost":"CROSBY ST","direction":"EB","yr":"2016","segmentid":"159186","n":"672","v":"237.4255952380952381"}
+,{"street":"F D R DRIVE","fromst":"Astoria Line","tost":"Dead end","direction":"NB","yr":"2022","segmentid":"136811","n":"288","v":"703.1145833333333333"}
+,{"street":"F D R DRIVE","fromst":"Astoria Line","tost":"Dead end","direction":"NB","yr":"2024","segmentid":"136811","n":"288","v":"690.3472222222222222"}
+,{"street":"F D R DRIVE","fromst":"Astoria Line","tost":"Dead end","direction":"SB","yr":"2021","segmentid":"136811","n":"288","v":"842.5277777777777778"}
+,{"street":"F D R DRIVE","fromst":"Astoria Line","tost":"Dead end","direction":"SB","yr":"2022","segmentid":"136811","n":"288","v":"875.2500000000000000"}
+,{"street":"F D R DRIVE","fromst":"Astoria Line","tost":"Dead end","direction":"SB","yr":"2023","segmentid":"136811","n":"288","v":"130.5138888888888889"}
+,{"street":"F D R DRIVE","fromst":"Dead end","tost":"Ramp","direction":"SB","yr":"2014","segmentid":"194265","n":"861","v":"16.0511033681765389"}
+,{"street":"F D R DRIVE","fromst":"East 10 Street Pedestrian Ovps","tost":"Dead end","direction":"SB","yr":"2014","segmentid":"9009662","n":"864","v":"711.0115740740740741"}
+,{"street":"FDR DRIVE EXIT 7 NORTHBOUND","fromst":"F D R Drive","tost":"Avenue C","direction":"NB","yr":"2018","segmentid":"165004","n":"603","v":"6.3383084577114428"}
+,{"street":"FDR DR NB EN BK BR","fromst":"PEARL ST","tost":"BK BR EXIT RP/ROSE ST","direction":"WB","yr":"2014","segmentid":"137420","n":"673","v":"138.3655274888558692"}
+,{"street":"FDR DR NB EN E HOUSTON ST","fromst":"E HOUSTON ST/FDR DR NB EXIT 5/E HOUSTON STREET PE*","tost":"F D R DR/E 5 WALK PEDESTRIAN OPAS","direction":"NB","yr":"2014","segmentid":"34686","n":"672","v":"145.9389880952380952"}
+,{"street":"FREDERICK DOUGLASS BOULEVARD","fromst":"West 151 Street","tost":"West 152 Street","direction":"NB","yr":"2022","segmentid":"70835","n":"672","v":"36.6041666666666667"}
+,{"street":"FREDERICK DOUGLASS BOULEVARD","fromst":"West 151 Street","tost":"West 152 Street","direction":"SB","yr":"2022","segmentid":"70835","n":"672","v":"58.0580357142857143"}
+,{"street":"GREENWICH STREET","fromst":"Broadway/ 7 Avenue Line","tost":"Broadway/ 7 Avenue Line","direction":"NB","yr":"2016","segmentid":"23049","n":"1","v":"19.0000000000000000"}
+,{"street":"GREENWICH STREET","fromst":"Broadway/ 7 Avenue Line","tost":"Broadway/ 7 Avenue Line","direction":"NB","yr":"2016","segmentid":"23051","n":"40","v":"2.5750000000000000"}
+,{"street":"GREENWICH STREET","fromst":"Broadway/ 7 Avenue Line","tost":"Broadway/ 7 Avenue Line","direction":"SB","yr":"2016","segmentid":"23051","n":"29","v":"3.1034482758620690"}
+,{"street":"GREENWICH STREET","fromst":"King Street","tost":"West Houston Street","direction":"NB","yr":"2026","segmentid":"31662","n":"672","v":"23.1056547619047619"}
+,{"street":"HENRY HUDSON PARKWAY","fromst":"Henry Hudson Py Nb En W 96 St","tost":"Dead end","direction":"NB","yr":"2024","segmentid":"223885","n":"672","v":"661.8288690476190476"}
+,{"street":"HENRY HUDSON PARKWAY EXIT NB","fromst":"Cbe Nb Exit 1 A Upperdeck","tost":"Riverside Drive","direction":"SB","yr":"2020","segmentid":"182697","n":"672","v":"95.2247023809523810"}
+,{"street":"HHP SB EXIT 11","fromst":"W 95 ST/RIVERSIDE DR","tost":"HENRY HUDSON PKWY","direction":"EB","yr":"2014","segmentid":"195639","n":"656","v":"110.3018292682926829"}
+,{"street":"HOLLAND TUNNEL","fromst":"Dead End","tost":"Pier","direction":"EB","yr":"2014","segmentid":"141190","n":"480","v":"495.3479166666666667"}
+,{"street":"HOLLAND TUNNEL","fromst":"Dead End","tost":"Pier","direction":"WB","yr":"2014","segmentid":"141188","n":"672","v":"506.8883928571428571"}
+,{"street":"HUDSON STREET","fromst":"Charlton Street","tost":"King Street","direction":"NB","yr":"2015","segmentid":"31914","n":"161","v":"149.0124223602484472"}
+,{"street":"HUDSON STREET","fromst":"Horatio Street","tost":"Gansevoort Street","direction":"SB","yr":"2015","segmentid":"32031","n":"158","v":"139.5253164556962025"}
+,{"street":"HUGH L CAREY TUNNEL EXIT","fromst":"Broadway/ 7 Avenue Line","tost":"Broadway Line","direction":"EB","yr":"2016","segmentid":"261873","n":"27","v":"0.11111111111111111111"}
+,{"street":"LAFAYETTE STREET","fromst":"Centre Street","tost":"Duane Street","direction":"SB","yr":"2019","segmentid":"23561","n":"672","v":"71.1860119047619048"}
+,{"street":"LEXINGTON AVENUE","fromst":"East 117 Street","tost":"East 116 Street","direction":"SB","yr":"2015","segmentid":"69045","n":"1102","v":"134.3067150635208711"}
+,{"street":"LEXINGTON AVENUE","fromst":"East 49 Street","tost":"East 48 Street","direction":"SB","yr":"2019","segmentid":"35973","n":"192","v":"331.6770833333333333"}
+,{"street":"LEXINGTON AVENUE","fromst":"East 61 Street","tost":"Astoria Line","direction":"SB","yr":"2018","segmentid":"36277","n":"3","v":"210.6666666666666667"}
+,{"street":"LEXINGTON AVENUE","fromst":"East 80 Street","tost":"East 79 Street","direction":"SB","yr":"2018","segmentid":"37545","n":"60","v":"147.2500000000000000"}
+,{"street":"LEXINGTON AVENUE","fromst":"East 85 Street","tost":"East 86 Street","direction":"SB","yr":"2020","segmentid":"37661","n":"96","v":"100.0833333333333333"}
+,{"street":"LIBERTY STREET","fromst":"Liberty Place","tost":"Broadway","direction":"EB","yr":"2019","segmentid":"23207","n":"672","v":"43.1190476190476190"}
+,{"street":"MACOMBS DAM BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"EB","yr":"2018","segmentid":"71036","n":"437","v":"103.6956521739130435"}
+,{"street":"MACOMBS DAM BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"EB","yr":"2019","segmentid":"71036","n":"172","v":"202.0523255813953488"}
+,{"street":"MACOMBS DAM BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"EB","yr":"2023","segmentid":"71036","n":"192","v":"166.9062500000000000"}
+,{"street":"MACOMBS DAM BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"EB","yr":"2024","segmentid":"71036","n":"1344","v":"178.3638392857142857"}
+,{"street":"MACOMBS DAM BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"WB","yr":"2015","segmentid":"71036","n":"60","v":"261.7333333333333333"}
+,{"street":"MACOMBS DAM BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"WB","yr":"2018","segmentid":"71036","n":"2","v":"111.5000000000000000"}
+,{"street":"MACOMBS DAM BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"WB","yr":"2019","segmentid":"71036","n":"183","v":"381.3770491803278689"}
+,{"street":"MACOMBS DAM BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"WB","yr":"2023","segmentid":"71036","n":"576","v":"215.1284722222222222"}
+,{"street":"MACOMBS DAM BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"WB","yr":"2024","segmentid":"71036","n":"1344","v":"210.1116071428571429"}
+,{"street":"MADISON AV","fromst":"E 120 ST","tost":"E 121 ST","direction":"NB","yr":"2014","segmentid":"69054","n":"5","v":"181.4000000000000000"}
+,{"street":"MADISON AV","fromst":"E 71 ST","tost":"E 72 ST","direction":"NB","yr":"2014","segmentid":"37376","n":"154","v":"230.8961038961038961"}
+,{"street":"MADISON AV BR","fromst":"BOROUGH BOUNDARY","tost":"BODY OF WATER","direction":"EB","yr":"2014","segmentid":"146631","n":"734","v":"232.2670299727520436"}
+,{"street":"MADISON AV BR","fromst":"BOROUGH BOUNDARY","tost":"BODY OF WATER","direction":"WB","yr":"2014","segmentid":"146632","n":"98","v":"199.1224489795918367"}
+,{"street":"MADISON AVENUE","fromst":"East 116 Street","tost":"East 115 Street","direction":"NB","yr":"2015","segmentid":"38809","n":"768","v":"135.2721354166666667"}
+,{"street":"MADISON AVENUE","fromst":"East 58 Street","tost":"East 59 Street","direction":"NB","yr":"2017","segmentid":"36160","n":"2","v":"222.5000000000000000"}
+,{"street":"MADISON AVENUE","fromst":"East 71 Street","tost":"East 72 Street","direction":"NB","yr":"2017","segmentid":"37376","n":"11","v":"261.6363636363636364"}
+,{"street":"MADISON AVENUE","fromst":"East 96 Street","tost":"East 97 Street","direction":"NB","yr":"2025","segmentid":"37714","n":"672","v":"187.5669642857142857"}
+,{"street":"MADISON AVENUE BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"EB","yr":"2017","segmentid":"146631","n":"480","v":"268.2187500000000000"}
+,{"street":"MADISON AVENUE BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"EB","yr":"2018","segmentid":"146631","n":"1739","v":"209.5876940770557792"}
+,{"street":"MADISON AVENUE BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"EB","yr":"2023","segmentid":"146631","n":"384","v":"209.1796875000000000"}
+,{"street":"MADISON AVENUE BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"WB","yr":"2015","segmentid":"146632","n":"2","v":"175.0000000000000000"}
+,{"street":"MADISON AVENUE BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"WB","yr":"2017","segmentid":"146632","n":"347","v":"195.8386167146974063"}
+,{"street":"MADISON AVENUE BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"WB","yr":"2018","segmentid":"146632","n":"1125","v":"201.9662222222222222"}
+,{"street":"MADISON STREET","fromst":"Dead End","tost":"Dead end","direction":"EB","yr":"2017","segmentid":"9006437","n":"480","v":"66.8916666666666667"}
+,{"street":"MADISON STREET","fromst":"Dead End","tost":"Dead end","direction":"WB","yr":"2017","segmentid":"9006437","n":"480","v":"30.8562500000000000"}
+,{"street":"MANHATTAN AVENUE","fromst":"West 120 Street","tost":"West 121 Street","direction":"NB","yr":"2019","segmentid":"38491","n":"192","v":"9.6093750000000000"}
+,{"street":"MANHATTAN AVENUE","fromst":"West 120 Street","tost":"West 121 Street","direction":"SB","yr":"2019","segmentid":"38491","n":"192","v":"7.5989583333333333"}
+,{"street":"MANHATTAN BRIDGE","fromst":"6 Avenue Line","tost":"6 Avenue Line","direction":"NB","yr":"2024","segmentid":"9009104","n":"192","v":"175.7708333333333333"}
+,{"street":"MANHATTAN BRIDGE","fromst":"6 Avenue Line","tost":"6 Avenue Line","direction":"WB","yr":"2016","segmentid":"9009104","n":"2","v":"554.0000000000000000"}
+,{"street":"MANHATTAN BRIDGE","fromst":"6 Avenue Line","tost":"6 Avenue Line","direction":"WB","yr":"2020","segmentid":"9009104","n":"1056","v":"224.0407196969696970"}
+,{"street":"MANHATTAN BRIDGE","fromst":"Dead End","tost":"Dead end","direction":"EW","yr":"2017","segmentid":"9009102","n":"1921","v":"222.6184279021343050"}
+,{"street":"MANHATTAN BRIDGE","fromst":"Manhattan Bridge Line","tost":"Manhattan Bridge Line","direction":"SB","yr":"2024","segmentid":"249325","n":"192","v":"365.3645833333333333"}
+,{"street":"MORNINGSIDE AV","fromst":"W 117 ST","tost":"W 118 ST","direction":"SB","yr":"2014","segmentid":"38367","n":"185","v":"26.7945945945945946"}
+,{"street":"MORNINGSIDE AVENUE","fromst":"West 120 Street","tost":"West 121 Street","direction":"NB","yr":"2021","segmentid":"38484","n":"394","v":"36.1294416243654822"}
+,{"street":"MORNINGSIDE AVENUE","fromst":"West 122 Street","tost":"West 121 Street","direction":"SB","yr":"2021","segmentid":"38487","n":"74","v":"32.0270270270270270"}
+,{"street":"MORNINGSIDE DRIVE","fromst":"Dead End","tost":"Amsterdam Avenue","direction":"WB","yr":"2016","segmentid":"38500","n":"94","v":"16.0106382978723404"}
+,{"street":"MOUNT MORRIS PARK W","fromst":"W 121 ST","tost":"W 122 ST","direction":"SB","yr":"2014","segmentid":"38837","n":"1","v":"76.0000000000000000"}
+,{"street":"MULBERRY ST","fromst":"PRINCE ST","tost":"JERSEY ST","direction":"NB","yr":"2014","segmentid":"32523","n":"185","v":"26.0108108108108108"}
+,{"street":"PARK AV","fromst":"E 86 ST","tost":"E 87 ST","direction":"SB","yr":"2014","segmentid":"158607","n":"7","v":"235.2857142857142857"}
+,{"street":"PARK AV","fromst":"E 96 ST","tost":"E 97 ST","direction":"SB","yr":"2014","segmentid":"152167","n":"3","v":"135.0000000000000000"}
+,{"street":"PARK AVENUE","fromst":"Astoria Line","tost":"East 61 Street","direction":"NB","yr":"2018","segmentid":"158736","n":"574","v":"153.8327526132404181"}
+,{"street":"PARK AVENUE","fromst":"Astoria Line","tost":"East 61 Street","direction":"SB","yr":"2016","segmentid":"158626","n":"181","v":"176.7237569060773481"}
+,{"street":"PARK AVENUE","fromst":"Astoria Line","tost":"East 61 Street","direction":"SB","yr":"2017","segmentid":"158626","n":"78","v":"174.3974358974358974"}
+,{"street":"PARK AVENUE","fromst":"Astoria Line","tost":"East 61 Street","direction":"SB","yr":"2018","segmentid":"158626","n":"1919","v":"182.3652944241792600"}
+,{"street":"PARK AVENUE","fromst":"East 119 Street","tost":"East 120 Street","direction":"SB","yr":"2019","segmentid":"158709","n":"1","v":"46.0000000000000000"}
+,{"street":"PARK AVENUE","fromst":"East 74 Street","tost":"East 75 Street","direction":"NB","yr":"2019","segmentid":"158590","n":"384","v":"115.8151041666666667"}
+,{"street":"PARK AVENUE","fromst":"East 74 Street","tost":"East 75 Street","direction":"SB","yr":"2019","segmentid":"159163","n":"384","v":"135.2864583333333333"}
+,{"street":"PARK ROW","fromst":"Dead End","tost":"Chatham Square","direction":"NB","yr":"2017","segmentid":"23777","n":"384","v":"12.1562500000000000"}
+,{"street":"PEARL STREET","fromst":"Beekman Street","tost":"Dead end","direction":"EB","yr":"2024","segmentid":"9008995","n":"384","v":"106.7239583333333333"}
+,{"street":"PEARL STREET","fromst":"Beekman Street","tost":"Dead end","direction":"WB","yr":"2024","segmentid":"9008995","n":"384","v":"106.8828125000000000"}
+,{"street":"PIKE STREET","fromst":"Henry Street","tost":"Madison Street","direction":"NB","yr":"2023","segmentid":"24149","n":"768","v":"60.4166666666666667"}
+,{"street":"PIKE STREET","fromst":"Henry Street","tost":"Madison Street","direction":"SB","yr":"2023","segmentid":"24141","n":"768","v":"55.4947916666666667"}
+,{"street":"PITT STREET","fromst":"Dead End","tost":"Dead end","direction":"NB","yr":"2015","segmentid":"9000265","n":"672","v":"33.6264880952380952"}
+,{"street":"PLEASANT AVENUE","fromst":"East 116 Street","tost":"East 117 Street","direction":"NB","yr":"2024","segmentid":"68527","n":"768","v":"15.1575520833333333"}
+,{"street":"PLEASANT AVENUE","fromst":"East 116 Street","tost":"East 117 Street","direction":"SB","yr":"2024","segmentid":"68527","n":"768","v":"38.7304687500000000"}
+,{"street":"RIVERSIDE DR","fromst":"W 95 ST/HHP SB EXIT 11","tost":"W 96 ST/HHP NB EXIT 11/HHP NB EN W 96 ST","direction":"SB","yr":"2014","segmentid":"37167","n":"180","v":"26.2944444444444444"}
+,{"street":"RIVERSIDE DR","fromst":"W 97 ST","tost":"W 100 ST","direction":"NB","yr":"2014","segmentid":"37268","n":"9","v":"0.00000000000000000000"}
+,{"street":"RIVERSIDE DR","fromst":"W 98 ST","tost":"W 97 ST","direction":"NB","yr":"2014","segmentid":"37269","n":"179","v":"28.0055865921787709"}
+,{"street":"RIVERSIDE DRIVE","fromst":"BEND","tost":"BEND","direction":"SB","yr":"2014","segmentid":"182715","n":"2","v":"148.0000000000000000"}
+,{"street":"RIVERSIDE DRIVE EAST","fromst":"Riverside Drive West","tost":"Riverside Drive","direction":"EB","yr":"2015","segmentid":"103488","n":"36","v":"0.00000000000000000000"}
+,{"street":"RIVERSIDE DRIVE WEST","fromst":"Dead End","tost":"Grants Tomb Boundary","direction":"SB","yr":"2015","segmentid":"115314","n":"34","v":"60.1176470588235294"}
+,{"street":"ROOSEVELT IS BR","fromst":"BOROUGH BOUNDARY","tost":"BEND","direction":"EB","yr":"2014","segmentid":"165861","n":"6","v":"50.3333333333333333"}
+,{"street":"ROOSEVELT IS BR","fromst":"BOROUGH BOUNDARY","tost":"BEND","direction":"WB","yr":"2014","segmentid":"165861","n":"3","v":"99.0000000000000000"}
+,{"street":"ROOSEVELT IS BRIDGE","fromst":"Qn-ny Cnty Shoreline","tost":"Dead end","direction":"EB","yr":"2016","segmentid":"165861","n":"2","v":"26.5000000000000000"}
+,{"street":"ROOSEVELT IS BRIDGE","fromst":"Qn-ny Cnty Shoreline","tost":"Dead end","direction":"EB","yr":"2021","segmentid":"165861","n":"678","v":"42.8849557522123894"}
+,{"street":"ROOSEVELT IS BRIDGE","fromst":"Qn-ny Cnty Shoreline","tost":"Dead end","direction":"WB","yr":"2016","segmentid":"165861","n":"2","v":"19.0000000000000000"}
+,{"street":"ROOSEVELT IS BRIDGE","fromst":"Qn-ny Cnty Shoreline","tost":"Dead end","direction":"WB","yr":"2021","segmentid":"165861","n":"678","v":"58.3200589970501475"}
+,{"street":"SOUTH STREET","fromst":"Dead end","tost":"Clinton Street","direction":"EB","yr":"2015","segmentid":"9003301","n":"6","v":"52.1666666666666667"}
+,{"street":"SOUTH STREET","fromst":"Dead end","tost":"Clinton Street","direction":"WB","yr":"2015","segmentid":"9003301","n":"6","v":"92.5000000000000000"}
+,{"street":"SOUTH STREET","fromst":"Dead End","tost":"Nassau Street Line","direction":"NB","yr":"2017","segmentid":"261732","n":"411","v":"61.6958637469586375"}
+,{"street":"SOUTH STREET","fromst":"Dead End","tost":"Nassau Street Line","direction":"NS","yr":"2017","segmentid":"261732","n":"948","v":"7.5959915611814346"}
+,{"street":"SOUTH STREET","fromst":"Pike Slip","tost":"Rutgers Slip","direction":"EB","yr":"2024","segmentid":"162681","n":"864","v":"46.8252314814814815"}
+,{"street":"SOUTH STREET","fromst":"Pike Slip","tost":"Rutgers Slip","direction":"WB","yr":"2024","segmentid":"162681","n":"864","v":"33.4409722222222222"}
+,{"street":"SPRING STREET","fromst":"Crosby Street","tost":"Cleveland Place","direction":"EB","yr":"2015","segmentid":"32514","n":"188","v":"86.2925531914893617"}
+,{"street":"SPRING STREET","fromst":"Hudson Street","tost":"Broadway/ 7 Avenue Line","direction":"EB","yr":"2016","segmentid":"31906","n":"192","v":"65.7656250000000000"}
+,{"street":"ST JAMES PLACE","fromst":"Madison Street","tost":"James Street","direction":"NB","yr":"2024","segmentid":"23752","n":"192","v":"74.9687500000000000"}
+,{"street":"ST JAMES PLACE","fromst":"Madison Street","tost":"James Street","direction":"SB","yr":"2024","segmentid":"23752","n":"192","v":"65.2343750000000000"}
+,{"street":"SUTTON PLACE","fromst":"East 57 Street","tost":"East 58 Street","direction":"NB","yr":"2017","segmentid":"36499","n":"960","v":"58.8906250000000000"}
+,{"street":"TERRACE DRIVE","fromst":"Center Drive","tost":"Center Drive","direction":"WB","yr":"2015","segmentid":"37184","n":"1527","v":"5.0078585461689587"}
+,{"street":"TERRACE DRIVE","fromst":"East Drive","tost":"5 Avenue","direction":"EB","yr":"2015","segmentid":"115270","n":"4","v":"13.7500000000000000"}
+,{"street":"TERRACE DRIVE","fromst":"East Drive","tost":"5 Avenue","direction":"WB","yr":"2015","segmentid":"115270","n":"1","v":"10.0000000000000000"}
+,{"street":"UNIVERSITY HEIGHTS BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"EB","yr":"2018","segmentid":"72887","n":"92","v":"202.2826086956521739"}
+,{"street":"UNIVERSITY HEIGHTS BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"EB","yr":"2020","segmentid":"72887","n":"1056","v":"176.3721590909090909"}
+,{"street":"UNIVERSITY HEIGHTS BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"EB","yr":"2022","segmentid":"72887","n":"768","v":"205.9726562500000000"}
+,{"street":"UNIVERSITY HEIGHTS BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"EB","yr":"2023","segmentid":"72887","n":"1152","v":"168.6588541666666667"}
+,{"street":"UNIVERSITY HEIGHTS BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"EB","yr":"2024","segmentid":"72887","n":"1344","v":"165.9047619047619048"}
+,{"street":"UNIVERSITY HEIGHTS BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"EB","yr":"2025","segmentid":"72887","n":"1248","v":"163.5809294871794872"}
+,{"street":"UNIVERSITY HEIGHTS BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"WB","yr":"2015","segmentid":"72887","n":"96","v":"224.5520833333333333"}
+,{"street":"UNIVERSITY HEIGHTS BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"WB","yr":"2021","segmentid":"72887","n":"960","v":"199.5708333333333333"}
+,{"street":"UNIVERSITY HEIGHTS BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"WB","yr":"2022","segmentid":"72887","n":"768","v":"235.8763020833333333"}
+,{"street":"UNIVERSITY HEIGHTS BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"WB","yr":"2024","segmentid":"72887","n":"1344","v":"211.3898809523809524"}
+,{"street":"UNIVERSITY HEIGHTS BRIDGE","fromst":"Harlem River Shoreline","tost":"Harlem River Shoreline","direction":"WB","yr":"2025","segmentid":"72887","n":"1248","v":"216.0208333333333333"}
+,{"street":"VARICK STREET","fromst":"Broadway/ 7 Avenue Line","tost":"Broadway/ 7 Avenue Line","direction":"SB","yr":"2025","segmentid":"31909","n":"672","v":"261.9107142857142857"}
+,{"street":"W 106 ST","fromst":"RIVERSIDE DR","tost":"WEST END AV","direction":"EB","yr":"2014","segmentid":"38144","n":"49","v":"4.4285714285714286"}
+,{"street":"W 106 ST","fromst":"WEST END AV","tost":"BROADWAY","direction":"WB","yr":"2014","segmentid":"166247","n":"3","v":"19.3333333333333333"}
+,{"street":"W 120 ST","fromst":"5 AV/E 120 ST","tost":"MOUNT MORRIS PARK W","direction":"EB","yr":"2014","segmentid":"38828","n":"773","v":"84.8124191461836999"}
+,{"street":"W 124 ST","fromst":"MOUNT MORRIS PARK W","tost":"E 124 ST/5 AV","direction":"WB","yr":"2014","segmentid":"69068","n":"774","v":"60.5607235142118863"}
+,{"street":"W 145 ST BR","fromst":"145 ST BR","tost":"BODY OF WATER","direction":"EB","yr":"2014","segmentid":"132884","n":"3","v":"258.0000000000000000"}
+,{"street":"W 145 ST BR","fromst":"BEND","tost":"145 ST BR","direction":"WB","yr":"2014","segmentid":"132886","n":"4","v":"273.5000000000000000"}
+,{"street":"W 72 ST","fromst":"RIVERSIDE DR/HUDSON RIVER GREENWAY","tost":"WEST END AV","direction":"EB","yr":"2014","segmentid":"34405","n":"47","v":"61.6808510638297872"}
+,{"street":"W 72 ST","fromst":"WEST END AV","tost":"BROADWAY","direction":"WB","yr":"2014","segmentid":"34505","n":"2013","v":"37.0039741679085941"}
+,{"street":"W 79 ST","fromst":"RIVERSIDE DR/HHP NB EN W 79 ST WB/HHP NB EXIT 10 E","tost":"WEST END AV","direction":"EB","yr":"2014","segmentid":"34542","n":"1916","v":"80.5871607515657620"}
+,{"street":"W 86 ST","fromst":"RIVERSIDE DR","tost":"WEST END AV","direction":"EB","yr":"2014","segmentid":"37122","n":"1","v":"32.0000000000000000"}
+,{"street":"W 86 ST","fromst":"WEST END AV","tost":"BROADWAY","direction":"WB","yr":"2014","segmentid":"165906","n":"1","v":"61.0000000000000000"}
+,{"street":"W 95 ST","fromst":"WEST END AV","tost":"RIVERSIDE DR","direction":"EB","yr":"2014","segmentid":"118752","n":"1","v":"95.0000000000000000"}
+,{"street":"W 97 ST","fromst":"WEST END AV","tost":"RIVERSIDE DR","direction":"WB","yr":"2014","segmentid":"111193","n":"656","v":"13.1112804878048780"}
+,{"street":"WADSWORTH AVENUE","fromst":"West 180 Street","tost":"West 181 Street","direction":"NB","yr":"2019","segmentid":"71115","n":"154","v":"0.00000000000000000000"}
+,{"street":"WADSWORTH AVENUE","fromst":"West 180 Street","tost":"West 181 Street","direction":"SB","yr":"2019","segmentid":"71115","n":"154","v":"84.5649350649350649"}
+,{"street":"WADSWORTH AVENUE","fromst":"West 187 Street","tost":"West 188 Street","direction":"NB","yr":"2017","segmentid":"72435","n":"480","v":"22.0083333333333333"}
+,{"street":"WADSWORTH AVENUE","fromst":"West 187 Street","tost":"West 188 Street","direction":"SB","yr":"2017","segmentid":"72435","n":"701","v":"31.2938659058487874"}
+,{"street":"WALKER STREET","fromst":"Broadway","tost":"Cortlandt Alley","direction":"EB","yr":"2014","segmentid":"32087","n":"480","v":"76.7937500000000000"}
+,{"street":"WANAMAKER PLACE","fromst":"Lafayette Street","tost":"Broadway","direction":"WB","yr":"2014","segmentid":"106040","n":"480","v":"84.9104166666666667"}
+,{"street":"WATER STREET","fromst":"Gouverneur Lane","tost":"Wall Street","direction":"WB","yr":"2020","segmentid":"23185","n":"288","v":"136.3611111111111111"}
+,{"street":"WEST 112 STREET","fromst":"Broadway","tost":"Amsterdam Avenue","direction":"EB","yr":"2016","segmentid":"166298","n":"95","v":"17.5368421052631579"}
+,{"street":"WEST 116 STREET","fromst":"Lenox Avenue","tost":"Adam C Powell Boulevard","direction":"EB","yr":"2014","segmentid":"166478","n":"480","v":"80.1583333333333333"}
+,{"street":"WEST 116 STREET","fromst":"Lenox Avenue","tost":"Adam C Powell Boulevard","direction":"WB","yr":"2014","segmentid":"166478","n":"480","v":"75.6104166666666667"}
+,{"street":"WEST 121 STREET","fromst":"Manhattan Avenue","tost":"Morningside Avenue","direction":"WB","yr":"2021","segmentid":"38492","n":"73","v":"14.6301369863013699"}
+,{"street":"WEST 125 STREET","fromst":"Dead End","tost":"Adam C Powell Boulevard","direction":"EB","yr":"2016","segmentid":"9017010","n":"139","v":"93.3453237410071942"}
+,{"street":"WEST 125 STREET","fromst":"Dead End","tost":"Adam C Powell Boulevard","direction":"WB","yr":"2016","segmentid":"9017010","n":"137","v":"79.3722627737226277"}
+,{"street":"WEST 12 STREET","fromst":"8 Avenue Line","tost":"West 4 Street","direction":"EB","yr":"2019","segmentid":"32291","n":"20","v":"8.7000000000000000"}
+,{"street":"WEST 143 STREET","fromst":"Amsterdam Avenue","tost":"Convent Avenue","direction":"WB","yr":"2018","segmentid":"38802","n":"480","v":"14.1437500000000000"}
+,{"street":"WEST 145 STREET","fromst":"Adam C Powell Boulevard","tost":"Frederick Douglass Boulevard","direction":"EB","yr":"2018","segmentid":"173145","n":"672","v":"102.8541666666666667"}
+,{"street":"WEST 145 STREET","fromst":"Adam C Powell Boulevard","tost":"Frederick Douglass Boulevard","direction":"WB","yr":"2018","segmentid":"173145","n":"672","v":"89.8065476190476190"}
+,{"street":"WEST 145 STREET","fromst":"Edgecombe Avenue","tost":"8 Avenue Line","direction":"WB","yr":"2019","segmentid":"38916","n":"96","v":"115.1666666666666667"}
+,{"street":"WEST 155 STREET","fromst":"Harlem River Drive Service Rd W","tost":"Frederick Douglass Boulevard","direction":"EB","yr":"2024","segmentid":"71025","n":"864","v":"122.0949074074074074"}
+,{"street":"WEST 155 STREET","fromst":"Harlem River Drive Service Rd W","tost":"Frederick Douglass Boulevard","direction":"WB","yr":"2024","segmentid":"71025","n":"864","v":"153.4074074074074074"}
+,{"street":"WEST 156 STREET","fromst":"Dead end","tost":"Amsterdam Avenue","direction":"EB","yr":"2018","segmentid":"9008155","n":"288","v":"14.7361111111111111"}
+,{"street":"WEST 165 STREET","fromst":"8 Avenue Line","tost":"Broadway","direction":"WB","yr":"2017","segmentid":"173669","n":"960","v":"26.3447916666666667"}
+,{"street":"WEST 165 STREET","fromst":"Ft Washington Avenue","tost":"Broadway","direction":"EB","yr":"2017","segmentid":"173672","n":"960","v":"42.1989583333333333"}
+,{"street":"WEST 165 STREET","fromst":"Ft Washington Avenue","tost":"Riverside Drive","direction":"EB","yr":"2015","segmentid":"70704","n":"648","v":"87.1188271604938272"}
+,{"street":"WEST 165 STREET","fromst":"Ft Washington Avenue","tost":"Riverside Drive","direction":"EB","yr":"2019","segmentid":"70704","n":"672","v":"105.5208333333333333"}
+,{"street":"WEST 165 STREET","fromst":"Ft Washington Avenue","tost":"Riverside Drive","direction":"WB","yr":"2015","segmentid":"70704","n":"648","v":"96.8858024691358025"}
+,{"street":"WEST 165 STREET","fromst":"Ft Washington Avenue","tost":"Riverside Drive","direction":"WB","yr":"2019","segmentid":"70704","n":"672","v":"142.8571428571428571"}
+,{"street":"WEST 167 STREET","fromst":"Audubon Avenue","tost":"8 Avenue Line","direction":"WB","yr":"2020","segmentid":"70896","n":"672","v":"9.3214285714285714"}
+,{"street":"WEST 176 STREET","fromst":"Broadway/ 7 Avenue Line","tost":"Audubon Avenue","direction":"EB","yr":"2021","segmentid":"71093","n":"672","v":"29.6130952380952381"}
+,{"street":"WEST 177 STREET","fromst":"Audubon Avenue","tost":"Broadway/ 7 Avenue Line","direction":"WB","yr":"2021","segmentid":"71095","n":"672","v":"27.6875000000000000"}
+,{"street":"WEST 178 STREET","fromst":"Broadway","tost":"8 Avenue Line","direction":"EB","yr":"2019","segmentid":"70969","n":"154","v":"191.9805194805194805"}
+,{"street":"WEST 179 STREET","fromst":"Wadsworth Avenue","tost":"Broadway","direction":"WB","yr":"2019","segmentid":"70981","n":"153","v":"61.5098039215686275"}
+,{"street":"WEST 17 STREET","fromst":"8 Avenue","tost":"9 Avenue","direction":"WB","yr":"2019","segmentid":"32301","n":"5","v":"28.6000000000000000"}
+,{"street":"WEST 181 STREET","fromst":"Broadway/ 7 Avenue Line","tost":"Wadsworth Avenue","direction":"WB","yr":"2019","segmentid":"71124","n":"480","v":"49.4916666666666667"}
+,{"street":"WEST 182 STREET","fromst":"Broadway/ 7 Avenue Line","tost":"Wadsworth Avenue","direction":"WB","yr":"2021","segmentid":"71128","n":"464","v":"23.5150862068965517"}
+,{"street":"WEST 207 STREET","fromst":"Vermilyea Avenue","tost":"8 Avenue Line","direction":"EB","yr":"2017","segmentid":"72755","n":"3","v":"39.3333333333333333"}
+,{"street":"WEST 207 STREET","fromst":"Vermilyea Avenue","tost":"8 Avenue Line","direction":"WB","yr":"2017","segmentid":"72755","n":"419","v":"0.87589498806682577566"}
+,{"street":"WEST 212 STREET","fromst":"Broadway","tost":"10 Avenue","direction":"EB","yr":"2016","segmentid":"72901","n":"288","v":"8.4861111111111111"}
+,{"street":"WEST 219 STREET","fromst":"9 Avenue","tost":"Broadway","direction":"WB","yr":"2025","segmentid":"270732","n":"480","v":"5.6541666666666667"}
+,{"street":"WEST 220 STREET","fromst":"Broadway","tost":"9 Avenue","direction":"EB","yr":"2025","segmentid":"270737","n":"480","v":"21.0812500000000000"}
+,{"street":"WEST 225 STREET","fromst":"Broadway","tost":"Marble Hill Houses Ped Path","direction":"EB","yr":"2016","segmentid":"270793","n":"384","v":"74.5703125000000000"}
+,{"street":"WEST 225 STREET","fromst":"Marble Hill Avenue","tost":"Broadway","direction":"EB","yr":"2016","segmentid":"270791","n":"299","v":"10.8461538461538462"}
+,{"street":"WEST 26 STREET","fromst":"7 Avenue","tost":"6 Avenue Line","direction":"EB","yr":"2019","segmentid":"33795","n":"288","v":"72.8298611111111111"}
+,{"street":"WEST 29 STREET","fromst":"6 Avenue Line","tost":"7 Avenue","direction":"WB","yr":"2019","segmentid":"33894","n":"288","v":"66.1215277777777778"}
+,{"street":"WEST 34 STREET","fromst":"8 Avenue","tost":"9 Avenue","direction":"EB","yr":"2016","segmentid":"33814","n":"72","v":"260.6527777777777778"}
+,{"street":"WEST 35 STREET","fromst":"5 Avenue","tost":"Dead end","direction":"WB","yr":"2021","segmentid":"229580","n":"672","v":"49.6205357142857143"}
+,{"street":"WEST 35 STREET","fromst":"Amtrak-northeast Line","tost":"11 Avenue","direction":"WB","yr":"2015","segmentid":"106066","n":"2","v":"0.00000000000000000000"}
+,{"street":"WEST 37 STREET","fromst":"Lincoln Tunnel Approach","tost":"Lincoln Tunnel Approach","direction":"WB","yr":"2017","segmentid":"164674","n":"133","v":"49.0451127819548872"}
+,{"street":"WEST 42 STREET","fromst":"11 Avenue","tost":"12 Avenue","direction":"EB","yr":"2022","segmentid":"164628","n":"672","v":"82.6860119047619048"}
+,{"street":"WEST 42 STREET","fromst":"11 Avenue","tost":"12 Avenue","direction":"WB","yr":"2022","segmentid":"164628","n":"672","v":"81.6979166666666667"}
+,{"street":"WEST 53 STREET","fromst":"5 Avenue","tost":"Queens Boulevard Line","direction":"WB","yr":"2020","segmentid":"271349","n":"864","v":"65.6157407407407407"}
+,{"street":"WEST 57 STREET","fromst":"9 Avenue","tost":"10 Avenue","direction":"WB","yr":"2018","segmentid":"34116","n":"156","v":"118.4871794871794872"}
+,{"street":"WEST 58 STREET","fromst":"10 Avenue","tost":"9 Avenue","direction":"EB","yr":"2016","segmentid":"34118","n":"12","v":"122.7500000000000000"}
+,{"street":"WEST 59 STREET","fromst":"11 Avenue","tost":"12 Avenue","direction":"WB","yr":"2021","segmentid":"164831","n":"382","v":"25.1753926701570681"}
+,{"street":"WEST 59 STREET","fromst":"12 Avenue","tost":"11 Avenue","direction":"EB","yr":"2021","segmentid":"164831","n":"384","v":"20.3984375000000000"}
+,{"street":"WEST 62 STREET","fromst":"Broadway","tost":"Columbus Avenue","direction":"WB","yr":"2016","segmentid":"164862","n":"11","v":"63.4545454545454545"}
+,{"street":"WEST 65 STREET","fromst":"Dead end","tost":"Amsterdam Avenue","direction":"EB","yr":"2018","segmentid":"9002554","n":"156","v":"39.8974358974358974"}
+,{"street":"WEST 72 STREET","fromst":"Columbus Avenue","tost":"Amsterdam Avenue","direction":"WB","yr":"2015","segmentid":"37082","n":"98","v":"52.0204081632653061"}
+,{"street":"WEST 72 STREET","fromst":"West End Avenue","tost":"Hudson River Greenway","direction":"WB","yr":"2015","segmentid":"34405","n":"190","v":"62.6526315789473684"}
+,{"street":"WEST 79 STREET","fromst":"Henry Hudson Pkwy Nb Et 10 A","tost":"Henry Hudson Parkway Et 10 Nb","direction":"EB","yr":"2025","segmentid":"34537","n":"768","v":"107.6705729166666667"}
+,{"street":"WEST 96 STREET","fromst":"Broadway","tost":"West End Avenue","direction":"EB","yr":"2025","segmentid":"165958","n":"672","v":"71.4880952380952381"}
+,{"street":"WEST 96 STREET","fromst":"Broadway","tost":"West End Avenue","direction":"WB","yr":"2025","segmentid":"165958","n":"672","v":"97.6547619047619048"}
+,{"street":"WEST END AV","fromst":"W 106 ST","tost":"BROADWAY/W 107 ST","direction":"SB","yr":"2014","segmentid":"38145","n":"3","v":"79.0000000000000000"}
+,{"street":"WEST END AV","fromst":"W 71 ST","tost":"W 72 ST","direction":"NB","yr":"2014","segmentid":"34404","n":"2","v":"136.5000000000000000"}
+,{"street":"WEST END AV","fromst":"W 74 ST","tost":"W 75 ST","direction":"NB","yr":"2014","segmentid":"34410","n":"8","v":"95.1250000000000000"}
+,{"street":"WEST END AV","fromst":"W 75 ST","tost":"W 76 ST","direction":"SB","yr":"2014","segmentid":"34421","n":"9","v":"107.2222222222222222"}
+,{"street":"WEST END AV","fromst":"W 78 ST","tost":"W 79 ST","direction":"NB","yr":"2014","segmentid":"34526","n":"1046","v":"53.3871892925430210"}
+,{"street":"WEST END AV","fromst":"W 86 ST","tost":"W 87 ST","direction":"SB","yr":"2014","segmentid":"37123","n":"1","v":"95.0000000000000000"}
+,{"street":"WEST END AV","fromst":"W 95 ST","tost":"W 96 ST","direction":"NB","yr":"2014","segmentid":"37254","n":"74","v":"51.1621621621621622"}
+,{"street":"WEST END AV","fromst":"W 95 ST","tost":"W 96 ST","direction":"SB","yr":"2014","segmentid":"37254","n":"1916","v":"55.5349686847599165"}
+,{"street":"WEST END AV","fromst":"W 96 ST","tost":"W 97 ST","direction":"NB","yr":"2014","segmentid":"37275","n":"6","v":"47.6666666666666667"}
+,{"street":"WEST END AV","fromst":"W 96 ST","tost":"W 97 ST","direction":"SB","yr":"2014","segmentid":"37275","n":"82","v":"102.8780487804878049"}
+,{"street":"WEST END AVENUE","fromst":"West 60 Street","tost":"West 61 Street","direction":"NB","yr":"2021","segmentid":"34332","n":"1248","v":"64.5336538461538462"}
+,{"street":"WEST END AVENUE","fromst":"West 60 Street","tost":"West 61 Street","direction":"NB","yr":"2022","segmentid":"34332","n":"768","v":"59.4778645833333333"}
+,{"street":"WEST END AVENUE","fromst":"West 60 Street","tost":"West 61 Street","direction":"NB","yr":"2024","segmentid":"34332","n":"1344","v":"62.2433035714285714"}
+,{"street":"WEST END AVENUE","fromst":"West 60 Street","tost":"West 61 Street","direction":"NB","yr":"2025","segmentid":"34332","n":"1344","v":"53.9977678571428571"}
+,{"street":"WEST END AVENUE","fromst":"West 60 Street","tost":"West 61 Street","direction":"SB","yr":"2014","segmentid":"34332","n":"4","v":"183.2500000000000000"}
+,{"street":"WEST END AVENUE","fromst":"West 60 Street","tost":"West 61 Street","direction":"SB","yr":"2020","segmentid":"34332","n":"1344","v":"72.6711309523809524"}
+,{"street":"WEST END AVENUE","fromst":"West 60 Street","tost":"West 61 Street","direction":"SB","yr":"2021","segmentid":"34332","n":"960","v":"93.5677083333333333"}
+,{"street":"WEST END AVENUE","fromst":"West 60 Street","tost":"West 61 Street","direction":"SB","yr":"2022","segmentid":"34332","n":"768","v":"115.7460937500000000"}
+,{"street":"WEST END AVENUE","fromst":"West 60 Street","tost":"West 61 Street","direction":"SB","yr":"2024","segmentid":"34332","n":"1056","v":"112.2386363636363636"}
+,{"street":"WEST END AVENUE","fromst":"West 60 Street","tost":"West 61 Street","direction":"SB","yr":"2025","segmentid":"34332","n":"1248","v":"109.0296474358974359"}
+,{"street":"WEST END AVENUE","fromst":"West 97 Street","tost":"West 98 Street","direction":"NB","yr":"2017","segmentid":"37277","n":"864","v":"89.4791666666666667"}
+,{"street":"WEST END AVENUE","fromst":"West 97 Street","tost":"West 98 Street","direction":"SB","yr":"2017","segmentid":"37277","n":"524","v":"40.0152671755725191"}
+,{"street":"WEST STREET","fromst":"Bloomfield Street","tost":"Dead end","direction":"SB","yr":"2015","segmentid":"143233","n":"192","v":"302.7343750000000000"}
+,{"street":"WEST STREET","fromst":"Gansevoort Street","tost":"Dead end","direction":"NB","yr":"2014","segmentid":"143231","n":"480","v":"279.1083333333333333"}
+,{"street":"WILLIAMSBURG BR APPROACH","fromst":"Dead end","tost":"Dead End","direction":"WB","yr":"2023","segmentid":"252704","n":"192","v":"436.8177083333333333"}
+,{"street":"WILLIAMSBURG BR APPROACH","fromst":"Dead end","tost":"Dead End","direction":"WB","yr":"2024","segmentid":"252704","n":"288","v":"435.1770833333333333"}
+,{"street":"WILLIAMSBURG BR APPROACH","fromst":"Dead end","tost":"Dead End","direction":"WB","yr":"2025","segmentid":"252704","n":"288","v":"424.8576388888888889"}
+,{"street":"WILLIAMSBURG BR APPROACH","fromst":"Dead End","tost":"Dead end","direction":"EB","yr":"2023","segmentid":"252708","n":"288","v":"476.4027777777777778"}
+,{"street":"WILLIAMSBURG BR APPROACH","fromst":"Dead End","tost":"Dead end","direction":"EB","yr":"2024","segmentid":"252708","n":"288","v":"481.3506944444444444"}
+,{"street":"WILLIAMSBURG BR APPROACH","fromst":"Dead End","tost":"Dead end","direction":"EB","yr":"2025","segmentid":"252708","n":"288","v":"458.2708333333333333"}
+,{"street":"WILLIAMSBURG BRIDGE","fromst":"East River Shoreline West","tost":"East River Shoreline","direction":"EB","yr":"2020","segmentid":"155142","n":"288","v":"469.5972222222222222"}
+,{"street":"WILLIAMSBURG BRIDGE","fromst":"East River Shoreline West","tost":"East River Shoreline","direction":"WB","yr":"2020","segmentid":"155078","n":"96","v":"411.1145833333333333"}
+,{"street":"WILLIS AV BR","fromst":"HRD NB EXIT 18","tost":"BOROUGH BOUNDARY","direction":"NB","yr":"2014","segmentid":"69519","n":"204","v":"245.7990196078431373"}
+,{"street":"WILLIS AVENUE BRIDGE","fromst":"Harlem River Drive Exit 18 Nb","tost":"Harlem River Shoreline","direction":"NB","yr":"2017","segmentid":"258712","n":"480","v":"399.3354166666666667"}
+,{"street":"WILLIS AVENUE BRIDGE","fromst":"Harlem River Drive Exit 18 Nb","tost":"Harlem River Shoreline","direction":"NB","yr":"2018","segmentid":"258712","n":"1257","v":"247.0747812251392204"}
+,{"street":"WILLIS AVENUE BRIDGE","fromst":"Harlem River Drive Exit 18 Nb","tost":"Harlem River Shoreline","direction":"NB","yr":"2023","segmentid":"258712","n":"1344","v":"442.1696428571428571"}
+,{"street":"WORTH STREET","fromst":"Mulberry Street","tost":"Chatham Square","direction":"EB","yr":"2017","segmentid":"23773","n":"384","v":"53.9427083333333333"}
+,{"street":"YORK AVENUE","fromst":"Astoria Line","tost":"East 61 Street","direction":"NB","yr":"2018","segmentid":"36517","n":"1","v":"190.0000000000000000"}
+,{"street":"YORK AVENUE","fromst":"Astoria Line","tost":"East 61 Street","direction":"NB","yr":"2023","segmentid":"36517","n":"384","v":"153.2395833333333333"}
+,{"street":"YORK AVENUE","fromst":"Astoria Line","tost":"East 61 Street","direction":"SB","yr":"2018","segmentid":"36517","n":"4","v":"95.5000000000000000"}
+,{"street":"YORK AVENUE","fromst":"Astoria Line","tost":"East 61 Street","direction":"SB","yr":"2023","segmentid":"36517","n":"384","v":"90.0442708333333333"}
+,{"street":"YORK AVENUE","fromst":"Koch Br Pedestrian And Bike Path","tost":"Astoria Line","direction":"NB","yr":"2019","segmentid":"242649","n":"918","v":"72.3137254901960784"}
+,{"street":"YORK AVENUE","fromst":"Koch Br Pedestrian And Bike Path","tost":"Astoria Line","direction":"SB","yr":"2019","segmentid":"242649","n":"918","v":"145.1307189542483660"}]

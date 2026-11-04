@@ -1,0 +1,155 @@
+{
+ "generator": "triage-1",
+ "seed": 20261104,
+ "source_sha256_16": "a0b9ce229212be98",
+ "created": "2026-11-04T11:31:19+0000",
+ "modal_wall_s": 145.4,
+ "counts": {
+  "train": 3000,
+  "val": 300,
+  "test": 300
+ },
+ "test_corners": [
+  "w32",
+  "w37",
+  "w42",
+  "w47",
+  "w52",
+  "w57"
+ ],
+ "train_corners": [
+  "w30",
+  "w31",
+  "w33",
+  "w34",
+  "w35",
+  "w36",
+  "w38",
+  "w39",
+  "w40",
+  "w41",
+  "w43",
+  "w44",
+  "w45",
+  "w46",
+  "w48",
+  "w49",
+  "w50",
+  "w51",
+  "w53",
+  "w54",
+  "w55",
+  "w56",
+  "w58",
+  "w59"
+ ],
+ "risk_band_cuts_near_miss_ph": [
+  61.0,
+  101.0,
+  184.0
+ ],
+ "band_quantiles_of_train": [
+  0.25,
+  0.6,
+  0.9
+ ],
+ "delay_limit_s_per_veh": 8.0,
+ "min_cut_pct": 2.0,
+ "future_weights": {
+  "today": 0.35,
+  "holiday": 0.13,
+  "show_out": 0.13,
+  "rain_night": 0.13,
+  "bus_lane": 0.13,
+  "ban_ignored": 0.13
+ },
+ "actions": [
+  "lpi_4",
+  "lpi_7",
+  "lpi_10",
+  "daylighting",
+  "hardened_centerline",
+  "split_phase",
+  "ban_left",
+  "ban_right",
+  "ban_both",
+  "cycle_70",
+  "cycle_110",
+  "ave_share_50",
+  "ave_share_68",
+  "none"
+ ],
+ "streams": [
+  "ave_left",
+  "ave_right",
+  "cross_turn",
+  "ave_through_n",
+  "ave_through_s",
+  "cross_through_e",
+  "cross_through_w"
+ ],
+ "perturbation": "walkers x0.4-2.5 log-uniform; avenue and each cross street x0.6-1.4; 7 Av turn share 0.05-0.18; cross turn share 0.15-0.35; LPI 0/4/7/10 s; crossing widths +-20%; cycle 80/90/100 s; turn speed x0.85-1.15. Other corners stay at their real inputs.",
+ "label_rule": "best_single_change maximises corridor sev_ph removed (as % of the corner's sev_ph) among valid MENU changes adding <= delay limit s/vehicle at the corner; 'none' if the best cut < min_cut_pct. Simulated near-misses, not injuries.",
+ "label_distribution": {
+  "train": {
+   "best_single_change": {
+    "daylighting": 1204,
+    "lpi_10": 418,
+    "lpi_7": 291,
+    "cycle_70": 270,
+    "lpi_4": 178,
+    "split_phase": 171,
+    "ave_share_68": 149,
+    "cycle_110": 140,
+    "ave_share_50": 102,
+    "ban_left": 35,
+    "ban_right": 24,
+    "hardened_centerline": 13,
+    "ban_both": 5
+   },
+   "risk_band": {
+    "medium": 1067,
+    "high": 890,
+    "low": 743,
+    "very_high": 300
+   },
+   "top_conflict": {
+    "ave_through_n": 1502,
+    "ave_through_s": 1182,
+    "ave_left": 100,
+    "cross_through_w": 68,
+    "cross_through_e": 61,
+    "cross_turn": 51,
+    "ave_right": 36
+   }
+  },
+  "test": {
+   "best_single_change": {
+    "daylighting": 145,
+    "lpi_10": 36,
+    "lpi_4": 23,
+    "lpi_7": 23,
+    "cycle_70": 21,
+    "cycle_110": 17,
+    "ave_share_68": 15,
+    "ave_share_50": 12,
+    "split_phase": 6,
+    "hardened_centerline": 2
+   },
+   "risk_band": {
+    "high": 101,
+    "medium": 80,
+    "very_high": 72,
+    "low": 47
+   },
+   "top_conflict": {
+    "ave_through_n": 142,
+    "ave_through_s": 127,
+    "cross_turn": 10,
+    "ave_left": 8,
+    "cross_through_w": 8,
+    "cross_through_e": 5
+   }
+  }
+ }
+}
