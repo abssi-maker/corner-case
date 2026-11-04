@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Corner Case</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141414'/%3E%3Cg fill='%23F4F1EA'%3E%3Crect x='6' y='6' width='4' height='20'/%3E%3Crect x='14' y='6' width='4' height='20'/%3E%3C/g%3E%3Ccircle cx='25' cy='25' r='4' fill='%23E8590C'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111111'/%3E%3Cg fill='%23ffffff'%3E%3Crect x='5' y='17' width='4' height='10'/%3E%3Crect x='11' y='17' width='4' height='10'/%3E%3Crect x='17' y='17' width='4' height='10'/%3E%3Crect x='23' y='17' width='4' height='10'/%3E%3C/g%3E%3Ccircle cx='24' cy='8' r='4' fill='%23E8590C'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="/static/app.css">
 </head>
 <body>
@@ -12,36 +12,35 @@
   <div id="app" role="application" aria-label="Corner Case">
     <header class="top">
       <a class="brand" href="/" aria-label="Corner Case home">
-        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="currentColor"/><g fill="var(--paper)"><rect x="6" y="6" width="4" height="20"/><rect x="14" y="6" width="4" height="20"/></g><circle cx="25" cy="25" r="4" fill="var(--risk)"/></svg>
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#111"/><g fill="#fff"><rect x="5" y="17" width="4" height="10"/><rect x="11" y="17" width="4" height="10"/><rect x="17" y="17" width="4" height="10"/><rect x="23" y="17" width="4" height="10"/></g><circle cx="24" cy="8" r="4" fill="#E8590C"/></svg>
         <span class="name">Corner Case</span>
         <span class="tagline">Test the fix before the next crash.</span>
       </a>
-      <div class="where"><b>7th Avenue</b>, W 30th St – Central Park South · for a street-safety engineer
-        <span class="evid">Evidence:
-          <span class="badge real" tabindex="0" data-src="REAL: public records (NYC crash reports). What actually happened.">REAL</span>
-          <span class="badge meas" tabindex="0" data-src="MEASURED: measured by Meta SAM 3.1 / Muse Spark from street video (one 15 s clip at W 45 St).">MEASURED</span>
-          <span class="badge real" tabindex="0" data-src="OPEN DATA: city and MTA datasets (street geometry, signals, counts, ridership).">OPEN DATA</span>
-          <span class="badge asm" tabindex="0" data-src="ASSUMPTION: a labelled guess, used where no data exists. Hover any badge for its source.">ASSUMPTION</span>
-          <span class="badge sim" tabindex="0" data-src="SIMULATED: output of the corridor simulator. Simulated near-misses are not injuries.">SIMULATED</span>
-        </span></div>
+      <div class="where">7th Avenue · W 30th St to Central Park South</div>
       <div class="controls">
-        <select id="runSel" aria-label="Recorded run"></select>
+        <span class="legend4" aria-label="What each shape means">
+          <span class="badge real" tabindex="0" data-src="REAL: police crash records and city open data. What actually happened.">REAL</span>
+          <span class="badge meas" tabindex="0" data-src="MEASURED: measured from street video by Meta SAM 3.1 (one 15 s clip at W 45 St).">MEASURED</span>
+          <span class="badge sim" tabindex="0" data-src="SIMULATED: output of the corridor simulator. Simulated near-misses are not injuries.">SIMULATED</span>
+          <span class="badge asm" tabindex="0" data-src="ASSUMPTION: a labelled guess, used where no data exists.">ASSUMPTION</span>
+        </span>
         <button id="playBtn" class="btn ghost" type="button">▶ Play the story</button>
-        <button id="liveBtn" class="btn ghost" type="button" title="Re-run the agents with live Meta model calls">Run live</button>
+        <select id="runSel" aria-label="Recorded run"></select>
+        <button id="liveBtn" class="btn ghost" type="button" title="Re-run the agents with live Meta model calls" style="font-size:14px;padding:7px 10px">Run live</button>
       </div>
     </header>
     <nav class="stepper" id="stepper" aria-label="Steps"></nav>
     <main class="stage" id="stage"><div class="loading"><div class="crosswalk"><i></i><i></i><i></i><i></i><i></i></div><p>Loading the recorded run…</p></div></main>
-    <footer class="ledger" id="ledger" aria-label="The plan so far"></footer>
+    <footer class="strip" id="strip" aria-label="7th Avenue, 30 corners"></footer>
     <div class="playbar" id="playbar" hidden><div class="fill" id="playfill"></div></div>
   </div>
 </div>
 <div id="tip" class="tip" role="tooltip" hidden></div>
 <dialog id="liveDlg" class="live">
   <h2>Live run</h2>
-  <p class="muted">The coordinator briefs 30 Muse Wonder corner agents, they test fixes in the simulator, and the coordinator funds a plan. About 5 minutes and a few dollars of API credit.</p>
+  <p class="muted">Muse Glimmer screens all 30 corners, the coordinator briefs 30 Muse Wonder corner agents, they test fixes in the simulator, and the coordinator funds a plan. About 5 minutes and a few dollars of API credit.</p>
   <ol id="liveLog" class="livelog"></ol>
-  <div class="row"><button class="btn" id="liveClose" type="button">Close</button></div>
+  <div class="dlgrow"><button class="btn" id="liveClose" type="button">Close</button></div>
 </dialog>
 <script src="/static/app.js"></script>
 </body>
