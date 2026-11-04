@@ -10,3 +10,9 @@ data/vision/clip_6fps.mp4
 data/vision/clip_clock_6fps.mp4
 .pytest_cache/
 data/vision/keyframes/
+# internal working files: kept locally, not part of the published product
+SPEC.md
+CLAUDE.md
+design/
+docs/
+data/finetune/*.jsonl
