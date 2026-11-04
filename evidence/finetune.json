@@ -1,0 +1,669 @@
+{
+ "status": "fine-tune completed, deployed and evaluated",
+ "summary": "On 300 scenarios from 6 corners never seen in training, the corner-triage LoRA beats base Muse Glimmer (same prompt + 3 solved examples) on every metric: best change 51.3% vs 21.7% (+29.7 pts, 95% CI resampling corners +18.0 to +41.7), risk band 78.3% vs 52.7%, near-miss MAE 24.7 vs 41.6 per hour, valid JSON 100% vs 87.7%, p95 latency 2.0 s vs 25.0 s. Against the trivial rule 'always recommend daylighting' (48.3%), the LoRA's best-change accuracy is only +3.0 pts (95% CI -0.7 to +7.3, not significant): it mostly recommends daylighting (222 of 300). Where it clearly adds value over the trivial rule is risk estimation: risk band 78.3% vs 26.7%, near-miss MAE 24.7 vs 64.2. All near-misses are simulated, not injuries.",
+ "endpoint": {
+  "base_url": "https://abssi-mustapha--corner-case-glimmer-serve.us-east.modal.run/v1",
+  "models": {
+   "base": "muse-glimmer",
+   "lora": "corner-triage"
+  },
+  "api": "OpenAI-compatible /v1/chat/completions",
+  "gpu": "1x NVIDIA H100 80GB",
+  "server": "vLLM 0.33.0, --reasoning-parser muse_glimmer, --enable-lora --max-lora-rank 16",
+  "scaling": "scale to zero after 300 s idle, max 1 container; cold start ~150 s",
+  "auth": "none (public URL)"
+ },
+ "env": {
+  "GLIMMER_BASE_URL": "https://abssi-mustapha--corner-case-glimmer-serve.us-east.modal.run/v1",
+  "GLIMMER_MODEL": "muse-glimmer",
+  "GLIMMER_TRIAGE_MODEL": "corner-triage"
+ },
+ "weights": {
+  "serve_hf_repo": "meta-models/Muse-Glimmer-30B",
+  "serve_revision": "cec94fcfd6512f2cfe708138c32533b346ea4f69",
+  "serve_dtype": "BF16 (~60 GB)",
+  "train_hf_repo": "unsloth/Muse-Glimmer-30B-unsloth-bnb-4bit",
+  "train_revision": "ecedda395d4d099b477d135a9a573eedaa5a7aad",
+  "license": "Apache-2.0",
+  "adapter": "Modal Volume glimmer-lora:/corner-triage (r=16, alpha=32, 364 modules: q/k/v/o + MLP gate/up/down in all 52 language-model layers)"
+ },
+ "training": {
+  "method": "QLoRA 4-bit (Unsloth dynamic bnb)",
+  "r": 16,
+  "alpha": 32,
+  "dropout": 0,
+  "targets": "language model q/k/v/o + MLP gate/up/down, all 52 layers",
+  "max_len": 1024,
+  "epochs": 1.0,
+  "max_steps": -1,
+  "batch": 8,
+  "grad_accum": 2,
+  "lr": 0.0002,
+  "optim": "adamw_8bit",
+  "schedule": "linear, 10 warmup steps",
+  "loss": "assistant tokens only",
+  "n_train": 3000,
+  "n_val": 300,
+  "versions": {
+   "unsloth": "2026.11.1",
+   "transformers": "5.15.0",
+   "trl": "0.22.2",
+   "peft": "0.21.2",
+   "torch": "2.11.0+cu128"
+  },
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "peak_mem_gib": 27.8,
+  "steps": 188,
+  "train_loss": 0.3118,
+  "val_loss": 0.2799,
+  "loss_log": [
+   {
+    "step": 10,
+    "loss": 0.5251328945159912
+   },
+   {
+    "step": 20,
+    "loss": 0.3419582605361938
+   },
+   {
+    "step": 30,
+    "loss": 0.31492350101470945
+   },
+   {
+    "step": 40,
+    "loss": 0.31349029541015627
+   },
+   {
+    "step": 50,
+    "loss": 0.30818002223968505
+   },
+   {
+    "step": 60,
+    "loss": 0.31180288791656496
+   },
+   {
+    "step": 70,
+    "loss": 0.30283050537109374
+   },
+   {
+    "step": 80,
+    "loss": 0.30539631843566895
+   },
+   {
+    "step": 90,
+    "loss": 0.29907124042510985
+   },
+   {
+    "step": 100,
+    "loss": 0.2964732885360718
+   },
+   {
+    "step": 110,
+    "loss": 0.2942871809005737
+   },
+   {
+    "step": 120,
+    "loss": 0.29392175674438475
+   },
+   {
+    "step": 130,
+    "loss": 0.2922881841659546
+   },
+   {
+    "step": 140,
+    "loss": 0.2917759656906128
+   },
+   {
+    "step": 150,
+    "loss": 0.2872257471084595
+   },
+   {
+    "step": 160,
+    "loss": 0.28648767471313474
+   },
+   {
+    "step": 170,
+    "loss": 0.2885860204696655
+   },
+   {
+    "step": 180,
+    "loss": 0.28449811935424807
+   }
+  ],
+  "wall_s": {
+   "load": 43,
+   "train": 920,
+   "total": 1089,
+   "call": 1100
+  },
+  "stopped_by_budget": false
+ },
+ "dataset": {
+  "generator": "triage-1",
+  "seed": 20261104,
+  "source_sha256_16": "a0b9ce229212be98",
+  "counts": {
+   "train": 3000,
+   "val": 300,
+   "test": 300
+  },
+  "test_corners": [
+   "w32",
+   "w37",
+   "w42",
+   "w47",
+   "w52",
+   "w57"
+  ],
+  "risk_band_cuts_near_miss_ph": [
+   61.0,
+   101.0,
+   184.0
+  ],
+  "delay_limit_s_per_veh": 8.0,
+  "min_cut_pct": 2.0,
+  "perturbation": "walkers x0.4-2.5 log-uniform; avenue and each cross street x0.6-1.4; 7 Av turn share 0.05-0.18; cross turn share 0.15-0.35; LPI 0/4/7/10 s; crossing widths +-20%; cycle 80/90/100 s; turn speed x0.85-1.15. Other corners stay at their real inputs.",
+  "label_rule": "best_single_change maximises corridor sev_ph removed (as % of the corner's sev_ph) among valid MENU changes adding <= delay limit s/vehicle at the corner; 'none' if the best cut < min_cut_pct. Simulated near-misses, not injuries.",
+  "label_distribution": {
+   "train": {
+    "best_single_change": {
+     "daylighting": 1204,
+     "lpi_10": 418,
+     "lpi_7": 291,
+     "cycle_70": 270,
+     "lpi_4": 178,
+     "split_phase": 171,
+     "ave_share_68": 149,
+     "cycle_110": 140,
+     "ave_share_50": 102,
+     "ban_left": 35,
+     "ban_right": 24,
+     "hardened_centerline": 13,
+     "ban_both": 5
+    },
+    "risk_band": {
+     "medium": 1067,
+     "high": 890,
+     "low": 743,
+     "very_high": 300
+    },
+    "top_conflict": {
+     "ave_through_n": 1502,
+     "ave_through_s": 1182,
+     "ave_left": 100,
+     "cross_through_w": 68,
+     "cross_through_e": 61,
+     "cross_turn": 51,
+     "ave_right": 36
+    }
+   },
+   "test": {
+    "best_single_change": {
+     "daylighting": 145,
+     "lpi_10": 36,
+     "lpi_4": 23,
+     "lpi_7": 23,
+     "cycle_70": 21,
+     "cycle_110": 17,
+     "ave_share_68": 15,
+     "ave_share_50": 12,
+     "split_phase": 6,
+     "hardened_centerline": 2
+    },
+    "risk_band": {
+     "high": 101,
+     "medium": 80,
+     "very_high": 72,
+     "low": 47
+    },
+    "top_conflict": {
+     "ave_through_n": 142,
+     "ave_through_s": 127,
+     "cross_turn": 10,
+     "ave_left": 8,
+     "cross_through_w": 8,
+     "cross_through_e": 5
+    }
+   }
+  },
+  "modal_wall_s": 145.4
+ },
+ "eval": {
+  "test": {
+   "n": 300,
+   "corners": [
+    "w32",
+    "w37",
+    "w42",
+    "w47",
+    "w52",
+    "w57"
+   ],
+   "note": "corners never seen in training"
+  },
+  "prompt": {
+   "system_chars": 1815,
+   "base_shots": [
+    6,
+    5,
+    4
+   ],
+   "temperature": 0,
+   "max_tokens": 1024
+  },
+  "table": {
+   "base_3shot": {
+    "n": 300,
+    "json_valid_rate": 0.877,
+    "best_change_acc": 0.217,
+    "risk_band_acc": 0.527,
+    "top_conflict_acc": 0.057,
+    "near_miss_ph_mae": 41.6,
+    "near_miss_mae_n": 263,
+    "risk_cut_captured_pct_of_oracle": 39.4,
+    "errors": 0,
+    "wall_s": 106.3,
+    "concurrency": 16,
+    "latency_p50_s": 1.55,
+    "latency_p95_s": 24.95,
+    "completion_tokens_mean": 186.4,
+    "est_cost_per_call_usd": 0.00039
+   },
+   "lora": {
+    "n": 300,
+    "json_valid_rate": 1.0,
+    "best_change_acc": 0.513,
+    "risk_band_acc": 0.783,
+    "top_conflict_acc": 0.477,
+    "near_miss_ph_mae": 24.7,
+    "near_miss_mae_n": 300,
+    "risk_cut_captured_pct_of_oracle": 74.1,
+    "errors": 0,
+    "wall_s": 35.5,
+    "concurrency": 16,
+    "latency_p50_s": 1.86,
+    "latency_p95_s": 1.97,
+    "completion_tokens_mean": 46.5,
+    "est_cost_per_call_usd": 0.00013
+   },
+   "trivial_baseline": {
+    "n": 300,
+    "json_valid_rate": 1.0,
+    "best_change_acc": 0.483,
+    "risk_band_acc": 0.267,
+    "top_conflict_acc": 0.473,
+    "near_miss_ph_mae": 64.2,
+    "near_miss_mae_n": 300,
+    "risk_cut_captured_pct_of_oracle": 69.9,
+    "rule": {
+     "best_single_change": "daylighting",
+     "risk_band": "medium",
+     "top_conflict": "ave_through_n",
+     "near_miss_ph": 104.7
+    }
+   }
+  },
+  "bootstrap_95ci_paired_by_scenario": {
+   "best_change_acc lora - base_3shot": {
+    "diff": 0.297,
+    "ci95": [
+     0.237,
+     0.357
+    ]
+   },
+   "best_change_acc lora - trivial": {
+    "diff": 0.03,
+    "ci95": [
+     -0.003,
+     0.063
+    ]
+   },
+   "best_change_acc base_3shot - trivial": {
+    "diff": -0.267,
+    "ci95": [
+     -0.337,
+     -0.2
+    ]
+   },
+   "risk_band_acc lora - base_3shot": {
+    "diff": 0.257,
+    "ci95": [
+     0.187,
+     0.327
+    ]
+   }
+  },
+  "bootstrap_95ci_resampling_corners": {
+   "best_change_acc lora - base_3shot": {
+    "diff": 0.297,
+    "ci95": [
+     0.18,
+     0.417
+    ]
+   },
+   "best_change_acc lora - trivial": {
+    "diff": 0.03,
+    "ci95": [
+     -0.007,
+     0.073
+    ]
+   }
+  },
+  "best_change_acc_per_test_corner": {
+   "w32": {
+    "lora": 0.46,
+    "base_3shot": 0.24,
+    "trivial_baseline": 0.5
+   },
+   "w37": {
+    "lora": 0.4,
+    "base_3shot": 0.22,
+    "trivial_baseline": 0.4
+   },
+   "w42": {
+    "lora": 0.74,
+    "base_3shot": 0.24,
+    "trivial_baseline": 0.68
+   },
+   "w47": {
+    "lora": 0.46,
+    "base_3shot": 0.12,
+    "trivial_baseline": 0.44
+   },
+   "w52": {
+    "lora": 0.32,
+    "base_3shot": 0.24,
+    "trivial_baseline": 0.3
+   },
+   "w57": {
+    "lora": 0.7,
+    "base_3shot": 0.24,
+    "trivial_baseline": 0.58
+   }
+  }
+ },
+ "metric_notes": {
+  "risk_cut_captured_pct_of_oracle": "sum of the simulated risk cut achieved by each model's recommended change (0 if invalid, infeasible or 'none') divided by the sum achieved by the best change; from the simulator",
+  "near_miss_ph_mae": "over valid answers only (n given)",
+  "est_cost_per_call_usd": "H100 $0.001097/s x eval wall time / 300 calls at concurrency 16 (estimate)"
+ },
+ "examples": {
+  "base_3shot": [
+   {
+    "corner": "w32",
+    "future": "show_out",
+    "input": {
+     "walkers_ph": 2101,
+     "vehicles_ph": {
+      "ave_through": 1305,
+      "ave_left": 98,
+      "ave_right": 0,
+      "cross_through": 256,
+      "cross_turn": 50
+     },
+     "turns_from_7av": [
+      "left"
+     ],
+     "crossing_m": {
+      "cross_street": 7.9,
+      "avenue": 21.6
+     },
+     "walk_head_start_s": 0.0,
+     "exclusive_ped_phase_s": 20.0,
+     "cycle_s": 90.0,
+     "ave_green_share": 0.6,
+     "turn_speed_kmh": 17.9,
+     "walkers_against_signal_share": 0.12,
+     "future": {
+      "id": "show_out",
+      "walkers_mult": 1.15,
+      "vehicles_mult": 0.9
+     }
+    },
+    "label": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.0,
+     "top_conflict": "ave_through_s",
+     "best_single_change": "ave_share_68",
+     "expected_risk_cut_pct": 10.5
+    },
+    "output": "{\"risk_band\":\"high\",\"near_miss_ph\":124.5,\"top_conflict\":\"ave_left\",\"best_single_change\":\"lpi_7\",\"expected_risk_cut_pct\":22.4}",
+    "reasoning_chars": 0
+   },
+   {
+    "corner": "w42",
+    "future": "today",
+    "input": {
+     "walkers_ph": 9234,
+     "vehicles_ph": {
+      "ave_through": 862,
+      "ave_left": 205,
+      "ave_right": 205,
+      "cross_through": 635,
+      "cross_turn": 170
+     },
+     "turns_from_7av": [
+      "left",
+      "right"
+     ],
+     "crossing_m": {
+      "cross_street": 16.1,
+      "avenue": 19.6
+     },
+     "walk_head_start_s": 7.0,
+     "exclusive_ped_phase_s": 0.0,
+     "cycle_s": 90.0,
+     "ave_green_share": 0.6,
+     "turn_speed_kmh": 21.6,
+     "walkers_against_signal_share": 0.12,
+     "future": {
+      "id": "today"
+     }
+    },
+    "label": {
+     "risk_band": "very_high",
+     "near_miss_ph": 366.3,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.0
+    },
+    "output": "{\"risk_band\":\"very_high\",\"near_miss_ph\":184.0,\"top_conflict\":\"ave_left\",\"best_single_change\":\"ban_left\",\"expected_risk_cut_pct\":32.0}",
+    "reasoning_chars": 0
+   },
+   {
+    "corner": "w52",
+    "future": "rain_night",
+    "input": {
+     "walkers_ph": 786,
+     "vehicles_ph": {
+      "ave_through": 736,
+      "ave_left": 119,
+      "ave_right": 0,
+      "cross_through": 170,
+      "cross_turn": 43
+     },
+     "turns_from_7av": [
+      "left"
+     ],
+     "crossing_m": {
+      "cross_street": 9.5,
+      "avenue": 19.4
+     },
+     "walk_head_start_s": 7.0,
+     "exclusive_ped_phase_s": 0.0,
+     "cycle_s": 100.0,
+     "ave_green_share": 0.6,
+     "turn_speed_kmh": 16.9,
+     "walkers_against_signal_share": 0.12,
+     "future": {
+      "id": "rain_night",
+      "detect_delta": -0.12,
+      "walk_speed_mult": 1.1,
+      "noncompliance_mult": 1.35,
+      "turn_speed_mult": 0.9
+     }
+    },
+    "label": {
+     "risk_band": "low",
+     "near_miss_ph": 42.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 16.6
+    },
+    "output": "{\"risk_band\":\"medium\",\"near_miss_ph\":78.2,\"top_conflict\":\"ave_left\",\"best_single_change\":\"lpi_10\",\"expected_risk_cut_pct\":22.4}",
+    "reasoning_chars": 0
+   }
+  ],
+  "lora": [
+   {
+    "corner": "w32",
+    "future": "show_out",
+    "input": {
+     "walkers_ph": 2101,
+     "vehicles_ph": {
+      "ave_through": 1305,
+      "ave_left": 98,
+      "ave_right": 0,
+      "cross_through": 256,
+      "cross_turn": 50
+     },
+     "turns_from_7av": [
+      "left"
+     ],
+     "crossing_m": {
+      "cross_street": 7.9,
+      "avenue": 21.6
+     },
+     "walk_head_start_s": 0.0,
+     "exclusive_ped_phase_s": 20.0,
+     "cycle_s": 90.0,
+     "ave_green_share": 0.6,
+     "turn_speed_kmh": 17.9,
+     "walkers_against_signal_share": 0.12,
+     "future": {
+      "id": "show_out",
+      "walkers_mult": 1.15,
+      "vehicles_mult": 0.9
+     }
+    },
+    "label": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.0,
+     "top_conflict": "ave_through_s",
+     "best_single_change": "ave_share_68",
+     "expected_risk_cut_pct": 10.5
+    },
+    "output": "{\"risk_band\":\"medium\",\"near_miss_ph\":90.7,\"top_conflict\":\"ave_through_n\",\"best_single_change\":\"lpi_7\",\"expected_risk_cut_pct\":25.0}",
+    "reasoning_chars": 0
+   },
+   {
+    "corner": "w42",
+    "future": "today",
+    "input": {
+     "walkers_ph": 9234,
+     "vehicles_ph": {
+      "ave_through": 862,
+      "ave_left": 205,
+      "ave_right": 205,
+      "cross_through": 635,
+      "cross_turn": 170
+     },
+     "turns_from_7av": [
+      "left",
+      "right"
+     ],
+     "crossing_m": {
+      "cross_street": 16.1,
+      "avenue": 19.6
+     },
+     "walk_head_start_s": 7.0,
+     "exclusive_ped_phase_s": 0.0,
+     "cycle_s": 90.0,
+     "ave_green_share": 0.6,
+     "turn_speed_kmh": 21.6,
+     "walkers_against_signal_share": 0.12,
+     "future": {
+      "id": "today"
+     }
+    },
+    "label": {
+     "risk_band": "very_high",
+     "near_miss_ph": 366.3,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.0
+    },
+    "output": "{\"risk_band\":\"very_high\",\"near_miss_ph\":255.7,\"top_conflict\":\"ave_through_n\",\"best_single_change\":\"daylighting\",\"expected_risk_cut_pct\":10.2}",
+    "reasoning_chars": 0
+   },
+   {
+    "corner": "w52",
+    "future": "rain_night",
+    "input": {
+     "walkers_ph": 786,
+     "vehicles_ph": {
+      "ave_through": 736,
+      "ave_left": 119,
+      "ave_right": 0,
+      "cross_through": 170,
+      "cross_turn": 43
+     },
+     "turns_from_7av": [
+      "left"
+     ],
+     "crossing_m": {
+      "cross_street": 9.5,
+      "avenue": 19.4
+     },
+     "walk_head_start_s": 7.0,
+     "exclusive_ped_phase_s": 0.0,
+     "cycle_s": 100.0,
+     "ave_green_share": 0.6,
+     "turn_speed_kmh": 16.9,
+     "walkers_against_signal_share": 0.12,
+     "future": {
+      "id": "rain_night",
+      "detect_delta": -0.12,
+      "walk_speed_mult": 1.1,
+      "noncompliance_mult": 1.35,
+      "turn_speed_mult": 0.9
+     }
+    },
+    "label": {
+     "risk_band": "low",
+     "near_miss_ph": 42.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 16.6
+    },
+    "output": "{\"risk_band\":\"low\",\"near_miss_ph\":40.0,\"top_conflict\":\"ave_through_n\",\"best_single_change\":\"daylighting\",\"expected_risk_cut_pct\":10.7}",
+    "reasoning_chars": 0
+   }
+  ]
+ },
+ "modal_cost_usd": {
+  "source": "modal billing report --for today --json, read 2026-11-04 08:57 ET",
+  "total": 3.5503,
+  "by_app": {
+   "corner-case-glimmer (serving: smoke tests + eval)": 1.7829,
+   "corner-case-glimmer-train (2 smoke runs + full run + 4-bit download)": 1.6341,
+   "corner-case-triage-data (dataset on CPU)": 0.1276,
+   "modal shell (image checks)": 0.0056
+  },
+  "note": "the serving container was still warm at reading time; scale-down adds ~$0.30"
+ },
+ "limitations": [
+  "Labels and near-misses come from our simulator, not from real crashes; the LoRA learns the simulator.",
+  "Test corners are held out, but they share the corridor's structure and the same 13-change menu.",
+  "The LoRA predicts only 3 distinct changes (daylighting, lpi_7, lpi_10); rarer best changes are never recommended.",
+  "Base Glimmer was given reasoning strength 'low' and 1,024 tokens; 12% of its answers were not valid JSON.",
+  "One epoch, one seed, no hyperparameter search."
+ ],
+ "files": {
+  "dataset": "cornercase/finetune/make_dataset.py, data/finetune/",
+  "train": "modal/glimmer_lora_train.py",
+  "serve": "modal/glimmer_serve.py",
+  "eval": "modal/glimmer_lora_eval.py, raw predictions in data/finetune/eval.json"
+ },
+ "written": "2026-11-04T13:57:38+0000"
+}

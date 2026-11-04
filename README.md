@@ -52,9 +52,10 @@ Or press **Run live** in the UI (progress streams over SSE). Model IDs are resol
  (centerline, LPI,    ├─ cornercase/data ───────┤
   counts, ridership)  │                         └─ crashes snapped by lat/lon (step 1, step 4 only)
                       │
- street video ── ffmpeg (6 fps, clock) ─┬─ SAM 3.1 (person/car/taxi/bus tracks, 3 s chunks)
-                                        ├─ pan stabilisation + 4-point homography
-                                        └─ Muse Spark 1.3 (timestamped notes) ── SAM cross-check
+ street video ── ffmpeg (6 fps, clock) ─┬─ SAM 3.1 image mode: every person/car/bus/taxi/road on 1 s keyframes
+                                        ├─ SAM 3.1 video: box-prompt tracks seeded from them, 16 per request
+                                        ├─ one-bit masks → foot points, asphalt-road surface; pan stabilisation
+                                        └─ Muse Spark 1.3 (notes + concepts for SAM) ── SAM cross-check
                                                      │
                                         measured inputs (step 2)
                                                      ▼
@@ -71,15 +72,56 @@ Or press **Run live** in the UI (progress streams over SSE). Model IDs are resol
 
 ## Evidence
 
-EVIDENCE_PLACEHOLDER
+All numbers below come from the committed files in `evidence/` and the recorded run `runs/20261104-115932.json`.
+
+### Trust check: does the simulator rank corners the way real crashes did?
+
+The simulator never sees a crash. It is scored against the **82 pedestrian crashes from 2025-01-01 to 2026-10-31**, snapped to the 30 corners within 40 m. The primary metric (severity-weighted simulated near-misses per hour) was fixed before scoring, and no parameter was tuned on crashes.
+
+| Method | Spearman ρ | 95% CI | one-sided p | top-5 overlap | top-10 overlap |
+|---|---|---|---|---|---|
+| Simulator: severity-weighted near-misses per hour | +0.30 | -0.07 to +0.59 | 0.0586 | 1 of 5 | 6 of 10 |
+| traffic volume alone | +0.42 | +0.01 to +0.75 | 0.013 | 2 of 5 | 8 of 10 |
+| walker exposure alone (subway + demand + counts) | +0.27 | -0.07 to +0.56 | 0.0774 | 1 of 5 | 6 of 10 |
+| crash history 2023-24 | +0.30 | -0.04 to +0.57 | 0.055 | 1 of 5 | 8 of 10 |
+
+**Reading:** a weak but real signal. The simulator ranks corners about as well as the previous two years of crash history, and less well than traffic volume alone; the confidence interval includes zero. Without the one video-measured input (walking speed at W 45 St) ρ is +0.30 with 2 of 5 in the top 5. Corner Case therefore presents its plan as **what to pilot and measure**, not as a forecast, and the UI carries that caveat from step 4 to the brief.
+
+### Agent value: is the Muse Wonder team better than simple search at the same budget?
+
+Same simulator, seeds and objective (corridor risk, with a steep penalty above the 8% car-delay limit); random search and greedy one-change-at-a-time get exactly as many corridor simulations as the agents used.
+
+| Method (same budget: 111 corridor simulations) | Risk cut | Added car delay | Corners changed | Objective (lower is better) |
+|---|---|---|---|---|
+| Muse Wonder agents | 12.5% | +4.5% | 13 | 890.34 |
+| Random search | 2.3% | +1.2% | 4 | 994.26 |
+| Greedy, one change at a time | 10.7% | +8.1% | 9 | 909.23 |
+
+The Wonder plan cuts the most risk while staying inside the delay limit; greedy finds a smaller cut and exceeds the limit; random search barely moves.
+
+### The recorded run
+
+- Coordinator briefed 30 corner agents (priority, test budget, stretch target, focus); agents ran 111 simulations.
+- 13 fixes selected for $99,750 of a $100,000 quarterly budget (the budget is a labelled assumption); 15 proposals rejected with reasons.
+- Stress futures chosen by the coordinator: 30% ignore turn bans (holds), Broadway shows let out (holds), Rain at night (broke, revised, holds), Holiday crowds (holds).
+- Plan: simulated near-misses 2,430 → 2,157 per hour, serious 671 → 516, added car delay +4.5%, cost $34,200–$191,800 (Muse Spark web search, cited per item).
+- Run cost $1.82 in 79 Meta model calls; the vision pipeline cost $0.58.
+
+### What SAM 3.1 measured on the W 45 St clip
+
+- Image-mode detection on 1 s keyframes (video mode is capped at 16 objects per frame): up to **43 people in one frame**.
+- Box-prompt tracking seeded from those detections in batches of 16: **136 people and 20 vehicles** (16 billboard faces excluded).
+- Decoded one-bit masks: ground-contact points and SAM's "asphalt road" surface: 3 walkers on the road, 2 close calls with moving vehicles; walking speed 0.82 m/s from 52 straight-line walkers.
+- Muse Spark wrote 7 timestamped notes (burned-in clock); SAM confirmed 6. Spark also proposed concepts for SAM to segment.
+
 
 ## What each Meta model does
 
 | Model | Job | Why this model |
 |---|---|---|
-| SAM 3.1 | Detects and tracks people, cars, taxis and buses in the corner video from text prompts; tracks become speeds and counts | Text-prompted detection + tracking with stable ids in one call; restarted on 3 s chunks so new arrivals are picked up |
+| SAM 3.1 | Image mode finds every person, car, bus, taxi and the asphalt road on 1 s keyframes; new detections seed box-prompt video tracks in batches of 16; decoded masks give foot points, "walker on the road" and close calls | Used the way Meta's docs describe: one noun phrase per request, image mode for crowds (video tracks at most 16 objects per frame), box prompts on later frames to catch arrivals, confidences and one-bit masks |
 | Muse Spark 1.3 | Watches the clip (burned-in clock for timestamps) and notes behaviour boxes cannot show; every note is checked against SAM tracks. Also finds unit costs by web search with citations | Native video understanding; web search with citations |
-| Muse Wonder | 30 corner agents call the simulator as a function tool, read results, revise; a coordinator tests combinations, rejects risk-shifting fixes, picks stress futures, sends broken fixes back (same conversation via `previous_response_id`) | Long-running tool use and planning; every structured output validated with Pydantic plus semantic checks and one repair turn, kept in the trace |
+| Muse Wonder | A lead coordinator briefs 30 corner agents (priority, test budget scaled to risk, stretch target, focus); agents call the simulator as a function tool in parallel, read results, keep or drop; the coordinator selects the best set within budget, rejects the rest with reasons, picks stress futures and sends broken fixes back (same conversation via `previous_response_id`) | Orchestrator-worker with explicit delegation; every structured output validated (Pydantic + semantic checks, one repair turn); kept claims are re-simulated by the system; checkpoints, timeouts and one fresh retry per agent |
 | Muse Glimmer | After a fix is built: reads per-interval close-call summaries from the camera and writes the weekly near-miss log and alerts | Open weights, cheap to keep always on; served with vLLM on Modal (`modal/glimmer_serve.py`) |
 
 ## Limitations

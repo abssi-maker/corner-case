@@ -1,0 +1,7397 @@
+{
+ "endpoint": "https://abssi-mustapha--corner-case-glimmer-serve.us-east.modal.run/v1",
+ "models": {
+  "base": "muse-glimmer",
+  "lora": "corner-triage"
+ },
+ "test": {
+  "n": 300,
+  "corners": [
+   "w32",
+   "w37",
+   "w42",
+   "w47",
+   "w52",
+   "w57"
+  ],
+  "note": "corners never seen in training"
+ },
+ "prompt": {
+  "system_chars": 1815,
+  "base_shots": [
+   6,
+   5,
+   4
+  ],
+  "temperature": 0,
+  "max_tokens": 1024
+ },
+ "table": {
+  "base_3shot": {
+   "n": 300,
+   "json_valid_rate": 0.877,
+   "best_change_acc": 0.217,
+   "risk_band_acc": 0.527,
+   "top_conflict_acc": 0.057,
+   "near_miss_ph_mae": 41.6,
+   "near_miss_mae_n": 263,
+   "risk_cut_captured_pct_of_oracle": 39.4,
+   "errors": 0,
+   "wall_s": 106.3,
+   "concurrency": 16,
+   "latency_p50_s": 1.55,
+   "latency_p95_s": 24.95,
+   "completion_tokens_mean": 186.4,
+   "est_cost_per_call_usd": 0.00039
+  },
+  "lora": {
+   "n": 300,
+   "json_valid_rate": 1.0,
+   "best_change_acc": 0.513,
+   "risk_band_acc": 0.783,
+   "top_conflict_acc": 0.477,
+   "near_miss_ph_mae": 24.7,
+   "near_miss_mae_n": 300,
+   "risk_cut_captured_pct_of_oracle": 74.1,
+   "errors": 0,
+   "wall_s": 35.5,
+   "concurrency": 16,
+   "latency_p50_s": 1.86,
+   "latency_p95_s": 1.97,
+   "completion_tokens_mean": 46.5,
+   "est_cost_per_call_usd": 0.00013
+  },
+  "trivial_baseline": {
+   "n": 300,
+   "json_valid_rate": 1.0,
+   "best_change_acc": 0.483,
+   "risk_band_acc": 0.267,
+   "top_conflict_acc": 0.473,
+   "near_miss_ph_mae": 64.2,
+   "near_miss_mae_n": 300,
+   "risk_cut_captured_pct_of_oracle": 69.9,
+   "rule": {
+    "best_single_change": "daylighting",
+    "risk_band": "medium",
+    "top_conflict": "ave_through_n",
+    "near_miss_ph": 104.7
+   }
+  }
+ },
+ "bootstrap_95ci_paired_by_scenario": {
+  "best_change_acc lora - base_3shot": {
+   "diff": 0.297,
+   "ci95": [
+    0.237,
+    0.357
+   ]
+  },
+  "best_change_acc lora - trivial": {
+   "diff": 0.03,
+   "ci95": [
+    -0.003,
+    0.063
+   ]
+  },
+  "best_change_acc base_3shot - trivial": {
+   "diff": -0.267,
+   "ci95": [
+    -0.337,
+    -0.2
+   ]
+  },
+  "risk_band_acc lora - base_3shot": {
+   "diff": 0.257,
+   "ci95": [
+    0.187,
+    0.327
+   ]
+  }
+ },
+ "bootstrap_95ci_resampling_corners": {
+  "best_change_acc lora - base_3shot": {
+   "diff": 0.297,
+   "ci95": [
+    0.18,
+    0.417
+   ]
+  },
+  "best_change_acc lora - trivial": {
+   "diff": 0.03,
+   "ci95": [
+    -0.007,
+    0.073
+   ]
+  }
+ },
+ "best_change_acc_per_test_corner": {
+  "w32": {
+   "lora": 0.46,
+   "base_3shot": 0.24,
+   "trivial_baseline": 0.5
+  },
+  "w37": {
+   "lora": 0.4,
+   "base_3shot": 0.22,
+   "trivial_baseline": 0.4
+  },
+  "w42": {
+   "lora": 0.74,
+   "base_3shot": 0.24,
+   "trivial_baseline": 0.68
+  },
+  "w47": {
+   "lora": 0.46,
+   "base_3shot": 0.12,
+   "trivial_baseline": 0.44
+  },
+  "w52": {
+   "lora": 0.32,
+   "base_3shot": 0.24,
+   "trivial_baseline": 0.3
+  },
+  "w57": {
+   "lora": 0.7,
+   "base_3shot": 0.24,
+   "trivial_baseline": 0.58
+  }
+ },
+ "examples": {
+  "base_3shot": [
+   {
+    "corner": "w32",
+    "future": "show_out",
+    "input": {
+     "walkers_ph": 2101,
+     "vehicles_ph": {
+      "ave_through": 1305,
+      "ave_left": 98,
+      "ave_right": 0,
+      "cross_through": 256,
+      "cross_turn": 50
+     },
+     "turns_from_7av": [
+      "left"
+     ],
+     "crossing_m": {
+      "cross_street": 7.9,
+      "avenue": 21.6
+     },
+     "walk_head_start_s": 0.0,
+     "exclusive_ped_phase_s": 20.0,
+     "cycle_s": 90.0,
+     "ave_green_share": 0.6,
+     "turn_speed_kmh": 17.9,
+     "walkers_against_signal_share": 0.12,
+     "future": {
+      "id": "show_out",
+      "walkers_mult": 1.15,
+      "vehicles_mult": 0.9
+     }
+    },
+    "label": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.0,
+     "top_conflict": "ave_through_s",
+     "best_single_change": "ave_share_68",
+     "expected_risk_cut_pct": 10.5
+    },
+    "output": "{\"risk_band\":\"high\",\"near_miss_ph\":124.5,\"top_conflict\":\"ave_left\",\"best_single_change\":\"lpi_7\",\"expected_risk_cut_pct\":22.4}",
+    "reasoning_chars": 0
+   },
+   {
+    "corner": "w42",
+    "future": "today",
+    "input": {
+     "walkers_ph": 9234,
+     "vehicles_ph": {
+      "ave_through": 862,
+      "ave_left": 205,
+      "ave_right": 205,
+      "cross_through": 635,
+      "cross_turn": 170
+     },
+     "turns_from_7av": [
+      "left",
+      "right"
+     ],
+     "crossing_m": {
+      "cross_street": 16.1,
+      "avenue": 19.6
+     },
+     "walk_head_start_s": 7.0,
+     "exclusive_ped_phase_s": 0.0,
+     "cycle_s": 90.0,
+     "ave_green_share": 0.6,
+     "turn_speed_kmh": 21.6,
+     "walkers_against_signal_share": 0.12,
+     "future": {
+      "id": "today"
+     }
+    },
+    "label": {
+     "risk_band": "very_high",
+     "near_miss_ph": 366.3,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.0
+    },
+    "output": "{\"risk_band\":\"very_high\",\"near_miss_ph\":184.0,\"top_conflict\":\"ave_left\",\"best_single_change\":\"ban_left\",\"expected_risk_cut_pct\":32.0}",
+    "reasoning_chars": 0
+   },
+   {
+    "corner": "w52",
+    "future": "rain_night",
+    "input": {
+     "walkers_ph": 786,
+     "vehicles_ph": {
+      "ave_through": 736,
+      "ave_left": 119,
+      "ave_right": 0,
+      "cross_through": 170,
+      "cross_turn": 43
+     },
+     "turns_from_7av": [
+      "left"
+     ],
+     "crossing_m": {
+      "cross_street": 9.5,
+      "avenue": 19.4
+     },
+     "walk_head_start_s": 7.0,
+     "exclusive_ped_phase_s": 0.0,
+     "cycle_s": 100.0,
+     "ave_green_share": 0.6,
+     "turn_speed_kmh": 16.9,
+     "walkers_against_signal_share": 0.12,
+     "future": {
+      "id": "rain_night",
+      "detect_delta": -0.12,
+      "walk_speed_mult": 1.1,
+      "noncompliance_mult": 1.35,
+      "turn_speed_mult": 0.9
+     }
+    },
+    "label": {
+     "risk_band": "low",
+     "near_miss_ph": 42.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 16.6
+    },
+    "output": "{\"risk_band\":\"medium\",\"near_miss_ph\":78.2,\"top_conflict\":\"ave_left\",\"best_single_change\":\"lpi_10\",\"expected_risk_cut_pct\":22.4}",
+    "reasoning_chars": 0
+   }
+  ],
+  "lora": [
+   {
+    "corner": "w32",
+    "future": "show_out",
+    "input": {
+     "walkers_ph": 2101,
+     "vehicles_ph": {
+      "ave_through": 1305,
+      "ave_left": 98,
+      "ave_right": 0,
+      "cross_through": 256,
+      "cross_turn": 50
+     },
+     "turns_from_7av": [
+      "left"
+     ],
+     "crossing_m": {
+      "cross_street": 7.9,
+      "avenue": 21.6
+     },
+     "walk_head_start_s": 0.0,
+     "exclusive_ped_phase_s": 20.0,
+     "cycle_s": 90.0,
+     "ave_green_share": 0.6,
+     "turn_speed_kmh": 17.9,
+     "walkers_against_signal_share": 0.12,
+     "future": {
+      "id": "show_out",
+      "walkers_mult": 1.15,
+      "vehicles_mult": 0.9
+     }
+    },
+    "label": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.0,
+     "top_conflict": "ave_through_s",
+     "best_single_change": "ave_share_68",
+     "expected_risk_cut_pct": 10.5
+    },
+    "output": "{\"risk_band\":\"medium\",\"near_miss_ph\":90.7,\"top_conflict\":\"ave_through_n\",\"best_single_change\":\"lpi_7\",\"expected_risk_cut_pct\":25.0}",
+    "reasoning_chars": 0
+   },
+   {
+    "corner": "w42",
+    "future": "today",
+    "input": {
+     "walkers_ph": 9234,
+     "vehicles_ph": {
+      "ave_through": 862,
+      "ave_left": 205,
+      "ave_right": 205,
+      "cross_through": 635,
+      "cross_turn": 170
+     },
+     "turns_from_7av": [
+      "left",
+      "right"
+     ],
+     "crossing_m": {
+      "cross_street": 16.1,
+      "avenue": 19.6
+     },
+     "walk_head_start_s": 7.0,
+     "exclusive_ped_phase_s": 0.0,
+     "cycle_s": 90.0,
+     "ave_green_share": 0.6,
+     "turn_speed_kmh": 21.6,
+     "walkers_against_signal_share": 0.12,
+     "future": {
+      "id": "today"
+     }
+    },
+    "label": {
+     "risk_band": "very_high",
+     "near_miss_ph": 366.3,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.0
+    },
+    "output": "{\"risk_band\":\"very_high\",\"near_miss_ph\":255.7,\"top_conflict\":\"ave_through_n\",\"best_single_change\":\"daylighting\",\"expected_risk_cut_pct\":10.2}",
+    "reasoning_chars": 0
+   },
+   {
+    "corner": "w52",
+    "future": "rain_night",
+    "input": {
+     "walkers_ph": 786,
+     "vehicles_ph": {
+      "ave_through": 736,
+      "ave_left": 119,
+      "ave_right": 0,
+      "cross_through": 170,
+      "cross_turn": 43
+     },
+     "turns_from_7av": [
+      "left"
+     ],
+     "crossing_m": {
+      "cross_street": 9.5,
+      "avenue": 19.4
+     },
+     "walk_head_start_s": 7.0,
+     "exclusive_ped_phase_s": 0.0,
+     "cycle_s": 100.0,
+     "ave_green_share": 0.6,
+     "turn_speed_kmh": 16.9,
+     "walkers_against_signal_share": 0.12,
+     "future": {
+      "id": "rain_night",
+      "detect_delta": -0.12,
+      "walk_speed_mult": 1.1,
+      "noncompliance_mult": 1.35,
+      "turn_speed_mult": 0.9
+     }
+    },
+    "label": {
+     "risk_band": "low",
+     "near_miss_ph": 42.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 16.6
+    },
+    "output": "{\"risk_band\":\"low\",\"near_miss_ph\":40.0,\"top_conflict\":\"ave_through_n\",\"best_single_change\":\"daylighting\",\"expected_risk_cut_pct\":10.7}",
+    "reasoning_chars": 0
+   }
+  ]
+ },
+ "raw": {
+  "base_3shot": [
+   {
+    "i": 3300,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.71,
+    "error": null
+   },
+   {
+    "i": 3301,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.686,
+    "error": null
+   },
+   {
+    "i": 3302,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.4
+    },
+    "latency_s": 1.679,
+    "error": null
+   },
+   {
+    "i": 3303,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.706,
+    "error": null
+   },
+   {
+    "i": 3304,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.2
+    },
+    "latency_s": 1.678,
+    "error": null
+   },
+   {
+    "i": 3305,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 34.2
+    },
+    "latency_s": 10.473,
+    "error": null
+   },
+   {
+    "i": 3306,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.676,
+    "error": null
+   },
+   {
+    "i": 3307,
+    "pred": null,
+    "latency_s": 24.188,
+    "error": null
+   },
+   {
+    "i": 3308,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.3
+    },
+    "latency_s": 1.681,
+    "error": null
+   },
+   {
+    "i": 3309,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 38.7
+    },
+    "latency_s": 1.672,
+    "error": null
+   },
+   {
+    "i": 3310,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.3
+    },
+    "latency_s": 1.68,
+    "error": null
+   },
+   {
+    "i": 3311,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.7,
+    "error": null
+   },
+   {
+    "i": 3312,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 198.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 31.4
+    },
+    "latency_s": 23.089,
+    "error": null
+   },
+   {
+    "i": 3313,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.697,
+    "error": null
+   },
+   {
+    "i": 3314,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.662,
+    "error": null
+   },
+   {
+    "i": 3315,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 203.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 38.4
+    },
+    "latency_s": 16.794,
+    "error": null
+   },
+   {
+    "i": 3316,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.6,
+    "error": null
+   },
+   {
+    "i": 3317,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 45.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.4
+    },
+    "latency_s": 1.572,
+    "error": null
+   },
+   {
+    "i": 3318,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 38.4
+    },
+    "latency_s": 1.568,
+    "error": null
+   },
+   {
+    "i": 3319,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.2
+    },
+    "latency_s": 1.54,
+    "error": null
+   },
+   {
+    "i": 3320,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.585,
+    "error": null
+   },
+   {
+    "i": 3321,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.564,
+    "error": null
+   },
+   {
+    "i": 3322,
+    "pred": null,
+    "latency_s": 23.991,
+    "error": null
+   },
+   {
+    "i": 3323,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.2
+    },
+    "latency_s": 1.564,
+    "error": null
+   },
+   {
+    "i": 3324,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.581,
+    "error": null
+   },
+   {
+    "i": 3325,
+    "pred": null,
+    "latency_s": 23.995,
+    "error": null
+   },
+   {
+    "i": 3326,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 18.7
+    },
+    "latency_s": 1.565,
+    "error": null
+   },
+   {
+    "i": 3327,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 64.7,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.8
+    },
+    "latency_s": 1.558,
+    "error": null
+   },
+   {
+    "i": 3328,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 38.0
+    },
+    "latency_s": 1.557,
+    "error": null
+   },
+   {
+    "i": 3329,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.588,
+    "error": null
+   },
+   {
+    "i": 3330,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 12.0
+    },
+    "latency_s": 1.585,
+    "error": null
+   },
+   {
+    "i": 3331,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.2
+    },
+    "latency_s": 1.551,
+    "error": null
+   },
+   {
+    "i": 3332,
+    "pred": null,
+    "latency_s": 23.977,
+    "error": null
+   },
+   {
+    "i": 3333,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 210.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.604,
+    "error": null
+   },
+   {
+    "i": 3334,
+    "pred": null,
+    "latency_s": 23.958,
+    "error": null
+   },
+   {
+    "i": 3335,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.602,
+    "error": null
+   },
+   {
+    "i": 3336,
+    "pred": null,
+    "latency_s": 23.984,
+    "error": null
+   },
+   {
+    "i": 3337,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 45.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.3
+    },
+    "latency_s": 1.555,
+    "error": null
+   },
+   {
+    "i": 3338,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.498,
+    "error": null
+   },
+   {
+    "i": 3339,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.464,
+    "error": null
+   },
+   {
+    "i": 3340,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.474,
+    "error": null
+   },
+   {
+    "i": 3341,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.472,
+    "error": null
+   },
+   {
+    "i": 3342,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.483,
+    "error": null
+   },
+   {
+    "i": 3343,
+    "pred": null,
+    "latency_s": 23.908,
+    "error": null
+   },
+   {
+    "i": 3344,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.436,
+    "error": null
+   },
+   {
+    "i": 3345,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 52.4,
+     "top_conflict": "ave_through_s",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 18.3
+    },
+    "latency_s": 19.897,
+    "error": null
+   },
+   {
+    "i": 3346,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.527,
+    "error": null
+   },
+   {
+    "i": 3347,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.7
+    },
+    "latency_s": 1.498,
+    "error": null
+   },
+   {
+    "i": 3348,
+    "pred": null,
+    "latency_s": 24.012,
+    "error": null
+   },
+   {
+    "i": 3349,
+    "pred": null,
+    "latency_s": 23.996,
+    "error": null
+   },
+   {
+    "i": 3350,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.481,
+    "error": null
+   },
+   {
+    "i": 3351,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.533,
+    "error": null
+   },
+   {
+    "i": 3352,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 45.1,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.531,
+    "error": null
+   },
+   {
+    "i": 3353,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.528,
+    "error": null
+   },
+   {
+    "i": 3354,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_right",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.2
+    },
+    "latency_s": 1.477,
+    "error": null
+   },
+   {
+    "i": 3355,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.521,
+    "error": null
+   },
+   {
+    "i": 3356,
+    "pred": null,
+    "latency_s": 24.117,
+    "error": null
+   },
+   {
+    "i": 3357,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.531,
+    "error": null
+   },
+   {
+    "i": 3358,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.476,
+    "error": null
+   },
+   {
+    "i": 3359,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.451,
+    "error": null
+   },
+   {
+    "i": 3360,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.498,
+    "error": null
+   },
+   {
+    "i": 3361,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 58.9,
+     "top_conflict": "ave_right",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.507,
+    "error": null
+   },
+   {
+    "i": 3362,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 127.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.507,
+    "error": null
+   },
+   {
+    "i": 3363,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.452,
+    "error": null
+   },
+   {
+    "i": 3364,
+    "pred": null,
+    "latency_s": 24.261,
+    "error": null
+   },
+   {
+    "i": 3365,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 32.1,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "none",
+     "expected_risk_cut_pct": 0
+    },
+    "latency_s": 1.388,
+    "error": null
+   },
+   {
+    "i": 3366,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 2.0
+    },
+    "latency_s": 1.543,
+    "error": null
+   },
+   {
+    "i": 3367,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.7,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.478,
+    "error": null
+   },
+   {
+    "i": 3368,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.53,
+    "error": null
+   },
+   {
+    "i": 3369,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 127.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.459,
+    "error": null
+   },
+   {
+    "i": 3370,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 120.5,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.44,
+    "error": null
+   },
+   {
+    "i": 3371,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.535,
+    "error": null
+   },
+   {
+    "i": 3372,
+    "pred": null,
+    "latency_s": 24.492,
+    "error": null
+   },
+   {
+    "i": 3373,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 64.0,
+     "top_conflict": "ave_right",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.424,
+    "error": null
+   },
+   {
+    "i": 3374,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.7,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.529,
+    "error": null
+   },
+   {
+    "i": 3375,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 197.8,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 24.7
+    },
+    "latency_s": 23.653,
+    "error": null
+   },
+   {
+    "i": 3376,
+    "pred": null,
+    "latency_s": 24.732,
+    "error": null
+   },
+   {
+    "i": 3377,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 45.1,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 0.0
+    },
+    "latency_s": 1.515,
+    "error": null
+   },
+   {
+    "i": 3378,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 120.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.507,
+    "error": null
+   },
+   {
+    "i": 3379,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 58.9,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.53,
+    "error": null
+   },
+   {
+    "i": 3380,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 112.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.511,
+    "error": null
+   },
+   {
+    "i": 3381,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 120.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.526,
+    "error": null
+   },
+   {
+    "i": 3382,
+    "pred": null,
+    "latency_s": 25.042,
+    "error": null
+   },
+   {
+    "i": 3383,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 120.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.2
+    },
+    "latency_s": 1.459,
+    "error": null
+   },
+   {
+    "i": 3384,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.503,
+    "error": null
+   },
+   {
+    "i": 3385,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.539,
+    "error": null
+   },
+   {
+    "i": 3386,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.554,
+    "error": null
+   },
+   {
+    "i": 3387,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.2
+    },
+    "latency_s": 1.526,
+    "error": null
+   },
+   {
+    "i": 3388,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.525,
+    "error": null
+   },
+   {
+    "i": 3389,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 58.9,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.2
+    },
+    "latency_s": 1.546,
+    "error": null
+   },
+   {
+    "i": 3390,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.519,
+    "error": null
+   },
+   {
+    "i": 3391,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.1
+    },
+    "latency_s": 1.562,
+    "error": null
+   },
+   {
+    "i": 3392,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.548,
+    "error": null
+   },
+   {
+    "i": 3393,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.556,
+    "error": null
+   },
+   {
+    "i": 3394,
+    "pred": null,
+    "latency_s": 25.095,
+    "error": null
+   },
+   {
+    "i": 3395,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.539,
+    "error": null
+   },
+   {
+    "i": 3396,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.536,
+    "error": null
+   },
+   {
+    "i": 3397,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 86.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.527,
+    "error": null
+   },
+   {
+    "i": 3398,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.495,
+    "error": null
+   },
+   {
+    "i": 3399,
+    "pred": null,
+    "latency_s": 25.032,
+    "error": null
+   },
+   {
+    "i": 3400,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 32.0
+    },
+    "latency_s": 1.499,
+    "error": null
+   },
+   {
+    "i": 3401,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 127.8,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.604,
+    "error": null
+   },
+   {
+    "i": 3402,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 32.1
+    },
+    "latency_s": 1.555,
+    "error": null
+   },
+   {
+    "i": 3403,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.2
+    },
+    "latency_s": 1.578,
+    "error": null
+   },
+   {
+    "i": 3404,
+    "pred": null,
+    "latency_s": 25.103,
+    "error": null
+   },
+   {
+    "i": 3405,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.615,
+    "error": null
+   },
+   {
+    "i": 3406,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 12.0
+    },
+    "latency_s": 1.612,
+    "error": null
+   },
+   {
+    "i": 3407,
+    "pred": null,
+    "latency_s": 24.999,
+    "error": null
+   },
+   {
+    "i": 3408,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 33.0
+    },
+    "latency_s": 1.457,
+    "error": null
+   },
+   {
+    "i": 3409,
+    "pred": null,
+    "latency_s": 25.071,
+    "error": null
+   },
+   {
+    "i": 3410,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 32.1
+    },
+    "latency_s": 1.461,
+    "error": null
+   },
+   {
+    "i": 3411,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.503,
+    "error": null
+   },
+   {
+    "i": 3412,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "split_phase",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.457,
+    "error": null
+   },
+   {
+    "i": 3413,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 38.7
+    },
+    "latency_s": 1.458,
+    "error": null
+   },
+   {
+    "i": 3414,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.2
+    },
+    "latency_s": 1.485,
+    "error": null
+   },
+   {
+    "i": 3415,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 32.4
+    },
+    "latency_s": 1.473,
+    "error": null
+   },
+   {
+    "i": 3416,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.506,
+    "error": null
+   },
+   {
+    "i": 3417,
+    "pred": null,
+    "latency_s": 25.116,
+    "error": null
+   },
+   {
+    "i": 3418,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 38.7
+    },
+    "latency_s": 1.432,
+    "error": null
+   },
+   {
+    "i": 3419,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 32.4
+    },
+    "latency_s": 1.437,
+    "error": null
+   },
+   {
+    "i": 3420,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 32.0
+    },
+    "latency_s": 1.467,
+    "error": null
+   },
+   {
+    "i": 3421,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.475,
+    "error": null
+   },
+   {
+    "i": 3422,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 210.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.499,
+    "error": null
+   },
+   {
+    "i": 3423,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.472,
+    "error": null
+   },
+   {
+    "i": 3424,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.516,
+    "error": null
+   },
+   {
+    "i": 3425,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.537,
+    "error": null
+   },
+   {
+    "i": 3426,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.516,
+    "error": null
+   },
+   {
+    "i": 3427,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 32.0
+    },
+    "latency_s": 1.469,
+    "error": null
+   },
+   {
+    "i": 3428,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 210.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "split_phase",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.497,
+    "error": null
+   },
+   {
+    "i": 3429,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 32.0
+    },
+    "latency_s": 1.477,
+    "error": null
+   },
+   {
+    "i": 3430,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.603,
+    "error": null
+   },
+   {
+    "i": 3431,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 33.0
+    },
+    "latency_s": 1.518,
+    "error": null
+   },
+   {
+    "i": 3432,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.573,
+    "error": null
+   },
+   {
+    "i": 3433,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.2
+    },
+    "latency_s": 1.515,
+    "error": null
+   },
+   {
+    "i": 3434,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 32.0
+    },
+    "latency_s": 1.491,
+    "error": null
+   },
+   {
+    "i": 3435,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 32.1
+    },
+    "latency_s": 1.45,
+    "error": null
+   },
+   {
+    "i": 3436,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.587,
+    "error": null
+   },
+   {
+    "i": 3437,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 33.0
+    },
+    "latency_s": 1.571,
+    "error": null
+   },
+   {
+    "i": 3438,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.546,
+    "error": null
+   },
+   {
+    "i": 3439,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.543,
+    "error": null
+   },
+   {
+    "i": 3440,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 38.7
+    },
+    "latency_s": 1.515,
+    "error": null
+   },
+   {
+    "i": 3441,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 210.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "split_phase",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.456,
+    "error": null
+   },
+   {
+    "i": 3442,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 32.1
+    },
+    "latency_s": 1.606,
+    "error": null
+   },
+   {
+    "i": 3443,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.2
+    },
+    "latency_s": 1.556,
+    "error": null
+   },
+   {
+    "i": 3444,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 268.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "split_phase",
+     "expected_risk_cut_pct": 21.4
+    },
+    "latency_s": 21.244,
+    "error": null
+   },
+   {
+    "i": 3445,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.2
+    },
+    "latency_s": 1.559,
+    "error": null
+   },
+   {
+    "i": 3446,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.626,
+    "error": null
+   },
+   {
+    "i": 3447,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.584,
+    "error": null
+   },
+   {
+    "i": 3448,
+    "pred": null,
+    "latency_s": 25.257,
+    "error": null
+   },
+   {
+    "i": 3449,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "split_phase",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.579,
+    "error": null
+   },
+   {
+    "i": 3450,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.2
+    },
+    "latency_s": 1.555,
+    "error": null
+   },
+   {
+    "i": 3451,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 185.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.547,
+    "error": null
+   },
+   {
+    "i": 3452,
+    "pred": null,
+    "latency_s": 25.206,
+    "error": null
+   },
+   {
+    "i": 3453,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.497,
+    "error": null
+   },
+   {
+    "i": 3454,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 0.0
+    },
+    "latency_s": 1.555,
+    "error": null
+   },
+   {
+    "i": 3455,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 127.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.513,
+    "error": null
+   },
+   {
+    "i": 3456,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_right",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.0
+    },
+    "latency_s": 1.537,
+    "error": null
+   },
+   {
+    "i": 3457,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.63,
+    "error": null
+   },
+   {
+    "i": 3458,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.579,
+    "error": null
+   },
+   {
+    "i": 3459,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.55,
+    "error": null
+   },
+   {
+    "i": 3460,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.1
+    },
+    "latency_s": 1.542,
+    "error": null
+   },
+   {
+    "i": 3461,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 12.1
+    },
+    "latency_s": 1.633,
+    "error": null
+   },
+   {
+    "i": 3462,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.534,
+    "error": null
+   },
+   {
+    "i": 3463,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.548,
+    "error": null
+   },
+   {
+    "i": 3464,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 132.5,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 31.4
+    },
+    "latency_s": 22.265,
+    "error": null
+   },
+   {
+    "i": 3465,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 12.0
+    },
+    "latency_s": 1.582,
+    "error": null
+   },
+   {
+    "i": 3466,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "ban_right",
+     "expected_risk_cut_pct": 100.0
+    },
+    "latency_s": 1.579,
+    "error": null
+   },
+   {
+    "i": 3467,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.579,
+    "error": null
+   },
+   {
+    "i": 3468,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.595,
+    "error": null
+   },
+   {
+    "i": 3469,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.7
+    },
+    "latency_s": 1.527,
+    "error": null
+   },
+   {
+    "i": 3470,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 12.0
+    },
+    "latency_s": 1.642,
+    "error": null
+   },
+   {
+    "i": 3471,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.6,
+    "error": null
+   },
+   {
+    "i": 3472,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.577,
+    "error": null
+   },
+   {
+    "i": 3473,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.2
+    },
+    "latency_s": 1.559,
+    "error": null
+   },
+   {
+    "i": 3474,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.2
+    },
+    "latency_s": 1.515,
+    "error": null
+   },
+   {
+    "i": 3475,
+    "pred": null,
+    "latency_s": 25.11,
+    "error": null
+   },
+   {
+    "i": 3476,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 0.0
+    },
+    "latency_s": 1.665,
+    "error": null
+   },
+   {
+    "i": 3477,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.569,
+    "error": null
+   },
+   {
+    "i": 3478,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 7.0
+    },
+    "latency_s": 1.633,
+    "error": null
+   },
+   {
+    "i": 3479,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_right",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.2
+    },
+    "latency_s": 1.559,
+    "error": null
+   },
+   {
+    "i": 3480,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.4
+    },
+    "latency_s": 2.537,
+    "error": null
+   },
+   {
+    "i": 3481,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.631,
+    "error": null
+   },
+   {
+    "i": 3482,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.56,
+    "error": null
+   },
+   {
+    "i": 3483,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.59,
+    "error": null
+   },
+   {
+    "i": 3484,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 12.0
+    },
+    "latency_s": 1.573,
+    "error": null
+   },
+   {
+    "i": 3485,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.495,
+    "error": null
+   },
+   {
+    "i": 3486,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.526,
+    "error": null
+   },
+   {
+    "i": 3487,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.481,
+    "error": null
+   },
+   {
+    "i": 3488,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.507,
+    "error": null
+   },
+   {
+    "i": 3489,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 12.0
+    },
+    "latency_s": 1.545,
+    "error": null
+   },
+   {
+    "i": 3490,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 120.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.478,
+    "error": null
+   },
+   {
+    "i": 3491,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 12.0
+    },
+    "latency_s": 1.586,
+    "error": null
+   },
+   {
+    "i": 3492,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_right",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.0
+    },
+    "latency_s": 1.554,
+    "error": null
+   },
+   {
+    "i": 3493,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_right",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.2
+    },
+    "latency_s": 1.513,
+    "error": null
+   },
+   {
+    "i": 3494,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_right",
+     "best_single_change": "ban_right",
+     "expected_risk_cut_pct": 100.0
+    },
+    "latency_s": 1.511,
+    "error": null
+   },
+   {
+    "i": 3495,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 127.1,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.528,
+    "error": null
+   },
+   {
+    "i": 3496,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 8.0
+    },
+    "latency_s": 1.547,
+    "error": null
+   },
+   {
+    "i": 3497,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.491,
+    "error": null
+   },
+   {
+    "i": 3498,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_right",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.542,
+    "error": null
+   },
+   {
+    "i": 3499,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_right",
+     "best_single_change": "ban_right",
+     "expected_risk_cut_pct": 100.0
+    },
+    "latency_s": 1.518,
+    "error": null
+   },
+   {
+    "i": 3500,
+    "pred": null,
+    "latency_s": 26.058,
+    "error": null
+   },
+   {
+    "i": 3501,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.2
+    },
+    "latency_s": 1.52,
+    "error": null
+   },
+   {
+    "i": 3502,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.532,
+    "error": null
+   },
+   {
+    "i": 3503,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 203.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 38.2
+    },
+    "latency_s": 21.548,
+    "error": null
+   },
+   {
+    "i": 3504,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.2
+    },
+    "latency_s": 1.494,
+    "error": null
+   },
+   {
+    "i": 3505,
+    "pred": null,
+    "latency_s": 25.029,
+    "error": null
+   },
+   {
+    "i": 3506,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 64.7,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 24.5
+    },
+    "latency_s": 1.513,
+    "error": null
+   },
+   {
+    "i": 3507,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.465,
+    "error": null
+   },
+   {
+    "i": 3508,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 18.3
+    },
+    "latency_s": 1.439,
+    "error": null
+   },
+   {
+    "i": 3509,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.532,
+    "error": null
+   },
+   {
+    "i": 3510,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 18.3
+    },
+    "latency_s": 1.588,
+    "error": null
+   },
+   {
+    "i": 3511,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 3.854,
+    "error": null
+   },
+   {
+    "i": 3512,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 3.82,
+    "error": null
+   },
+   {
+    "i": 3513,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 18.7
+    },
+    "latency_s": 3.605,
+    "error": null
+   },
+   {
+    "i": 3514,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 3.537,
+    "error": null
+   },
+   {
+    "i": 3515,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 38.7
+    },
+    "latency_s": 3.545,
+    "error": null
+   },
+   {
+    "i": 3516,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 3.439,
+    "error": null
+   },
+   {
+    "i": 3517,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 127.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 3.279,
+    "error": null
+   },
+   {
+    "i": 3518,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 3.744,
+    "error": null
+   },
+   {
+    "i": 3519,
+    "pred": null,
+    "latency_s": 25.134,
+    "error": null
+   },
+   {
+    "i": 3520,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 64.7,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.8
+    },
+    "latency_s": 1.596,
+    "error": null
+   },
+   {
+    "i": 3521,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 127.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.63,
+    "error": null
+   },
+   {
+    "i": 3522,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 127.8,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.592,
+    "error": null
+   },
+   {
+    "i": 3523,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 27.4
+    },
+    "latency_s": 1.623,
+    "error": null
+   },
+   {
+    "i": 3524,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.614,
+    "error": null
+   },
+   {
+    "i": 3525,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.621,
+    "error": null
+   },
+   {
+    "i": 3526,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.467,
+    "error": null
+   },
+   {
+    "i": 3527,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.2
+    },
+    "latency_s": 1.617,
+    "error": null
+   },
+   {
+    "i": 3528,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.578,
+    "error": null
+   },
+   {
+    "i": 3529,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 210.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.609,
+    "error": null
+   },
+   {
+    "i": 3530,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 210.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.605,
+    "error": null
+   },
+   {
+    "i": 3531,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.2
+    },
+    "latency_s": 1.574,
+    "error": null
+   },
+   {
+    "i": 3532,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.61,
+    "error": null
+   },
+   {
+    "i": 3533,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 57.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.571,
+    "error": null
+   },
+   {
+    "i": 3534,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 86.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.566,
+    "error": null
+   },
+   {
+    "i": 3535,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.563,
+    "error": null
+   },
+   {
+    "i": 3536,
+    "pred": null,
+    "latency_s": 24.99,
+    "error": null
+   },
+   {
+    "i": 3537,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 68.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.541,
+    "error": null
+   },
+   {
+    "i": 3538,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 127.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.565,
+    "error": null
+   },
+   {
+    "i": 3539,
+    "pred": null,
+    "latency_s": 24.975,
+    "error": null
+   },
+   {
+    "i": 3540,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.542,
+    "error": null
+   },
+   {
+    "i": 3541,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 64.8,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 16.2
+    },
+    "latency_s": 1.529,
+    "error": null
+   },
+   {
+    "i": 3542,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 210.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.561,
+    "error": null
+   },
+   {
+    "i": 3543,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.509,
+    "error": null
+   },
+   {
+    "i": 3544,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 100.0
+    },
+    "latency_s": 1.501,
+    "error": null
+   },
+   {
+    "i": 3545,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 100.0
+    },
+    "latency_s": 1.543,
+    "error": null
+   },
+   {
+    "i": 3546,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.563,
+    "error": null
+   },
+   {
+    "i": 3547,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.2
+    },
+    "latency_s": 1.54,
+    "error": null
+   },
+   {
+    "i": 3548,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 28.4
+    },
+    "latency_s": 1.523,
+    "error": null
+   },
+   {
+    "i": 3549,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.7,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.2
+    },
+    "latency_s": 1.536,
+    "error": null
+   },
+   {
+    "i": 3550,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.6,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.536,
+    "error": null
+   },
+   {
+    "i": 3551,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.498,
+    "error": null
+   },
+   {
+    "i": 3552,
+    "pred": null,
+    "latency_s": 24.949,
+    "error": null
+   },
+   {
+    "i": 3553,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.521,
+    "error": null
+   },
+   {
+    "i": 3554,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.6,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.529,
+    "error": null
+   },
+   {
+    "i": 3555,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.531,
+    "error": null
+   },
+   {
+    "i": 3556,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.512,
+    "error": null
+   },
+   {
+    "i": 3557,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.475,
+    "error": null
+   },
+   {
+    "i": 3558,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.55,
+    "error": null
+   },
+   {
+    "i": 3559,
+    "pred": null,
+    "latency_s": 24.917,
+    "error": null
+   },
+   {
+    "i": 3560,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 57.1,
+     "top_conflict": "ave_through_s",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.572,
+    "error": null
+   },
+   {
+    "i": 3561,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 28.4
+    },
+    "latency_s": 1.529,
+    "error": null
+   },
+   {
+    "i": 3562,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.541,
+    "error": null
+   },
+   {
+    "i": 3563,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.511,
+    "error": null
+   },
+   {
+    "i": 3564,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.7
+    },
+    "latency_s": 1.492,
+    "error": null
+   },
+   {
+    "i": 3565,
+    "pred": null,
+    "latency_s": 24.907,
+    "error": null
+   },
+   {
+    "i": 3566,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.7,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.2
+    },
+    "latency_s": 1.517,
+    "error": null
+   },
+   {
+    "i": 3567,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.52,
+    "error": null
+   },
+   {
+    "i": 3568,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.479,
+    "error": null
+   },
+   {
+    "i": 3569,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.522,
+    "error": null
+   },
+   {
+    "i": 3570,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 210.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.546,
+    "error": null
+   },
+   {
+    "i": 3571,
+    "pred": null,
+    "latency_s": 24.902,
+    "error": null
+   },
+   {
+    "i": 3572,
+    "pred": null,
+    "latency_s": 24.902,
+    "error": null
+   },
+   {
+    "i": 3573,
+    "pred": null,
+    "latency_s": 24.884,
+    "error": null
+   },
+   {
+    "i": 3574,
+    "pred": null,
+    "latency_s": 24.882,
+    "error": null
+   },
+   {
+    "i": 3575,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.7,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.52,
+    "error": null
+   },
+   {
+    "i": 3576,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.504,
+    "error": null
+   },
+   {
+    "i": 3577,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 68.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.597,
+    "error": null
+   },
+   {
+    "i": 3578,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.601,
+    "error": null
+   },
+   {
+    "i": 3579,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.501,
+    "error": null
+   },
+   {
+    "i": 3580,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.517,
+    "error": null
+   },
+   {
+    "i": 3581,
+    "pred": null,
+    "latency_s": 24.807,
+    "error": null
+   },
+   {
+    "i": 3582,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.496,
+    "error": null
+   },
+   {
+    "i": 3583,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 120.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.489,
+    "error": null
+   },
+   {
+    "i": 3584,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.511,
+    "error": null
+   },
+   {
+    "i": 3585,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.2
+    },
+    "latency_s": 1.492,
+    "error": null
+   },
+   {
+    "i": 3586,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.4
+    },
+    "latency_s": 1.502,
+    "error": null
+   },
+   {
+    "i": 3587,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.502,
+    "error": null
+   },
+   {
+    "i": 3588,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.7
+    },
+    "latency_s": 1.487,
+    "error": null
+   },
+   {
+    "i": 3589,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.2
+    },
+    "latency_s": 1.526,
+    "error": null
+   },
+   {
+    "i": 3590,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.0,
+     "top_conflict": "ave_left",
+     "best_single_change": "ban_left",
+     "expected_risk_cut_pct": 32.0
+    },
+    "latency_s": 1.522,
+    "error": null
+   },
+   {
+    "i": 3591,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 184.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.4
+    },
+    "latency_s": 1.579,
+    "error": null
+   },
+   {
+    "i": 3592,
+    "pred": null,
+    "latency_s": 24.552,
+    "error": null
+   },
+   {
+    "i": 3593,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 124.5,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 18.4
+    },
+    "latency_s": 1.549,
+    "error": null
+   },
+   {
+    "i": 3594,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.552,
+    "error": null
+   },
+   {
+    "i": 3595,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.2,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.7
+    },
+    "latency_s": 1.488,
+    "error": null
+   },
+   {
+    "i": 3596,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 18.7
+    },
+    "latency_s": 1.526,
+    "error": null
+   },
+   {
+    "i": 3597,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.7
+    },
+    "latency_s": 1.503,
+    "error": null
+   },
+   {
+    "i": 3598,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.4,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.2
+    },
+    "latency_s": 1.482,
+    "error": null
+   },
+   {
+    "i": 3599,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 68.1,
+     "top_conflict": "ave_left",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.483,
+    "error": null
+   }
+  ],
+  "lora": [
+   {
+    "i": 3300,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.918,
+    "error": null
+   },
+   {
+    "i": 3301,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 59.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.7
+    },
+    "latency_s": 1.878,
+    "error": null
+   },
+   {
+    "i": 3302,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 48.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.5
+    },
+    "latency_s": 1.87,
+    "error": null
+   },
+   {
+    "i": 3303,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 95.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.873,
+    "error": null
+   },
+   {
+    "i": 3304,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.5
+    },
+    "latency_s": 1.868,
+    "error": null
+   },
+   {
+    "i": 3305,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 80.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.3
+    },
+    "latency_s": 1.879,
+    "error": null
+   },
+   {
+    "i": 3306,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 75.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.1
+    },
+    "latency_s": 1.912,
+    "error": null
+   },
+   {
+    "i": 3307,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 103.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.883,
+    "error": null
+   },
+   {
+    "i": 3308,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.5
+    },
+    "latency_s": 1.883,
+    "error": null
+   },
+   {
+    "i": 3309,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 7.3
+    },
+    "latency_s": 1.875,
+    "error": null
+   },
+   {
+    "i": 3310,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 48.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.5
+    },
+    "latency_s": 1.878,
+    "error": null
+   },
+   {
+    "i": 3311,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 50.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.879,
+    "error": null
+   },
+   {
+    "i": 3312,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 21.0
+    },
+    "latency_s": 1.908,
+    "error": null
+   },
+   {
+    "i": 3313,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.5
+    },
+    "latency_s": 1.904,
+    "error": null
+   },
+   {
+    "i": 3314,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.2
+    },
+    "latency_s": 1.881,
+    "error": null
+   },
+   {
+    "i": 3315,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 102.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.6
+    },
+    "latency_s": 1.875,
+    "error": null
+   },
+   {
+    "i": 3316,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 150.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.845,
+    "error": null
+   },
+   {
+    "i": 3317,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.0
+    },
+    "latency_s": 1.867,
+    "error": null
+   },
+   {
+    "i": 3318,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 7.4
+    },
+    "latency_s": 1.844,
+    "error": null
+   },
+   {
+    "i": 3319,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 100.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.867,
+    "error": null
+   },
+   {
+    "i": 3320,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 80.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.897,
+    "error": null
+   },
+   {
+    "i": 3321,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.859,
+    "error": null
+   },
+   {
+    "i": 3322,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 181.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 21.0
+    },
+    "latency_s": 1.917,
+    "error": null
+   },
+   {
+    "i": 3323,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.2
+    },
+    "latency_s": 1.885,
+    "error": null
+   },
+   {
+    "i": 3324,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 46.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 30.0
+    },
+    "latency_s": 1.915,
+    "error": null
+   },
+   {
+    "i": 3325,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 70.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 28.0
+    },
+    "latency_s": 1.914,
+    "error": null
+   },
+   {
+    "i": 3326,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.88,
+    "error": null
+   },
+   {
+    "i": 3327,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 48.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.2
+    },
+    "latency_s": 1.885,
+    "error": null
+   },
+   {
+    "i": 3328,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.896,
+    "error": null
+   },
+   {
+    "i": 3329,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 102.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.5
+    },
+    "latency_s": 1.859,
+    "error": null
+   },
+   {
+    "i": 3330,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.6
+    },
+    "latency_s": 1.858,
+    "error": null
+   },
+   {
+    "i": 3331,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.823,
+    "error": null
+   },
+   {
+    "i": 3332,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 125.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.6
+    },
+    "latency_s": 1.827,
+    "error": null
+   },
+   {
+    "i": 3333,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 19.0
+    },
+    "latency_s": 1.856,
+    "error": null
+   },
+   {
+    "i": 3334,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.7
+    },
+    "latency_s": 1.835,
+    "error": null
+   },
+   {
+    "i": 3335,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.871,
+    "error": null
+   },
+   {
+    "i": 3336,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 28.0
+    },
+    "latency_s": 1.863,
+    "error": null
+   },
+   {
+    "i": 3337,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.0
+    },
+    "latency_s": 1.867,
+    "error": null
+   },
+   {
+    "i": 3338,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 102.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.832,
+    "error": null
+   },
+   {
+    "i": 3339,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 80.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.3
+    },
+    "latency_s": 1.838,
+    "error": null
+   },
+   {
+    "i": 3340,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 95.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.802,
+    "error": null
+   },
+   {
+    "i": 3341,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.856,
+    "error": null
+   },
+   {
+    "i": 3342,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.827,
+    "error": null
+   },
+   {
+    "i": 3343,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 108.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.852,
+    "error": null
+   },
+   {
+    "i": 3344,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 67.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.1
+    },
+    "latency_s": 1.811,
+    "error": null
+   },
+   {
+    "i": 3345,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 48.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.5
+    },
+    "latency_s": 1.804,
+    "error": null
+   },
+   {
+    "i": 3346,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 50.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.5
+    },
+    "latency_s": 1.809,
+    "error": null
+   },
+   {
+    "i": 3347,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 55.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.7
+    },
+    "latency_s": 1.806,
+    "error": null
+   },
+   {
+    "i": 3348,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.772,
+    "error": null
+   },
+   {
+    "i": 3349,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 30.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 16.7
+    },
+    "latency_s": 1.803,
+    "error": null
+   },
+   {
+    "i": 3350,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 103.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.794,
+    "error": null
+   },
+   {
+    "i": 3351,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 20.0
+    },
+    "latency_s": 1.797,
+    "error": null
+   },
+   {
+    "i": 3352,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 48.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.5
+    },
+    "latency_s": 1.789,
+    "error": null
+   },
+   {
+    "i": 3353,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 95.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.1
+    },
+    "latency_s": 1.771,
+    "error": null
+   },
+   {
+    "i": 3354,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.824,
+    "error": null
+   },
+   {
+    "i": 3355,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 150.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.843,
+    "error": null
+   },
+   {
+    "i": 3356,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.815,
+    "error": null
+   },
+   {
+    "i": 3357,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 80.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.3
+    },
+    "latency_s": 1.779,
+    "error": null
+   },
+   {
+    "i": 3358,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 103.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.81,
+    "error": null
+   },
+   {
+    "i": 3359,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 64.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.816,
+    "error": null
+   },
+   {
+    "i": 3360,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 55.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.4
+    },
+    "latency_s": 1.82,
+    "error": null
+   },
+   {
+    "i": 3361,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 67.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.1
+    },
+    "latency_s": 1.814,
+    "error": null
+   },
+   {
+    "i": 3362,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.806,
+    "error": null
+   },
+   {
+    "i": 3363,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.798,
+    "error": null
+   },
+   {
+    "i": 3364,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 63.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.1
+    },
+    "latency_s": 1.808,
+    "error": null
+   },
+   {
+    "i": 3365,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.0
+    },
+    "latency_s": 1.805,
+    "error": null
+   },
+   {
+    "i": 3366,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 7.3
+    },
+    "latency_s": 1.865,
+    "error": null
+   },
+   {
+    "i": 3367,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 20.1
+    },
+    "latency_s": 1.867,
+    "error": null
+   },
+   {
+    "i": 3368,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 75.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.7
+    },
+    "latency_s": 1.827,
+    "error": null
+   },
+   {
+    "i": 3369,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.815,
+    "error": null
+   },
+   {
+    "i": 3370,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.845,
+    "error": null
+   },
+   {
+    "i": 3371,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.5
+    },
+    "latency_s": 1.784,
+    "error": null
+   },
+   {
+    "i": 3372,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.819,
+    "error": null
+   },
+   {
+    "i": 3373,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 70.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.2
+    },
+    "latency_s": 1.825,
+    "error": null
+   },
+   {
+    "i": 3374,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 150.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.816,
+    "error": null
+   },
+   {
+    "i": 3375,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 102.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.81,
+    "error": null
+   },
+   {
+    "i": 3376,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.7
+    },
+    "latency_s": 1.813,
+    "error": null
+   },
+   {
+    "i": 3377,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.0
+    },
+    "latency_s": 1.81,
+    "error": null
+   },
+   {
+    "i": 3378,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.828,
+    "error": null
+   },
+   {
+    "i": 3379,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 48.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.5
+    },
+    "latency_s": 1.792,
+    "error": null
+   },
+   {
+    "i": 3380,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 28.0
+    },
+    "latency_s": 1.858,
+    "error": null
+   },
+   {
+    "i": 3381,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 150.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.5
+    },
+    "latency_s": 1.83,
+    "error": null
+   },
+   {
+    "i": 3382,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.834,
+    "error": null
+   },
+   {
+    "i": 3383,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.6
+    },
+    "latency_s": 1.826,
+    "error": null
+   },
+   {
+    "i": 3384,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 67.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.6
+    },
+    "latency_s": 1.834,
+    "error": null
+   },
+   {
+    "i": 3385,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.822,
+    "error": null
+   },
+   {
+    "i": 3386,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.824,
+    "error": null
+   },
+   {
+    "i": 3387,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 87.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.4
+    },
+    "latency_s": 1.819,
+    "error": null
+   },
+   {
+    "i": 3388,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.877,
+    "error": null
+   },
+   {
+    "i": 3389,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 50.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.1
+    },
+    "latency_s": 1.849,
+    "error": null
+   },
+   {
+    "i": 3390,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.4
+    },
+    "latency_s": 1.817,
+    "error": null
+   },
+   {
+    "i": 3391,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 48.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.2
+    },
+    "latency_s": 1.848,
+    "error": null
+   },
+   {
+    "i": 3392,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.842,
+    "error": null
+   },
+   {
+    "i": 3393,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 103.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 20.0
+    },
+    "latency_s": 1.86,
+    "error": null
+   },
+   {
+    "i": 3394,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 68.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 28.0
+    },
+    "latency_s": 1.865,
+    "error": null
+   },
+   {
+    "i": 3395,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 70.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.2
+    },
+    "latency_s": 1.831,
+    "error": null
+   },
+   {
+    "i": 3396,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.832,
+    "error": null
+   },
+   {
+    "i": 3397,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.858,
+    "error": null
+   },
+   {
+    "i": 3398,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 43.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.7
+    },
+    "latency_s": 1.836,
+    "error": null
+   },
+   {
+    "i": 3399,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.861,
+    "error": null
+   },
+   {
+    "i": 3400,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.853,
+    "error": null
+   },
+   {
+    "i": 3401,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 159.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.86,
+    "error": null
+   },
+   {
+    "i": 3402,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.839,
+    "error": null
+   },
+   {
+    "i": 3403,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 255.7,
+     "top_conflict": "cross_through_w",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.853,
+    "error": null
+   },
+   {
+    "i": 3404,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 80.7,
+     "top_conflict": "cross_through_w",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.5
+    },
+    "latency_s": 1.835,
+    "error": null
+   },
+   {
+    "i": 3405,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 300.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 21.0
+    },
+    "latency_s": 1.848,
+    "error": null
+   },
+   {
+    "i": 3406,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 300.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.832,
+    "error": null
+   },
+   {
+    "i": 3407,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 100.0,
+     "top_conflict": "cross_through_w",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.808,
+    "error": null
+   },
+   {
+    "i": 3408,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.828,
+    "error": null
+   },
+   {
+    "i": 3409,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 199.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.807,
+    "error": null
+   },
+   {
+    "i": 3410,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 150.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.785,
+    "error": null
+   },
+   {
+    "i": 3411,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 19.0
+    },
+    "latency_s": 1.798,
+    "error": null
+   },
+   {
+    "i": 3412,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 250.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 7.2
+    },
+    "latency_s": 1.843,
+    "error": null
+   },
+   {
+    "i": 3413,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.898,
+    "error": null
+   },
+   {
+    "i": 3414,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.6
+    },
+    "latency_s": 1.897,
+    "error": null
+   },
+   {
+    "i": 3415,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 300.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.896,
+    "error": null
+   },
+   {
+    "i": 3416,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 300.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 20.0
+    },
+    "latency_s": 1.918,
+    "error": null
+   },
+   {
+    "i": 3417,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 103.7,
+     "top_conflict": "cross_through_w",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.5
+    },
+    "latency_s": 1.859,
+    "error": null
+   },
+   {
+    "i": 3418,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.894,
+    "error": null
+   },
+   {
+    "i": 3419,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.887,
+    "error": null
+   },
+   {
+    "i": 3420,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 255.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.882,
+    "error": null
+   },
+   {
+    "i": 3421,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.6
+    },
+    "latency_s": 1.848,
+    "error": null
+   },
+   {
+    "i": 3422,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 150.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 19.0
+    },
+    "latency_s": 1.899,
+    "error": null
+   },
+   {
+    "i": 3423,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.6
+    },
+    "latency_s": 1.877,
+    "error": null
+   },
+   {
+    "i": 3424,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 20.0
+    },
+    "latency_s": 1.896,
+    "error": null
+   },
+   {
+    "i": 3425,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.87,
+    "error": null
+   },
+   {
+    "i": 3426,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.865,
+    "error": null
+   },
+   {
+    "i": 3427,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 255.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.88,
+    "error": null
+   },
+   {
+    "i": 3428,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 255.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 7.2
+    },
+    "latency_s": 1.868,
+    "error": null
+   },
+   {
+    "i": 3429,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.4
+    },
+    "latency_s": 1.891,
+    "error": null
+   },
+   {
+    "i": 3430,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "cross_through_w",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 19.1
+    },
+    "latency_s": 1.955,
+    "error": null
+   },
+   {
+    "i": 3431,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 255.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.927,
+    "error": null
+   },
+   {
+    "i": 3432,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 150.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.925,
+    "error": null
+   },
+   {
+    "i": 3433,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.909,
+    "error": null
+   },
+   {
+    "i": 3434,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.4
+    },
+    "latency_s": 1.906,
+    "error": null
+   },
+   {
+    "i": 3435,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 300.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.933,
+    "error": null
+   },
+   {
+    "i": 3436,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 181.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 20.0
+    },
+    "latency_s": 1.926,
+    "error": null
+   },
+   {
+    "i": 3437,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 250.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.923,
+    "error": null
+   },
+   {
+    "i": 3438,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.899,
+    "error": null
+   },
+   {
+    "i": 3439,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 202.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 19.1
+    },
+    "latency_s": 1.934,
+    "error": null
+   },
+   {
+    "i": 3440,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 181.7,
+     "top_conflict": "cross_through_w",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.885,
+    "error": null
+   },
+   {
+    "i": 3441,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 7.2
+    },
+    "latency_s": 1.881,
+    "error": null
+   },
+   {
+    "i": 3442,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 300.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.904,
+    "error": null
+   },
+   {
+    "i": 3443,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 7.2
+    },
+    "latency_s": 1.884,
+    "error": null
+   },
+   {
+    "i": 3444,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.4
+    },
+    "latency_s": 1.825,
+    "error": null
+   },
+   {
+    "i": 3445,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 103.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.849,
+    "error": null
+   },
+   {
+    "i": 3446,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 255.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 21.0
+    },
+    "latency_s": 1.917,
+    "error": null
+   },
+   {
+    "i": 3447,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 21.0
+    },
+    "latency_s": 1.893,
+    "error": null
+   },
+   {
+    "i": 3448,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 255.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.858,
+    "error": null
+   },
+   {
+    "i": 3449,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.886,
+    "error": null
+   },
+   {
+    "i": 3450,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 240.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.898,
+    "error": null
+   },
+   {
+    "i": 3451,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 21.0
+    },
+    "latency_s": 1.906,
+    "error": null
+   },
+   {
+    "i": 3452,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.895,
+    "error": null
+   },
+   {
+    "i": 3453,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 70.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.2
+    },
+    "latency_s": 1.822,
+    "error": null
+   },
+   {
+    "i": 3454,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.835,
+    "error": null
+   },
+   {
+    "i": 3455,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.873,
+    "error": null
+   },
+   {
+    "i": 3456,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.839,
+    "error": null
+   },
+   {
+    "i": 3457,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 150.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 19.1
+    },
+    "latency_s": 1.87,
+    "error": null
+   },
+   {
+    "i": 3458,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 16.0
+    },
+    "latency_s": 1.884,
+    "error": null
+   },
+   {
+    "i": 3459,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.862,
+    "error": null
+   },
+   {
+    "i": 3460,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 100.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.798,
+    "error": null
+   },
+   {
+    "i": 3461,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 255.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 7.2
+    },
+    "latency_s": 1.849,
+    "error": null
+   },
+   {
+    "i": 3462,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 20.0
+    },
+    "latency_s": 1.888,
+    "error": null
+   },
+   {
+    "i": 3463,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.855,
+    "error": null
+   },
+   {
+    "i": 3464,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.857,
+    "error": null
+   },
+   {
+    "i": 3465,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 300.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.855,
+    "error": null
+   },
+   {
+    "i": 3466,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.855,
+    "error": null
+   },
+   {
+    "i": 3467,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 70.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.836,
+    "error": null
+   },
+   {
+    "i": 3468,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 103.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.794,
+    "error": null
+   },
+   {
+    "i": 3469,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.785,
+    "error": null
+   },
+   {
+    "i": 3470,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.843,
+    "error": null
+   },
+   {
+    "i": 3471,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.844,
+    "error": null
+   },
+   {
+    "i": 3472,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.787,
+    "error": null
+   },
+   {
+    "i": 3473,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.5
+    },
+    "latency_s": 1.812,
+    "error": null
+   },
+   {
+    "i": 3474,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 181.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.808,
+    "error": null
+   },
+   {
+    "i": 3475,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.6
+    },
+    "latency_s": 1.807,
+    "error": null
+   },
+   {
+    "i": 3476,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.946,
+    "error": null
+   },
+   {
+    "i": 3477,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.97,
+    "error": null
+   },
+   {
+    "i": 3478,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.996,
+    "error": null
+   },
+   {
+    "i": 3479,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.964,
+    "error": null
+   },
+   {
+    "i": 3480,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 103.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.5
+    },
+    "latency_s": 1.962,
+    "error": null
+   },
+   {
+    "i": 3481,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 255.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 19.0
+    },
+    "latency_s": 2.002,
+    "error": null
+   },
+   {
+    "i": 3482,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 120.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 20.0
+    },
+    "latency_s": 1.999,
+    "error": null
+   },
+   {
+    "i": 3483,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.998,
+    "error": null
+   },
+   {
+    "i": 3484,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 300.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 2.005,
+    "error": null
+   },
+   {
+    "i": 3485,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 102.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.6
+    },
+    "latency_s": 1.962,
+    "error": null
+   },
+   {
+    "i": 3486,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 21.0
+    },
+    "latency_s": 2.007,
+    "error": null
+   },
+   {
+    "i": 3487,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.4
+    },
+    "latency_s": 1.963,
+    "error": null
+   },
+   {
+    "i": 3488,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 102.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.99,
+    "error": null
+   },
+   {
+    "i": 3489,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.98,
+    "error": null
+   },
+   {
+    "i": 3490,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 95.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.6
+    },
+    "latency_s": 1.941,
+    "error": null
+   },
+   {
+    "i": 3491,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.977,
+    "error": null
+   },
+   {
+    "i": 3492,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.3
+    },
+    "latency_s": 1.857,
+    "error": null
+   },
+   {
+    "i": 3493,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 71.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.5
+    },
+    "latency_s": 1.862,
+    "error": null
+   },
+   {
+    "i": 3494,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.869,
+    "error": null
+   },
+   {
+    "i": 3495,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 20.0
+    },
+    "latency_s": 1.89,
+    "error": null
+   },
+   {
+    "i": 3496,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 181.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.842,
+    "error": null
+   },
+   {
+    "i": 3497,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.867,
+    "error": null
+   },
+   {
+    "i": 3498,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.864,
+    "error": null
+   },
+   {
+    "i": 3499,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.835,
+    "error": null
+   },
+   {
+    "i": 3500,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 71.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 28.0
+    },
+    "latency_s": 1.856,
+    "error": null
+   },
+   {
+    "i": 3501,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 71.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.841,
+    "error": null
+   },
+   {
+    "i": 3502,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.5
+    },
+    "latency_s": 1.833,
+    "error": null
+   },
+   {
+    "i": 3503,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.856,
+    "error": null
+   },
+   {
+    "i": 3504,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.5
+    },
+    "latency_s": 1.836,
+    "error": null
+   },
+   {
+    "i": 3505,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 59.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.1
+    },
+    "latency_s": 1.833,
+    "error": null
+   },
+   {
+    "i": 3506,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 30.0
+    },
+    "latency_s": 1.85,
+    "error": null
+   },
+   {
+    "i": 3507,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 85.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.828,
+    "error": null
+   },
+   {
+    "i": 3508,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 85.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.83,
+    "error": null
+   },
+   {
+    "i": 3509,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 70.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 28.0
+    },
+    "latency_s": 1.893,
+    "error": null
+   },
+   {
+    "i": 3510,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.6
+    },
+    "latency_s": 1.858,
+    "error": null
+   },
+   {
+    "i": 3511,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 48.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.856,
+    "error": null
+   },
+   {
+    "i": 3512,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 102.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.882,
+    "error": null
+   },
+   {
+    "i": 3513,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.841,
+    "error": null
+   },
+   {
+    "i": 3514,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.864,
+    "error": null
+   },
+   {
+    "i": 3515,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.854,
+    "error": null
+   },
+   {
+    "i": 3516,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.88,
+    "error": null
+   },
+   {
+    "i": 3517,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.857,
+    "error": null
+   },
+   {
+    "i": 3518,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 78.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 28.0
+    },
+    "latency_s": 1.875,
+    "error": null
+   },
+   {
+    "i": 3519,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 48.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.5
+    },
+    "latency_s": 1.853,
+    "error": null
+   },
+   {
+    "i": 3520,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 48.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.2
+    },
+    "latency_s": 1.847,
+    "error": null
+   },
+   {
+    "i": 3521,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 102.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.85,
+    "error": null
+   },
+   {
+    "i": 3522,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 102.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.6
+    },
+    "latency_s": 1.832,
+    "error": null
+   },
+   {
+    "i": 3523,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 50.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 31.0
+    },
+    "latency_s": 1.856,
+    "error": null
+   },
+   {
+    "i": 3524,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 60.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 28.0
+    },
+    "latency_s": 1.846,
+    "error": null
+   },
+   {
+    "i": 3525,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 67.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 28.0
+    },
+    "latency_s": 1.902,
+    "error": null
+   },
+   {
+    "i": 3526,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.1
+    },
+    "latency_s": 1.838,
+    "error": null
+   },
+   {
+    "i": 3527,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.877,
+    "error": null
+   },
+   {
+    "i": 3528,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 103.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.3
+    },
+    "latency_s": 1.869,
+    "error": null
+   },
+   {
+    "i": 3529,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 181.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 7.2
+    },
+    "latency_s": 1.854,
+    "error": null
+   },
+   {
+    "i": 3530,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 103.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.851,
+    "error": null
+   },
+   {
+    "i": 3531,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.877,
+    "error": null
+   },
+   {
+    "i": 3532,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 102.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.872,
+    "error": null
+   },
+   {
+    "i": 3533,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.0
+    },
+    "latency_s": 1.872,
+    "error": null
+   },
+   {
+    "i": 3534,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.891,
+    "error": null
+   },
+   {
+    "i": 3535,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 67.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 13.1
+    },
+    "latency_s": 1.841,
+    "error": null
+   },
+   {
+    "i": 3536,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 50.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.0
+    },
+    "latency_s": 1.863,
+    "error": null
+   },
+   {
+    "i": 3537,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 50.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 30.0
+    },
+    "latency_s": 1.87,
+    "error": null
+   },
+   {
+    "i": 3538,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 24.0
+    },
+    "latency_s": 1.876,
+    "error": null
+   },
+   {
+    "i": 3539,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 50.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 31.0
+    },
+    "latency_s": 1.873,
+    "error": null
+   },
+   {
+    "i": 3540,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.89,
+    "error": null
+   },
+   {
+    "i": 3541,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 48.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.944,
+    "error": null
+   },
+   {
+    "i": 3542,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 20.1
+    },
+    "latency_s": 1.969,
+    "error": null
+   },
+   {
+    "i": 3543,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.0
+    },
+    "latency_s": 1.946,
+    "error": null
+   },
+   {
+    "i": 3544,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 150.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.948,
+    "error": null
+   },
+   {
+    "i": 3545,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 7.6
+    },
+    "latency_s": 1.947,
+    "error": null
+   },
+   {
+    "i": 3546,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 40.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.7
+    },
+    "latency_s": 1.959,
+    "error": null
+   },
+   {
+    "i": 3547,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 100.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.918,
+    "error": null
+   },
+   {
+    "i": 3548,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.99,
+    "error": null
+   },
+   {
+    "i": 3549,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.942,
+    "error": null
+   },
+   {
+    "i": 3550,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 103.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.985,
+    "error": null
+   },
+   {
+    "i": 3551,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 100.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.2
+    },
+    "latency_s": 1.941,
+    "error": null
+   },
+   {
+    "i": 3552,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 255.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 21.0
+    },
+    "latency_s": 1.982,
+    "error": null
+   },
+   {
+    "i": 3553,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.968,
+    "error": null
+   },
+   {
+    "i": 3554,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 20.0
+    },
+    "latency_s": 1.962,
+    "error": null
+   },
+   {
+    "i": 3555,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 22.0
+    },
+    "latency_s": 1.981,
+    "error": null
+   },
+   {
+    "i": 3556,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.6
+    },
+    "latency_s": 1.894,
+    "error": null
+   },
+   {
+    "i": 3557,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.1
+    },
+    "latency_s": 1.894,
+    "error": null
+   },
+   {
+    "i": 3558,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 132.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.928,
+    "error": null
+   },
+   {
+    "i": 3559,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.886,
+    "error": null
+   },
+   {
+    "i": 3560,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 43.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.7
+    },
+    "latency_s": 1.887,
+    "error": null
+   },
+   {
+    "i": 3561,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.4
+    },
+    "latency_s": 1.886,
+    "error": null
+   },
+   {
+    "i": 3562,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "cross_through_w",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.931,
+    "error": null
+   },
+   {
+    "i": 3563,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 64.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.2
+    },
+    "latency_s": 1.897,
+    "error": null
+   },
+   {
+    "i": 3564,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 100.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.899,
+    "error": null
+   },
+   {
+    "i": 3565,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 95.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.898,
+    "error": null
+   },
+   {
+    "i": 3566,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.0,
+     "top_conflict": "cross_through_w",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.865,
+    "error": null
+   },
+   {
+    "i": 3567,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 100.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.861,
+    "error": null
+   },
+   {
+    "i": 3568,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.2
+    },
+    "latency_s": 1.859,
+    "error": null
+   },
+   {
+    "i": 3569,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 122.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.862,
+    "error": null
+   },
+   {
+    "i": 3570,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_10",
+     "expected_risk_cut_pct": 19.0
+    },
+    "latency_s": 1.885,
+    "error": null
+   },
+   {
+    "i": 3571,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.4
+    },
+    "latency_s": 1.846,
+    "error": null
+   },
+   {
+    "i": 3572,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 60.0,
+     "top_conflict": "cross_through_w",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.7
+    },
+    "latency_s": 1.917,
+    "error": null
+   },
+   {
+    "i": 3573,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "cross_through_w",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.1
+    },
+    "latency_s": 1.866,
+    "error": null
+   },
+   {
+    "i": 3574,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "cross_through_w",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.1
+    },
+    "latency_s": 1.857,
+    "error": null
+   },
+   {
+    "i": 3575,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 90.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.884,
+    "error": null
+   },
+   {
+    "i": 3576,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.85,
+    "error": null
+   },
+   {
+    "i": 3577,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 48.0,
+     "top_conflict": "cross_through_w",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.853,
+    "error": null
+   },
+   {
+    "i": 3578,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 100.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.892,
+    "error": null
+   },
+   {
+    "i": 3579,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.891,
+    "error": null
+   },
+   {
+    "i": 3580,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 102.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.3
+    },
+    "latency_s": 1.847,
+    "error": null
+   },
+   {
+    "i": 3581,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.88,
+    "error": null
+   },
+   {
+    "i": 3582,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.877,
+    "error": null
+   },
+   {
+    "i": 3583,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 108.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.873,
+    "error": null
+   },
+   {
+    "i": 3584,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 103.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 25.0
+    },
+    "latency_s": 1.903,
+    "error": null
+   },
+   {
+    "i": 3585,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 95.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.872,
+    "error": null
+   },
+   {
+    "i": 3586,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 99.0,
+     "top_conflict": "cross_through_w",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.5
+    },
+    "latency_s": 1.861,
+    "error": null
+   },
+   {
+    "i": 3587,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.847,
+    "error": null
+   },
+   {
+    "i": 3588,
+    "pred": {
+     "risk_band": "medium",
+     "near_miss_ph": 71.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 14.1
+    },
+    "latency_s": 1.763,
+    "error": null
+   },
+   {
+    "i": 3589,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 123.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.787,
+    "error": null
+   },
+   {
+    "i": 3590,
+    "pred": {
+     "risk_band": "very_high",
+     "near_miss_ph": 201.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.804,
+    "error": null
+   },
+   {
+    "i": 3591,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "cross_through_e",
+     "best_single_change": "lpi_7",
+     "expected_risk_cut_pct": 19.0
+    },
+    "latency_s": 1.8,
+    "error": null
+   },
+   {
+    "i": 3592,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 48.0,
+     "top_conflict": "cross_through_w",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.5
+    },
+    "latency_s": 1.771,
+    "error": null
+   },
+   {
+    "i": 3593,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.2
+    },
+    "latency_s": 1.773,
+    "error": null
+   },
+   {
+    "i": 3594,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.6
+    },
+    "latency_s": 1.769,
+    "error": null
+   },
+   {
+    "i": 3595,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 43.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 12.7
+    },
+    "latency_s": 1.768,
+    "error": null
+   },
+   {
+    "i": 3596,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 183.0,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.1
+    },
+    "latency_s": 1.764,
+    "error": null
+   },
+   {
+    "i": 3597,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.767,
+    "error": null
+   },
+   {
+    "i": 3598,
+    "pred": {
+     "risk_band": "high",
+     "near_miss_ph": 101.7,
+     "top_conflict": "ave_through_n",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 10.7
+    },
+    "latency_s": 1.763,
+    "error": null
+   },
+   {
+    "i": 3599,
+    "pred": {
+     "risk_band": "low",
+     "near_miss_ph": 48.0,
+     "top_conflict": "cross_through_w",
+     "best_single_change": "daylighting",
+     "expected_risk_cut_pct": 15.4
+    },
+    "latency_s": 1.765,
+    "error": null
+   }
+  ]
+ }
+}

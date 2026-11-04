@@ -14,12 +14,12 @@
     "id": "simulator",
     "label": "Simulator: severity-weighted near-misses per hour",
     "kind": "SIMULATED",
-    "spearman": 0.304,
+    "spearman": 0.299,
     "ci95": [
-     -0.062,
-     0.596
+     -0.074,
+     0.588
     ],
-    "p_one_sided": 0.0564,
+    "p_one_sided": 0.0586,
     "top5": 1,
     "top10": 6
    },
@@ -64,10 +64,10 @@
    }
   ],
   "simulator_secondary_metrics": {
-   "near_miss_ph": 0.352,
-   "serious_ph": 0.398
+   "near_miss_ph": 0.341,
+   "serious_ph": 0.402
   },
-  "verdict": "Simulator's top 5 contains 1 of the real top 5; rank correlation +0.30 (95% CI -0.06 to +0.60).",
+  "verdict": "Simulator's top 5 contains 1 of the real top 5; rank correlation +0.30 (95% CI -0.07 to +0.59).",
   "lists": {
    "simulator": [
     {
@@ -78,22 +78,7 @@
     {
      "id": "w44",
      "name": "7 Av & W 44 St",
-     "value": 53.792
-    },
-    {
-     "id": "w46",
-     "name": "7 Av & W 46 St",
-     "value": 48.534
-    },
-    {
-     "id": "w43",
-     "name": "7 Av & W 43 St",
-     "value": 48.127
-    },
-    {
-     "id": "w45",
-     "name": "7 Av & W 45 St",
-     "value": 47.776
+     "value": 54.229
     },
     {
      "id": "w47",
@@ -106,9 +91,24 @@
      "value": 47.575
     },
     {
+     "id": "w45",
+     "name": "7 Av & W 45 St",
+     "value": 47.3
+    },
+    {
+     "id": "w46",
+     "name": "7 Av & W 46 St",
+     "value": 46.91
+    },
+    {
      "id": "w34",
      "name": "7 Av & W 34 St",
      "value": 46.158
+    },
+    {
+     "id": "w43",
+     "name": "7 Av & W 43 St",
+     "value": 43.777
     },
     {
      "id": "w57",
@@ -315,7 +315,7 @@
    {
     "id": "w43",
     "name": "7 Av & W 43 St",
-    "sim": 48.127,
+    "sim": 43.777,
     "heldout": 3,
     "history": 4,
     "volume": 1322.0,
@@ -324,7 +324,7 @@
    {
     "id": "w44",
     "name": "7 Av & W 44 St",
-    "sim": 53.792,
+    "sim": 54.229,
     "heldout": 8,
     "history": 2,
     "volume": 1472.0,
@@ -333,7 +333,7 @@
    {
     "id": "w45",
     "name": "7 Av & W 45 St",
-    "sim": 47.776,
+    "sim": 47.3,
     "heldout": 4,
     "history": 6,
     "volume": 1472.0,
@@ -342,7 +342,7 @@
    {
     "id": "w46",
     "name": "7 Av & W 46 St",
-    "sim": 48.534,
+    "sim": 46.91,
     "heldout": 2,
     "history": 1,
     "volume": 1322.0,
