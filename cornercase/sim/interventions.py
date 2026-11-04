@@ -93,6 +93,7 @@ class Future:
     noncompliance_mult: float = 1.0
     turn_speed_mult: float = 1.0
     ban_compliance: float | None = None
+    parking_compliance: float = 1.0     # share of cleared corners kept clear of parked cars
     turn_headway_add_s: float = 0.0
     through_lanes_delta: int = 0
 
@@ -118,8 +119,9 @@ FUTURES = {
         Future("bus_lane", "New 7 Av bus lane", "one general lane becomes a bus lane; turning cars "
                "cross it and buses block sightlines",
                through_lanes_delta=-1, turn_headway_add_s=0.6, detect_delta=-0.03),
-        Future("ban_ignored", "30% ignore turn bans", "weak enforcement",
-               ban_compliance=0.7),
+        Future("ban_ignored", "30% ignore the new rules", "weak enforcement: drivers still turn where "
+               "turns are banned and park in cleared corners",
+               ban_compliance=0.7, parking_compliance=0.7),
     ]
 }
 

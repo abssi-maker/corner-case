@@ -122,3 +122,11 @@ def test_api_lists_runs():
     assert c.get("/").status_code == 200
     assert c.get("/static/app.js").status_code == 200
     assert c.get("/api/runs/does-not-exist").status_code == 404
+
+
+def test_plan_cost_mid_sums_change_kinds():
+    from cornercase.run import plan_cost_mid
+    from cornercase.sim.interventions import Changes
+    costs = {"daylighting": {"low_usd": 1500, "high_usd": 9900}, "lpi": {"low_usd": 200, "high_usd": 2600}}
+    got = plan_cost_mid({"w42": Changes(daylighting=True, lpi_s=7), "w52": Changes(daylighting=True)}, costs)
+    assert got == {"w42": 7100, "w52": 5700}

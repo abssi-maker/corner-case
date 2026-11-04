@@ -164,6 +164,17 @@ def test_weaker_compliance_leaves_more_turns(inputs):
     assert b > a
 
 
+def test_parked_cars_in_cleared_corners_shrink_daylighting(inputs):
+    plan = {"w42": Changes(daylighting=True)}
+    weak = FUTURES["ban_ignored"]
+    today = FUTURES["today"]
+    from dataclasses import replace
+    enforced = replace(weak, parking_compliance=1.0)  # same future, but corners stay clear
+    gain = lambda f: risk(SIM.simulate(inputs, {}, f), "w42") - risk(SIM.simulate(inputs, plan, f), "w42")
+    assert gain(today) > 0
+    assert gain(weak) < gain(enforced)
+
+
 def test_split_phase_costs_delay(inputs):
     base = SIM.simulate(inputs)
     r = SIM.simulate(inputs, {"w42": Changes(split_phase=True)})

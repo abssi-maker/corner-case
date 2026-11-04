@@ -99,7 +99,8 @@ def effective(n: NodeInputs, ch: Changes | None, future: Future, turns: dict) ->
     plan = S.SignalPlan(cycle_s=ch.cycle_s or float(n.cycle_s), ave_share=ch.ave_share or float(n.ave_share),
                         lpi_s=lpi, split_turns=bool(ch.split_phase), excl_ped_s=float(n.excl_ped_s))
     pm = future.ped_mult_for(n.id)
-    sightline = 0.05 if ch.daylighting else 0.0  # mostly helps drivers turning at the corner
+    # mostly helps drivers turning at the corner; lost where drivers park in the cleared corner anyway
+    sightline = 0.05 * future.parking_compliance if ch.daylighting else 0.0
     left_speed = float(n.turn_speed_mps) * future.turn_speed_mult * (0.75 if ch.hardened_centerline else 1.0)
     cross_vph = sum(float(v) for v in n.cross_vph.values()) * future.veh_mult
     ave_turning = turns["left"] + turns["right"]

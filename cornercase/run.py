@@ -18,6 +18,7 @@ import numpy as np
 
 from . import evidence as EV
 from .agents import costs as COSTS
+from .agents import glimmer_triage as GT
 from .agents import glimmer_watch as GW
 from .agents.coordinator import FUND_USD, Coordinator, find_breaks, plan_summary
 from .agents.tools import CORNER_DELAY_LIMIT_S, CORRIDOR_DELAY_LIMIT, SimTool, parse_changes
@@ -34,6 +35,17 @@ RUNS = ROOT / "runs"
 VISION = ROOT / "data" / "vision"
 DEFAULT_CORNER = "w45"
 MAX_COST_USD = 12.0
+BUILD_FIRST = 3          # corners built first; the rest are funded once camera counts confirm
+SUCCESS_SHARE = 0.5      # expand if camera close calls fall by at least this share of the simulated cut
+SUCCESS_WEEKS = 6
+
+
+def plan_cost_mid(plan: dict, costs: dict) -> dict[str, float]:
+    out = {}
+    for nid, ch in plan.items():
+        ks = COSTS.change_kinds(ch.model_dump())
+        out[nid] = round(sum((costs[k]["low_usd"] + costs[k]["high_usd"]) / 2 for k in ks if k in costs))
+    return out
 
 
 def _json(o):
@@ -162,7 +174,10 @@ class Run:
         self.step(5, "running", "Coordinator briefing the corner agents")
         coord = Coordinator(client, tool, emit=self.emit)
         crashes = {n["id"]: n for n in run["step1"]["nodes"]}
-        briefs = coord.plan(crashes)
+        self.step(5, "running", "Muse Glimmer corner-triage screening all 30 corners")
+        triage = GT.triage_corridor(inputs)
+        self.emit({"type": "triage", "status": triage["status"], **triage.get("score_vs_simulator", {})})
+        briefs = coord.plan(crashes, triage.get("corners"))
         self.step(5, "running", "Corner agents proposing and testing fixes")
         agents = {n.id: CornerAgent(client, tool, n, emit=self.emit, brief=briefs.get(n.id)) for n in inputs
                   if not corners or n.id in corners}
@@ -201,7 +216,7 @@ class Run:
             costs_all = COSTS.lookup(client, all_kinds)
         except (MetaError, json.JSONDecodeError, KeyError):
             costs_all = COSTS.lookup(None, all_kinds)
-        review, plan = coord.review(agents, costs_all, budget)
+        review, plan = coord.review(agents, costs_all, budget, crashes)
         today_sum = plan_summary(tool, plan, "today", count=False)
         run["step5"] = {
             "agents": {nid: {"name": tool.names[nid], "events": a.events, "tests": a.tests, "brief": a.brief,
@@ -214,21 +229,30 @@ class Run:
                             "accepted_cost_usd": sum(coord.costs_mid.get(i, 0) for i in review.accepted)},
             "plan_before_stress": {k: v.model_dump(exclude_none=True) for k, v in plan.items()},
             "combined": {k: v for k, v in today_sum.items() if k != "raw"},
+            "glimmer_triage": triage,
         }
         self.step(5, "done", f"{len(plan)} fixes accepted, {len(review.rejected)} rejected")
 
         # step 6: stress futures chosen by the coordinator
         self.step(6, "running", "Stress-testing the plan")
+        # the coordinator says which futures it expects to break the plan and why; the system then
+        # tests every future anyway (they are cheap, deterministic runs), so a missed one still counts
+        picked = [dict(f, picked=True) for f in review.futures]
+        futures_all = picked + [{"id": fid, "picked": False, "why": "not picked by the coordinator; the system "
+                                 "tests every future"} for fid in FUTURES if fid != "today"
+                                and fid not in {f["id"] for f in picked}]
         stress = []
-        for f in review.futures:
+        for f in futures_all:
             fid = f["id"]
             s, breaks = find_breaks(tool, plan, fid, today_sum)
-            entry = {"future": fid, "label": FUTURES[fid].label, "why": f["why"],
+            entry = {"future": fid, "label": FUTURES[fid].label, "why": f["why"], "picked": f["picked"],
                      "first": {k: v for k, v in s.items() if k != "raw"}, "breaks": breaks, "revisions": []}
             self.emit({"type": "stress", "future": fid, "breaks": len(breaks)})
             culprits = list(dict.fromkeys(b["culprit"] for b in breaks if b["culprit"] in agents))[:3]
             for c in culprits:
-                problem = " ".join(b["problem"] for b in breaks if b["culprit"] == c)
+                left = budget - sum(v for k, v in plan_cost_mid(plan, costs_all).items() if k != c)
+                problem = (" ".join(b["problem"] for b in breaks if b["culprit"] == c) +
+                           f" Budget left for this corner's fix: ${left:,.0f} (midpoint cost).")
                 others = {k: v for k, v in plan.items() if k != c}
                 try:
                     d = agents[c].revise(fid, problem, others)
@@ -243,6 +267,18 @@ class Run:
                 entry["revisions"].append({"node": c, "from": old.model_dump(exclude_none=True) if old else None,
                                            "to": plan[c].model_dump(exclude_none=True) if c in plan else None,
                                            "headline": d.headline, "reason": d.reason})
+            # a revision must not break the budget: the corner with the fewest people hit waits
+            # (the revised corner included), so the plan stays in harm order
+            spent = plan_cost_mid(plan, costs_all)
+            entry["budget_drops"] = []
+            while sum(spent.values()) > budget * 1.0001 and plan:
+                k = min(plan, key=lambda i: (crashes.get(i, {}).get("people_hit", 0), -spent[i]))
+                entry["budget_drops"].append({"node": k, "cost_mid": spent[k],
+                                              "people_hit": crashes.get(k, {}).get("people_hit", 0),
+                                              "reason": f"the revision raised the plan to ${sum(spent.values()):,.0f}; "
+                                                        f"{tool.names[k]} has the fewest people hit, so it waits"})
+                plan.pop(k)
+                spent.pop(k)
             if culprits:
                 today_sum = plan_summary(tool, plan, "today", count=False)
                 s2, breaks2 = find_breaks(tool, plan, fid, today_sum)
@@ -252,24 +288,37 @@ class Run:
             else:
                 entry["holds"] = not breaks
             stress.append(entry)
+        # money freed by a budget drop goes back down the harm-ordered list: an agent's tested fix that
+        # was rejected only for budget joins if it fits and breaks no future
+        backfill = []
+        waiting = {d["node"] for e in stress for d in e.get("budget_drops", [])}
+        for k in sorted((r["id"] for r in review.rejected), key=lambda i: -crashes.get(i, {}).get("people_hit", 0)):
+            a = agents.get(k)
+            if k in plan or k in waiting or not a or not a.decision or a.decision.decision != "keep":
+                continue
+            trial = {**plan, k: parse_changes(a.decision.changes)}
+            cost = sum(plan_cost_mid(trial, costs_all).values())
+            if cost > budget * 1.0001:
+                continue
+            trial_today = plan_summary(tool, trial, "today", count=False)
+            if any(find_breaks(tool, trial, f["id"], trial_today)[1] for f in futures_all):
+                continue
+            plan, today_sum = trial, trial_today
+            backfill.append({"node": k, "people_hit": crashes.get(k, {}).get("people_hit", 0), "plan_cost_mid": cost})
         final_checks = []
-        for f in review.futures:
+        for f in futures_all:
             s, br = find_breaks(tool, plan, f["id"], today_sum)
             final_checks.append({"future": f["id"], "label": FUTURES[f["id"]].label, "holds": not br,
                                  "risk": s["risk"], "risk_before": s["risk_before"],
                                  "added_car_delay_share": s["added_car_delay_share"], "breaks": br})
         run["step6"] = {"futures": {k: future_to_dict(v) for k, v in FUTURES.items()},
-                        "stress": stress, "final_checks": final_checks}
+                        "stress": stress, "final_checks": final_checks, "backfill": backfill}
         self.step(6, "done", f"{sum(1 for s in stress if s['breaks'])} future(s) broke the plan")
 
         # step 7: the brief
         self.step(7, "running", "Pricing the plan with cited sources")
         kinds = sorted({k for ch in plan.values() for k in COSTS.change_kinds(ch.model_dump())})
-        try:
-            costs = COSTS.lookup(client, kinds)
-        except (MetaError, json.JSONDecodeError, KeyError) as e:
-            costs = COSTS.lookup(None, kinds)
-            self.emit({"type": "warn", "msg": f"cost search failed, using cache: {e}"})
+        costs = {k: costs_all[k] for k in kinds if k in costs_all}  # the same prices the budget was checked with
         final = plan_summary(tool, plan, "today", count=False)
         raw, base = final["raw"]["nodes"], tool.today["nodes"]
         items = []
@@ -285,10 +334,18 @@ class Run:
                           "serious_before": base[nid]["serious_ph"], "serious_after": raw[nid]["serious_ph"],
                           "car_delay_added_s": round(raw[nid]["veh_delay_s_per_veh"] - base[nid]["veh_delay_s_per_veh"], 1),
                           "cost_low": lo, "cost_high": hi, "cost_kinds": ks,
-                          "risk_cut_per_10k": round(gain / max((lo + hi) / 2, 1) * 1e4, 3)})
-        items.sort(key=lambda r: -r["risk_cut_per_10k"])
+                          "risk_cut_per_10k": round(gain / max((lo + hi) / 2, 1) * 1e4, 3),
+                          "people_hit": crashes.get(nid, {}).get("people_hit", 0),
+                          "killed": crashes.get(nid, {}).get("killed", 0)})
+        # build order: real harm first (people hit), then the bigger simulated cut
+        items.sort(key=lambda r: (-r["people_hit"], -(r["risk_before"] - r["risk_after"])))
         for i, it in enumerate(items, 1):
             it["priority"] = i
+            it["wave"] = 1 if i <= BUILD_FIRST else 2
+            cut = 1 - it["near_misses_after"] / it["near_misses_before"] if it["near_misses_before"] else 0
+            it["success_rule"] = {"simulated_cut_pct": round(100 * cut, 1),
+                                  "expand_if_camera_cut_pct_at_least": round(100 * cut * SUCCESS_SHARE, 1),
+                                  "within_weeks": SUCCESS_WEEKS}
         watcher = GW.run_watcher(f"Corner: 7 Av & W 45 St (Times Square). Change installed: "
                                  f"{'; '.join(next((it['changes'] for it in items if it['id'] == 'w45'), ['none yet']))}.")
         run["step7"] = {
@@ -297,7 +354,12 @@ class Run:
                        "risk_before": final["risk_before"], "risk_after": final["risk"],
                        "serious_before": tool.today["totals"]["serious_ph"], "serious_after": final["raw"]["totals"]["serious_ph"],
                        "added_car_delay_h": final["added_car_delay_h"], "added_car_delay_share": final["added_car_delay_share"],
-                       "cost_low": sum(i["cost_low"] for i in items), "cost_high": sum(i["cost_high"] for i in items)},
+                       "cost_low": sum(i["cost_low"] for i in items), "cost_high": sum(i["cost_high"] for i in items),
+                       "cost_mid": sum((i["cost_low"] + i["cost_high"]) / 2 for i in items), "budget_usd": budget,
+                       "wave1_cost_mid": sum((i["cost_low"] + i["cost_high"]) / 2 for i in items if i["wave"] == 1)},
+            "rules": {"build_first": BUILD_FIRST, "order": "people hit 2023-26 (real), then simulated cut",
+                      "success": f"expand when camera close calls at a built corner fall by at least "
+                                 f"{SUCCESS_SHARE:.0%} of its simulated cut within {SUCCESS_WEEKS} weeks"},
             "after_plan_nodes": raw,
             "plan_traces": {nid: SIM.trace_node(inputs, nid, plan, seconds=180.0) for nid in plan},
             "watcher": watcher,

@@ -1,110 +1,109 @@
 {
- "run": "20261104-115932",
- "budget_corridor_evaluations": 111,
+ "run": "20261104-152037",
+ "budget_corridor_evaluations": 106,
  "risk_today": 1017.608,
+ "harm_weighted_risk_today": 1149.3,
+ "budget_usd": 100000.0,
  "corridor_delay_limit": 0.08,
  "methods": {
   "Muse Wonder agents": {
-   "objective": 890.34,
-   "risk": 890.336,
-   "added_delay_share": 0.0445,
+   "objective": 998.06,
+   "risk": 940.358,
+   "harm_weighted_risk": 998.06,
+   "near_misses_ph": 2262.33,
+   "added_delay_share": 0.0325,
+   "cost_mid_usd": 94600,
    "feasible": true,
-   "corners_changed": 13,
-   "risk_cut_pct": 12.5,
+   "corners_changed": 9,
+   "corners_made_worse_today": [],
+   "futures_broken": [],
+   "risk_cut_pct": 7.6,
+   "harm_weighted_cut_pct": 13.2,
    "under_futures": {
     "ban_ignored": {
-     "risk": 890.336,
+     "risk": 949.391,
      "risk_no_plan": 1017.608,
      "feasible": true
     },
     "show_out": {
-     "risk": 1259.803,
+     "risk": 1303.492,
      "risk_no_plan": 1394.03,
      "feasible": true
     },
     "rain_night": {
-     "risk": 1682.665,
+     "risk": 1702.944,
      "risk_no_plan": 1808.117,
      "feasible": true
     },
     "holiday": {
-     "risk": 1591.042,
+     "risk": 1626.02,
      "risk_no_plan": 1751.824,
      "feasible": true
+    },
+    "bus_lane": {
+     "risk": 1058.167,
+     "risk_no_plan": 1140.145,
+     "feasible": false
     }
    },
    "plan": {
-    "w42": {
+    "w34": {
      "lpi_s": 7.0,
      "hardened_centerline": true,
      "daylighting": true
     },
-    "w59": {
-     "lpi_s": 7.0,
-     "hardened_centerline": false,
+    "w33": {
      "daylighting": true,
-     "split_phase": false
+     "split_phase": true
     },
-    "w52": {
-     "lpi_s": 7.0,
-     "hardened_centerline": false,
-     "daylighting": true,
-     "split_phase": false
-    },
-    "w46": {
+    "w42": {
+     "lpi_s": 10.0,
+     "hardened_centerline": true,
      "daylighting": true
     },
-    "w34": {
-     "lpi_s": 7.0,
-     "hardened_centerline": false,
+    "w45": {
+     "daylighting": true
+    },
+    "w44": {
      "daylighting": true,
-     "split_phase": false,
      "cycle_s": 60.0
     },
-    "w55": {
-     "daylighting": true
+    "w53": {
+     "daylighting": true,
+     "split_phase": true
     },
-    "w41": {
+    "w35": {
      "daylighting": true
     },
     "w43": {
-     "lpi_s": 12.0,
-     "turn_ban": "none",
-     "hardened_centerline": true,
-     "daylighting": true,
-     "split_phase": false
-    },
-    "w45": {
-     "lpi_s": 12.0,
-     "hardened_centerline": true,
      "daylighting": true
     },
     "w40": {
-     "daylighting": true
-    },
-    "w39": {
-     "daylighting": true
-    },
-    "w38": {
-     "daylighting": true
-    },
-    "w35": {
      "daylighting": true,
-     "split_phase": true,
-     "cycle_s": 60.0
+     "cycle_s": 60.0,
+     "ave_share": 0.72
     }
    }
   },
   "Random search": {
-   "objective": 994.26,
+   "objective": 1107.91,
    "risk": 994.262,
+   "harm_weighted_risk": 1107.91,
+   "near_misses_ph": 2382.98,
    "added_delay_share": 0.0117,
+   "cost_mid_usd": 34850,
    "feasible": true,
    "corners_changed": 4,
+   "corners_made_worse_today": [],
+   "futures_broken": [
+    "holiday",
+    "rain_night"
+   ],
    "risk_cut_pct": 2.3,
+   "harm_weighted_cut_pct": 3.6,
    "under_futures": {
     "ban_ignored": {
-     "risk": 994.262,
+     "risk": 994.363,
      "risk_no_plan": 1017.608,
      "feasible": true
     },
@@ -121,6 +120,11 @@
     "holiday": {
      "risk": 1715.807,
      "risk_no_plan": 1751.824,
+     "feasible": true
+    },
+    "bus_lane": {
+     "risk": 1113.277,
+     "risk_no_plan": 1140.145,
      "feasible": true
     }
    },
@@ -143,88 +147,102 @@
    }
   },
   "Greedy, one change at a time": {
-   "objective": 909.23,
-   "risk": 908.775,
-   "added_delay_share": 0.0811,
-   "feasible": false,
-   "corners_changed": 9,
-   "risk_cut_pct": 10.7,
+   "objective": 949.4,
+   "risk": 939.627,
+   "harm_weighted_risk": 949.4,
+   "near_misses_ph": 2246.67,
+   "added_delay_share": 0.0628,
+   "cost_mid_usd": 99950,
+   "feasible": true,
+   "corners_changed": 7,
+   "corners_made_worse_today": [
+    "w31",
+    "w40",
+    "w41",
+    "w43",
+    "w51"
+   ],
+   "futures_broken": [
+    "ban_ignored",
+    "bus_lane",
+    "holiday",
+    "rain_night",
+    "show_out"
+   ],
+   "risk_cut_pct": 7.7,
+   "harm_weighted_cut_pct": 17.4,
    "under_futures": {
     "ban_ignored": {
-     "risk": 909.018,
+     "risk": 943.855,
      "risk_no_plan": 1017.608,
-     "feasible": false
+     "feasible": true
     },
     "show_out": {
-     "risk": 1281.025,
+     "risk": 1324.842,
      "risk_no_plan": 1394.03,
      "feasible": true
     },
     "rain_night": {
-     "risk": 1691.002,
+     "risk": 1711.391,
      "risk_no_plan": 1808.117,
-     "feasible": false
+     "feasible": true
     },
     "holiday": {
-     "risk": 1618.067,
+     "risk": 1665.743,
      "risk_no_plan": 1751.824,
+     "feasible": true
+    },
+    "bus_lane": {
+     "risk": 1054.576,
+     "risk_no_plan": 1140.145,
      "feasible": false
     }
    },
    "plan": {
+    "w34": {
+     "lpi_s": 4.0,
+     "turn_ban": "left",
+     "daylighting": true
+    },
+    "w33": {
+     "lpi_s": 10.0,
+     "turn_ban": "right",
+     "daylighting": true,
+     "split_phase": true,
+     "cycle_s": 110.0,
+     "ave_share": 0.68
+    },
     "w42": {
      "lpi_s": 7.0,
+     "turn_ban": "both",
+     "hardened_centerline": true,
+     "daylighting": true
+    },
+    "w45": {
+     "lpi_s": 10.0,
+     "turn_ban": "right",
      "hardened_centerline": true,
      "daylighting": true,
-     "cycle_s": 70.0
+     "split_phase": true
     },
     "w44": {
      "lpi_s": 10.0,
+     "turn_ban": "left",
      "hardened_centerline": true,
      "daylighting": true,
      "split_phase": true,
      "cycle_s": 70.0,
      "ave_share": 0.68
     },
-    "w47": {
-     "hardened_centerline": true,
-     "daylighting": true,
-     "split_phase": true
-    },
-    "w32": {
-     "hardened_centerline": true,
-     "daylighting": true,
-     "ave_share": 0.68
-    },
-    "w45": {
-     "lpi_s": 10.0,
-     "hardened_centerline": true,
-     "daylighting": true,
-     "split_phase": true
-    },
-    "w46": {
-     "lpi_s": 10.0,
-     "hardened_centerline": true,
-     "daylighting": true,
-     "split_phase": true,
-     "cycle_s": 110.0
-    },
-    "w34": {
+    "w53": {
      "lpi_s": 4.0,
-     "turn_ban": "left",
-     "daylighting": true
+     "turn_ban": "right"
     },
-    "w43": {
-     "hardened_centerline": true,
-     "daylighting": true
-    },
-    "w57": {
-     "hardened_centerline": true,
-     "daylighting": true,
-     "cycle_s": 70.0
+    "w35": {
+     "lpi_s": 10.0
     }
    }
   }
  },
- "note": "Same simulator, seeds and objective for all three; random and greedy get exactly as many corridor simulations as the agents used. Lower objective is better."
+ "note": "Same simulator, seeds, objective, budget and unit costs for all three; random and greedy get exactly as many corridor simulations as the agents used. Lower objective is better."
 }

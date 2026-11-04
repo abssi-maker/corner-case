@@ -38,7 +38,11 @@ corner agent a brief: priority (high/medium/low), how many simulator tests it ma
 medium 2-3, low 1-2: spend effort where risk is), a one-sentence stretch target with a number
 (e.g. "aim to cut simulated risk by a third"), and a focus (which conflict to
 attack, and what to avoid, e.g. "left turns onto the eastbound street; do not divert turns into
-W 41 St, which is already high"). Use both the simulated risk and the real crash history.
+W 41 St, which is already high"). Priority follows the real crash history (people hit 2023-26):
+the simulator was checked against crashes it never saw and ranks corners only weakly, so it is
+used to choose the fix at a corner, not which corners matter. Each row also has a first guess
+from the Muse Glimmer corner-triage model (a fast screen, it learned the simulator); mention it
+in the focus as a guess to beat, not an instruction.
 Targets guide the agents; they are not gates. The hard limits are fixed by the system and you
 must not tighten them: at most 8 s added car delay per vehicle at a corner, no risk pushed onto other
 corners. Agents keep their best option within those limits even if it misses the target.
@@ -74,13 +78,19 @@ REVIEW_SCHEMA = {
 SYSTEM = f"""You coordinate the street-safety agents of 7th Avenue (W 30th St to Central Park South)
 for a city traffic-safety engineer who must decide what to fund this quarter. Each corner agent
 proposed a change and tested it alone; each proposal has a cited cost estimate.
+The engineer must defend the list to a Community Board, so corners are chosen by real harm:
+the simulator ranks corners only weakly against real crashes (rank correlation +0.30), while the
+simulator is what tests which fix works at a corner and what it does to the next block.
 Your job:
-1. Accept the set of fixes that cuts the most simulated risk within the quarterly budget (the
-   midpoint costs of accepted fixes must not exceed it) and keeps the corridor's added car delay
-   under {CORRIDOR_DELAY_LIMIT:.0%} of today's. Test combinations with simulate_plan (at most 3 calls):
-   fixes interact through diverted turns.
-2. Reject every other proposal with a specific reason: it pushes risk onto another corner, it does
-   not fit the budget (say what it would cost and what it buys), or it buys too little risk cut.
+1. Go down the proposals in order of people hit 2023-26 (most first; they are sent in that order)
+   and accept each corner's tested fix while the quarterly budget allows (the midpoint costs of
+   accepted fixes must not exceed it) and the corridor's added car delay stays under
+   {CORRIDOR_DELAY_LIMIT:.0%} of today's. A corner may be skipped only if its fix pushes risk onto
+   another corner (risk_pushed_elsewhere or spillover), cuts its own simulated risk by less than
+   5%, or does not fit what is left of the budget; then keep going down the list. Test the
+   combination with simulate_plan (at most 3 calls): fixes interact through diverted turns.
+2. Reject every other proposal with a specific reason in plain words an engineer can repeat:
+   which rule it failed, with its numbers (people hit, cost, cut, which corner it pushes risk onto).
 3. Choose 3 or 4 stress futures (from: {", ".join(STRESS_IDS)}) most likely to break THIS plan,
    and say why for each.
 Numbers are simulated near-misses, never injuries. Reply with the JSON review."""
@@ -94,7 +104,7 @@ class Brief(BaseModel):
     focus: str
 
 
-def corridor_table(tool: SimTool, crashes: dict) -> list[dict]:
+def corridor_table(tool: SimTool, crashes: dict, triage: dict | None = None) -> list[dict]:
     rows = []
     for n in tool.inputs:
         r = tool.today["nodes"][n.id]
@@ -103,6 +113,9 @@ def corridor_table(tool: SimTool, crashes: dict) -> list[dict]:
                      "worst_conflict": worst, "people_hit_2023_26": crashes.get(n.id, {}).get("people_hit", 0),
                      "killed": crashes.get(n.id, {}).get("killed", 0), "walk_head_start_s": float(n.lpi_s),
                      "cross_street": "two-way" if len(n.cross_dirs) == 2 else n.cross_dirs[0]})
+        g = (triage or {}).get(n.id, {}).get("glimmer")
+        if g:
+            rows[-1]["glimmer_first_guess"] = {k: g[k] for k in ("risk_band", "best_single_change")}
     return rows
 
 
@@ -154,9 +167,9 @@ class Coordinator:
         self.events.append(ev)
         self.emit({"type": "coordinator", **ev})
 
-    def plan(self, crashes: dict) -> dict[str, dict]:
+    def plan(self, crashes: dict, triage: dict | None = None) -> dict[str, dict]:
         """Lead agent: brief every corner agent before it starts (objective, focus, test budget)."""
-        rows = corridor_table(self.tool, crashes)
+        rows = corridor_table(self.tool, crashes, triage)
         self._event("planning", corners=len(rows))
         body = self.c.respond("wonder", [{"role": "user", "content": "Corridor today (simulated 5-6 pm) and real "
                               "pedestrian crash history:\n" + json.dumps(rows) + "\nWrite the briefs."}],
@@ -180,21 +193,26 @@ class Coordinator:
         self._event("briefed", briefs={k: {kk: v[kk] for kk in ("priority", "tests")} for k, v in briefs.items()})
         return briefs
 
-    def review(self, agents: dict, costs: dict, budget: float = FUND_USD) -> tuple[Review, dict[str, Changes]]:
+    def review(self, agents: dict, costs: dict, budget: float = FUND_USD,
+               crashes: dict | None = None) -> tuple[Review, dict[str, Changes]]:
         from .costs import change_kinds
         rows = proposal_table(agents, self.tool)
         for r in rows:
+            r["people_hit_2023_26"] = (crashes or {}).get(r["id"], {}).get("people_hit", 0)
+            r["risk_cut_pct"] = (round(100 * (r["risk_before"] - r["risk_after"]) / r["risk_before"], 1)
+                                 if r["risk_before"] else None)
             ks = change_kinds(parse_changes(agents[r["id"]].decision.changes).model_dump())
             lo = sum(costs[k]["low_usd"] for k in ks if k in costs)
             hi = sum(costs[k]["high_usd"] for k in ks if k in costs)
             r["cost_usd_mid"] = round((lo + hi) / 2)
             r["cost_usd_range"] = [round(lo), round(hi)]
+        rows.sort(key=lambda r: (-r["people_hit_2023_26"], -(r["risk_before"] or 0)))
         self.costs_mid = {r["id"]: r["cost_usd_mid"] for r in rows}
         self.budget = budget
         proposals = {r["id"]: parse_changes(agents[r["id"]].decision.changes) for r in rows}
         combined = plan_summary(self.tool, proposals) if proposals else None
         self._event("reviewing", proposals=len(rows))
-        msg = (f"Quarterly budget: ${budget:,.0f} (midpoint costs). Corner proposals (each tested alone, "
+        msg = (f"Quarterly budget: ${budget:,.0f} (midpoint costs). Corner proposals, most people hit first (each tested alone, "
                "simulated weekday 5-6 pm):\n" + json.dumps(rows) +
                "\n\nAll proposals combined: " + json.dumps({k: v for k, v in (combined or {}).items() if k != "raw"}) +
                f"\nAll proposals together cost ${sum(self.costs_mid.values()):,.0f}. Review them.")
