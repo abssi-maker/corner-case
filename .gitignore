@@ -16,3 +16,5 @@ CLAUDE.md
 design/
 docs/
 data/finetune/*.jsonl
+# Muse Code session worktrees
+.muse/

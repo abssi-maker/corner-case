@@ -9,14 +9,14 @@ Park South**, before spending money:
 
 1. **Where people get hurt**: every pedestrian crash since 2023 from NYC crash records, located by lat/lon.
 2. **Watch the corner**: Meta **SAM 3.1** tracks every person and car in real street video; **Muse Spark 1.3** writes timestamped notes, and SAM cross-checks each one.
-3. **Rebuild it**: a deterministic corridor simulator (signals, LPIs, turning cars, walkers) measures near-misses as post-encroachment time.
-4. **Can we trust it?**: the simulator, which never sees a crash, is scored against held-out 2025–26 crashes, next to simple baselines.
-5. **Agents try fixes**: our fine-tuned **Muse Glimmer** (open weights on Modal) screens all 30 corners in 11 s and gives each agent a first guess to beat; one **Muse Wonder** agent per intersection proposes changes, runs them in the simulator, and keeps or drops them; a Wonder coordinator rejects fixes that push risk to the next block.
+3. **Rebuild it**: a deterministic street model of all 30 corners (signals, walk head starts, turning cars, walkers) counts simulated close calls: a walker and a car at the same spot less than 1.5 s apart (post-encroachment time).
+4. **Can we trust it?**: the street model, which never sees a crash, is scored against 2025–26 crashes it never saw, next to simple baselines.
+5. **Agents try fixes**: our fine-tuned **Muse Glimmer** (open weights on Modal) screens all 30 corners in 11 s and gives each agent a first guess to beat; one **Muse Wonder** agent per intersection proposes changes, runs them in the street model, and keeps or drops them; a Wonder coordinator rejects fixes that push risk to the next block.
 6. **Stress the future**: the coordinator picks futures likely to break the plan (holiday crowds, shows letting out, rain at night, a bus lane, drivers ignoring turn bans); broken fixes go back to their agent for revision.
 7. **The plan**: a printable brief: what to fund first, simulated benefit, added car delay, rough costs with sources found by **Muse Spark web search**, and an **after it's built** watcher (**Muse Glimmer**, open weights on Modal) that counts close calls on camera so the city learns in weeks, not years.
 
 Every number on screen carries a **REAL**, **MEASURED**, **OPEN DATA**, **ASSUMPTION** or **SIMULATED**
-badge with its source. Simulated near-misses are never presented as injuries.
+badge with its source. Simulated close calls are never presented as injuries.
 
 ## 60-second quick start (no API key needed)
 
@@ -76,22 +76,22 @@ Or press **Run live** in the UI (progress streams over SSE). Model IDs are resol
 
 All numbers below come from the committed files in `evidence/` and the recorded run `runs/20261104-152037.json`.
 
-### Trust check: does the simulator rank corners the way real crashes did?
+### Trust check: does the street model rank corners the way real crashes did?
 
-The simulator never sees a crash. It is scored against the **82 pedestrian crashes from 2025-01-01 to 2026-10-31**, snapped to the 30 corners within 40 m. The primary metric (severity-weighted simulated near-misses per hour) was fixed before scoring, and no parameter was tuned on crashes.
+The street model never sees a crash. It is scored against the **82 pedestrian crashes from 2025-01-01 to 2026-10-31**, snapped to the 30 corners within 40 m. The primary metric (severity-weighted simulated close calls per hour) was fixed before scoring, and no parameter was tuned on crashes.
 
 | Method | Spearman ρ | 95% CI | one-sided p | top-5 overlap | top-10 overlap |
 |---|---|---|---|---|---|
-| Simulator: severity-weighted near-misses per hour | +0.30 | -0.07 to +0.59 | 0.0586 | 1 of 5 | 6 of 10 |
+| Street model: severity-weighted simulated close calls per hour | +0.30 | -0.07 to +0.59 | 0.0586 | 1 of 5 | 6 of 10 |
 | traffic volume alone | +0.42 | +0.01 to +0.75 | 0.013 | 2 of 5 | 8 of 10 |
 | walker exposure alone (subway + demand + counts) | +0.27 | -0.07 to +0.56 | 0.0774 | 1 of 5 | 6 of 10 |
 | crash history 2023-24 | +0.30 | -0.04 to +0.57 | 0.055 | 1 of 5 | 8 of 10 |
 
-**Reading:** a weak but real signal. The simulator ranks corners about as well as the previous two years of crash history, and less well than traffic volume alone; the confidence interval includes zero. Without the one video-measured input (walking speed at W 45 St) ρ is +0.30 with 2 of 5 in the top 5. Corner Case therefore presents its plan as **what to pilot and measure**, not as a forecast, and the UI carries that caveat from step 4 to the brief.
+**Reading:** a weak but real signal. The street model ranks corners about as well as the previous two years of crash history, and less well than traffic volume alone; the confidence interval includes zero. Without the one video-measured input (walking speed at W 45 St) ρ is +0.30 with 2 of 5 in the top 5. Corner Case therefore presents its plan as **what to pilot and measure**, not as a forecast, and the UI carries that caveat from step 4 to the brief.
 
 ### Agent value: is the Muse Wonder team better than simple search at the same budget?
 
-Same simulator, seeds, objective (harm-weighted corridor risk, with a steep penalty above the 8% car-delay limit), $100,000 budget and unit costs; random search and greedy one-change-at-a-time get exactly as many corridor simulations as the agents used (`evidence/agent_value.json`).
+Same street model, seeds, objective (harm-weighted corridor risk, with a steep penalty above the 8% car-delay limit), $100,000 budget and unit costs; random search and greedy one-change-at-a-time get exactly as many corridor simulations as the agents used (`evidence/agent_value.json`).
 
 | Method (same budget: 106 corridor simulations) | Harm-weighted risk cut | Risk cut | Added car delay | Corners changed | Cost (mid) | Corners made worse today | Stress futures broken (of 5) |
 |---|---|---|---|---|---|---|---|
@@ -108,7 +108,7 @@ Same simulator, seeds, objective (harm-weighted corridor risk, with a steep pena
 - 18 proposals rejected with reasons; fixes at 9 corners kept within the $100,000 quarterly budget (the budget is a labelled assumption).
 - Stress futures: 30% ignore the new rules (holds), Broadway shows let out (**broke** at W 49 St: a 12 s head start made it worse than doing nothing; revised to daylighting + separate turn phase), rain at night (**broke** at W 35 St: a 120 s signal cycle made it worse; revised to daylighting only), holiday crowds (holds), new 7 Av bus lane (not picked by the coordinator, tested anyway; no corner made worse, but added car delay reaches 11.4%, above the 8% limit, under that future).
 - The W 49 St revision pushed the plan to $107,850, so W 49 St (fewest people hit) was dropped and W 40 St added back.
-- Plan: 9 corners; simulated near-misses 2,430 → 2,262 per hour, serious 671 → 573, added car delay +3.3%, cost $26,900–$162,300, mid $94,600 (Muse Spark web search, cited per item). First wave (W 34, W 33, W 42 St): $39,650 mid.
+- Plan: 9 corners; simulated close calls 2,430 → 2,262 per hour, serious 671 → 573, added car delay +3.3%, cost $26,900–$162,300, mid $94,600 (Muse Spark web search, cited per item). First wave (W 34, W 33, W 42 St): $39,650 mid.
 - Run cost $1.73 in 77 Meta model calls; the vision pipeline cost $0.58.
 
 ### What SAM 3.1 measured on the W 45 St clip
@@ -120,19 +120,19 @@ Same simulator, seeds, objective (harm-weighted corridor risk, with a steep pena
 
 ### Muse Glimmer fine-tune: does training help on corners it never saw?
 
-QLoRA (Unsloth, 4-bit, r=16) on `unsloth/Muse-Glimmer-30B-unsloth-bnb-4bit`: 3,000 simulator-generated corner scenarios, one epoch, 920 s on one H100, about $1.63 of Modal time. Served in BF16 from `meta-models/Muse-Glimmer-30B` with vLLM and the LoRA adapter on Modal, scaling to zero when idle. Full details and raw predictions: `evidence/finetune.json`, `data/finetune/eval.json`.
+QLoRA (Unsloth, 4-bit, r=16) on `unsloth/Muse-Glimmer-30B-unsloth-bnb-4bit`: 3,000 corner scenarios generated by the street model, one epoch, 920 s on one H100, about $1.63 of Modal time. Served in BF16 from `meta-models/Muse-Glimmer-30B` with vLLM and the LoRA adapter on Modal, scaling to zero when idle. Full details and raw predictions: `evidence/finetune.json`, `data/finetune/eval.json`.
 
-Test set: 300 scenarios at six corners excluded from training (W 32, 37, 42, 47, 52, 57 St). Labels are the simulator's own answers.
+Test set: 300 scenarios at six corners excluded from training (W 32, 37, 42, 47, 52, 57 St). Labels are the street model's own answers.
 
 | Metric | Base Glimmer (3 solved examples) | Fine-tuned Glimmer | Rule: "always daylighting, medium risk" |
 |---|---|---|---|
-| Picks the simulator's best change | 21.7% | **51.3%** | 48.3% |
+| Picks the street model's best change | 21.7% | **51.3%** | 48.3% |
 | Correct risk band | 52.7% | **78.3%** | 26.7% |
-| Near-miss error (MAE, per hour) | 41.6 | **24.7** | 64.2 |
+| Simulated close-call error (MAE, per hour) | 41.6 | **24.7** | 64.2 |
 | Valid JSON | 87.7% | **100%** | 100% |
 | Latency p95 | 25.0 s | **2.0 s** | n/a |
 
-**Reading:** fine-tuning beats base Glimmer on every metric (best change +29.7 points, 95% CI +18.0 to +41.7, resampling corners). On best change it is only +3.0 points above the always-daylighting rule (95% CI −0.7 to +7.3, not significant): it mostly recommends daylighting (222 of 300). Its real gain over the rule is estimating risk, which is what the screen in step 5 uses. Every Wonder agent then tests its guess in the simulator before anything is chosen.
+**Reading:** fine-tuning beats base Glimmer on every metric (best change +29.7 points, 95% CI +18.0 to +41.7, resampling corners). On best change it is only +3.0 points above the always-daylighting rule (95% CI −0.7 to +7.3, not significant): it mostly recommends daylighting (222 of 300). Its real gain over the rule is estimating risk, which is what the screen in step 5 uses. Every Wonder agent then tests its guess in the street model before anything is chosen.
 
 
 ## What each Meta model does
@@ -141,8 +141,8 @@ Test set: 300 scenarios at six corners excluded from training (W 32, 37, 42, 47,
 |---|---|---|
 | SAM 3.1 | Image mode finds every person, car, bus, taxi and the asphalt road on 1 s keyframes; new detections seed box-prompt video tracks in batches of 16; decoded masks give foot points, "walker on the road" and close calls | Used the way Meta's docs describe: one noun phrase per request, image mode for crowds (video tracks at most 16 objects per frame), box prompts on later frames to catch arrivals, confidences and one-bit masks |
 | Muse Spark 1.3 | Watches the clip (burned-in clock for timestamps) and notes behaviour boxes cannot show; every note is checked against SAM tracks. Also finds unit costs by web search with citations | Native video understanding; web search with citations |
-| Muse Wonder | A lead coordinator briefs 30 corner agents (priority, test budget scaled to risk, stretch target, focus); agents call the simulator as a function tool in parallel, read results, keep or drop; the coordinator selects the best set within budget, rejects the rest with reasons, picks stress futures and sends broken fixes back (same conversation via `previous_response_id`) | Orchestrator-worker with explicit delegation; every structured output validated (Pydantic + semantic checks, one repair turn); kept claims are re-simulated by the system; checkpoints, timeouts and one fresh retry per agent |
-| Muse Glimmer | Step 5: a LoRA fine-tuned on our simulator screens all 30 corners in 11 s and gives each Wonder agent a first guess to beat. After a fix is built: reads per-interval close-call summaries from the camera and writes the weekly near-miss log and alerts | Open weights, so we could fine-tune it on our own data (`cornercase/finetune/`, `modal/glimmer_lora_train.py`) and control where it runs; served with vLLM + LoRA on Modal (`modal/glimmer_serve.py`), scale to zero |
+| Muse Wonder | A lead coordinator briefs 30 corner agents (priority, test budget scaled to risk, stretch target, focus); agents call the street model as a function tool in parallel, read results, keep or drop; the coordinator selects the best set within budget, rejects the rest with reasons, picks stress futures and sends broken fixes back (same conversation via `previous_response_id`) | Orchestrator-worker with explicit delegation; every structured output validated (Pydantic + semantic checks, one repair turn); kept claims are re-simulated by the system; checkpoints, timeouts and one fresh retry per agent |
+| Muse Glimmer | Step 5: a LoRA fine-tuned on our street model screens all 30 corners in 11 s and gives each Wonder agent a first guess to beat. After a fix is built: reads per-interval close-call summaries from the camera and writes the weekly close-call log and alerts | Open weights, so we could fine-tune it on our own data (`cornercase/finetune/`, `modal/glimmer_lora_train.py`) and control where it runs; served with vLLM + LoRA on Modal (`modal/glimmer_serve.py`), scale to zero |
 
 ## Limitations
 
@@ -152,9 +152,9 @@ Test set: 300 scenarios at six corners excluded from training (W 32, 37, 42, 47,
 - Traffic volume on 7th Ave comes from one DOT count (Times Square, 2022) assumed constant along the
   corridor; cross-street volumes are assumptions from lane counts. Every assumption is labelled in the UI.
 - About 3 held-out crashes per corner: every ranking metric is noisy; read the confidence intervals.
-- Near-misses are simulated post-encroachment times, not injuries. The plan is for choosing what to
+- Simulated close calls are post-encroachment times from the street model, not injuries. The plan is for choosing what to
   pilot and measure, not a forecast of injuries prevented.
-- The Glimmer LoRA learns the simulator, not real crashes. It predicts only 3 distinct changes
+- The Glimmer LoRA learns the street model, not real crashes. It predicts only 3 distinct changes
   (daylighting, 7 s and 10 s head starts), so rarer best changes are never suggested; one epoch, one
   seed, no hyperparameter search. The Wonder agents test every suggestion before it is kept.
 - The Glimmer endpoint on Modal has a ~150 s cold start after scaling to zero. Without it, the

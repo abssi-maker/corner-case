@@ -7,7 +7,7 @@ const STEPS = [
   { n: 1, label: "Where people get hurt", q: "Which corners on 7th Ave hurt the most people?" },
   { n: 2, label: "Watch the corner", q: "What actually happens at the corner?" },
   { n: 3, label: "Rebuild it", q: "Can we replay this corridor in a computer?" },
-  { n: 4, label: "Can we trust it?", q: "Does the simulator know where crashes really happen?" },
+  { n: 4, label: "Can we trust it?", q: "Does the street model know where crashes really happen?" },
   { n: 5, label: "Agents try fixes", q: "What should we change, corner by corner?" },
   { n: 6, label: "Stress the future", q: "Does the plan still hold when things change?" },
   { n: 7, label: "The plan", q: "What do we fund, and how will we know it worked?" },
@@ -36,7 +36,7 @@ const hit = (id) => node(id).people_hit || 0;
 const SOURCES = {
   real: "REAL: police crash records and city open data (street geometry, signals, counts). What actually happened.",
   meas: "MEASURED: measured from street video by Meta SAM 3.1 (one 15 s clip at W 45 St), checked against Muse Spark's notes.",
-  sim: "SIMULATED: output of the corridor simulator. Simulated near-misses are not injuries.",
+  sim: "SIMULATED: output of the street model. Simulated close calls are not injuries.",
   asm: "ASSUMPTION: a labelled guess, used where no data exists.",
 };
 function badge(kind, src) {
@@ -155,8 +155,7 @@ function go(n) {
   const u = new URL(location); u.searchParams.set("step", n); u.searchParams.set("run", S.run.id); history.replaceState(null, "", u);
 }
 function confidence() {
-  const sim = S.run.step4.with_measured_inputs.methods.find((m) => m.id === "simulator");
-  return `<div class="conf">Confidence: <b>weak</b> (step 4: ${sim.top5} of 5, ρ ${sim.spearman >= 0 ? "+" : ""}${sim.spearman.toFixed(2)}). Pilot, then measure.</div>`;
+  return `<div class="conf">Confidence: low (step 4). Try it on a few corners first, then measure.</div>`;
 }
 function stopAnim() { if (S.anim) { S.anim.stop(); S.anim = null; } }
 
@@ -186,15 +185,15 @@ function renderStrip(n) {
     col = (x) => (x.id === (r.default_corner || "w45") ? `<div class="blk meas">${fmt(sam.people_tracked)}<br>people</div>` : `<div class="tickdash"></div>`);
   } else if (n === 3) {
     const t = r.step3.today.nodes, mx = Math.max(...nodes.map((x) => t[x.id].near_miss_ph));
-    t2 = "Showing: simulated near-misses an hour"; t3 = badge("sim");
+    t2 = "Showing: simulated close calls an hour"; t3 = badge("sim");
     col = (x) => `<div class="bar sim" style="height:${(92 * t[x.id].near_miss_ph) / mx}%"></div>`;
   } else if (n === 4) {
     const tc = r.step4[S.trustMode], real = Object.fromEntries(tc.lists.real.map((x) => [x.id, x.crashes]));
     const sim = Object.fromEntries(tc.lists.simulator.map((x) => [x.id, x.value]));
     const mr = Math.max(...Object.values(real), 1), ms = Math.max(...Object.values(sim), 1);
     const rt = new Set(tc.lists.real.slice(0, 5).map((x) => x.id)), st = new Set(tc.lists.simulator.slice(0, 5).map((x) => x.id));
-    t2 = "Showing: where the simulator agrees with reality";
-    t3 = `<span>${badge("real")} held-out crashes</span><span>${badge("sim")} simulator</span><span><b>✓</b> in both top 5s</span>`;
+    t2 = "Showing: where the street model agrees with reality";
+    t3 = `<span>${badge("real")} crashes it never saw</span><span>${badge("sim")} street model</span><span><b>✓</b> in both top 5s</span>`;
     col = (x) => `<div class="bar real half" style="height:${(88 * (real[x.id] || 0)) / mr}%"></div><div class="bar sim half" style="height:${(88 * (sim[x.id] || 0)) / ms}%"></div>${rt.has(x.id) && st.has(x.id) ? `<span class="revmark" style="color:var(--ink);font-size:15px">✓</span>` : ""}`;
   } else if (n === 5) {
     const live = S.agentP < 1 ? agentStates(S.agentP) : null;
@@ -352,7 +351,7 @@ function step2() {
       </div></div>`,
     answer: `<div class="answer">${fmt(sam.close_calls)} <small>close calls</small></div>`,
     cap: `in 15 seconds at ${esc(short(c.name))}, with ${fmt(sam.people_in_roadway)} people standing on the road ${badge("meas")}`,
-    why: `A close call: a walker and a moving car within a car length. Measured from ordinary street video; the walking speed replaces a guess in the simulator.`,
+    why: `A close call: a walker and a moving car within a car length. Measured from ordinary street video; the walking speed replaces a guess in the street model.`,
     source: "Footage: “TimesSquare-NewYork-may25-2017”, Nesnad, Wikimedia Commons, CC BY-SA 4.0",
     mount: mountVideo,
   };
@@ -375,16 +374,16 @@ function step3() {
   return {
     visual: `<div class="simgrid">
       <canvas class="simc" id="simc" width="1656" height="1656" aria-label="Top-down simulation of ${esc(n.name)}"></canvas>
-      <div style="min-height:0"><div class="h2">What the simulator was given for ${esc(short(n.name))}</div>
+      <div style="min-height:0"><div class="h2">What the street model was given for ${esc(short(n.name))}</div>
         <p class="muted" style="margin:0 0 10px;font-size:16px">${cnt("measured")} measured from video · ${cnt("open-data")} from city data · ${cnt("assumption")} labelled assumptions · hover a badge for its source</p>
         <ul class="inputs">${rows.slice(0, 8).map((i) => `<li><span>${PRETTY[i.input][0]}</span><b>${PRETTY[i.input][1](i.v)}</b>${kindBadge(i.kind, i.source)}</li>`).join("")}</ul>
-        <div class="slegend"><span><i style="background:var(--ink);border-radius:50%"></i>walker</span><span><i style="background:#fff;border:1.5px solid var(--ink)"></i>car</span><span><i style="border:2.5px solid var(--risk);border-radius:50%"></i>near-miss</span><span><i style="background:#fff;border:1px solid var(--ink)"></i>WALK</span><span><i style="background:var(--risk)"></i>DON'T WALK</span></div>
+        <div class="slegend"><span><i style="background:var(--ink);border-radius:50%"></i>walker</span><span><i style="background:#fff;border:1.5px solid var(--ink)"></i>car</span><span><i style="border:2.5px solid var(--risk);border-radius:50%"></i>close call</span><span><i style="background:#fff;border:1px solid var(--ink)"></i>WALK</span><span><i style="background:var(--risk)"></i>DON'T WALK</span></div>
       </div></div>`,
     answer: `<div class="answer">${fmt(today.totals.near_miss_ph)}</div>`,
-    cap: `simulated near-misses an hour on the corridor, weekday 5–6 pm ${badge("sim", "corridor simulator: 1 hour × 3 seeds, common random numbers")}`,
-    why: `A near-miss is a walker and a car at the same spot less than 1.5 seconds apart: the simulator's version of a close call. Not an injury.`,
+    cap: `simulated close calls an hour on the corridor, weekday 5–6 pm ${badge("sim", "the street model of all 30 corners: 1 hour × 3 seeds, common random numbers")}`,
+    why: `A close call is a walker and a car at the same spot less than 1.5 seconds apart. Not an injury.`,
     rail: `<ul class="facts"><li><span>${esc(short(n.name))}</span><b>${fmt(r.near_miss_ph)} an hour ${badge("sim")}</b></li></ul>`,
-    source: "Inputs: NYC DOT Centerline, signal and LPI lists, counts; MTA ridership; SAM 3.1 measurements.",
+    source: "Inputs: NYC DOT Centerline, signal and walk head start lists, counts; MTA ridership; SAM 3.1 measurements.",
     mount() { S.anim = simAnim($("#simc"), st.traces[n.id], n); },
   };
 }
@@ -400,24 +399,25 @@ function step4() {
   const meth = tc.methods, mv = (id) => meth.find((m) => m.id === id);
   const s = mv("simulator");
   const rho = (x) => `${x >= 0 ? "+" : ""}${x.toFixed(2)}`;
+  const NAMES = { simulator: "Street model", volume: "Traffic volume alone", walkers: "Number of walkers alone", history: "Past crashes (2023–24)" };
   return {
     visual: `<div class="trust">
       <div class="slope">
-        <div><h3>Simulator's top 5 ${badge("sim", "severity-weighted simulated near-misses per hour (metric fixed before scoring)")}</h3><ol>${sim.map((x, i) => `<li><span class="rk sim">${i + 1}</span><span>${esc(short(x.name))}</span><span></span></li>`).join("")}</ol></div>
+        <div><h3>Street model's top 5 ${badge("sim", "severity-weighted simulated close calls per hour (metric fixed before scoring)")}</h3><ol>${sim.map((x, i) => `<li><span class="rk sim">${i + 1}</span><span>${esc(short(x.name))}</span><span></span></li>`).join("")}</ol></div>
         <div style="padding-top:44px"><svg viewBox="0 0 210 ${rowH * 5}" height="${rowH * 5}" preserveAspectRatio="none" aria-hidden="true">${lines}</svg></div>
         <div><h3>Real crashes it never saw, ${tc.held_out.from.slice(0, 4)}–${tc.held_out.to.slice(2, 4)} ${badge("real", `NYC crashes ${tc.held_out.from} to ${tc.held_out.to}, within ${tc.held_out.snap_m} m of each corner`)}</h3><ol>${real.map((x, i) => `<li><span class="rk real">${i + 1}</span><span>${esc(short(x.name))}</span><span class="num">${x.crashes} crashes</span></li>`).join("")}</ol></div>
       </div>
-      <div><div class="h3">How each way of ranking corners does (rank correlation with the held-out crashes, 95% interval)</div>
+      <div><div class="h3">How each way of ranking corners does (rank correlation with crashes it never saw, 95% range)</div>
       <div class="forest">
-        <div class="h">Method</div><div class="h" style="text-align:center">95% interval · the line is 0</div><div class="h" style="text-align:right">Top 5 found</div>
-        ${meth.map((m) => `<div>${esc(m.label.replace("Baseline: ", ""))} <b>${rho(m.spearman)}</b></div><div><div class="ci"><span class="w ${m.id === "simulator" ? "sim" : ""}" style="left:${X(m.ci95[0])};width:calc(${X(m.ci95[1])} - ${X(m.ci95[0])})"></span><span class="d ${m.id === "simulator" ? "sim" : ""}" style="left:${X(m.spearman)}"></span></div></div><div class="num" style="text-align:right">${m.top5} of 5</div>`).join("")}
+        <div class="h">Method</div><div class="h" style="text-align:center">95% range · the line is zero</div><div class="h" style="text-align:right">Top 5 found</div>
+        ${meth.map((m) => `<div>${esc(NAMES[m.id] || m.label.replace("Baseline: ", ""))} <b>${rho(m.spearman)}</b></div><div><div class="ci"><span class="w ${m.id === "simulator" ? "sim" : ""}" style="left:${X(m.ci95[0])};width:calc(${X(m.ci95[1])} - ${X(m.ci95[0])})"></span><span class="d ${m.id === "simulator" ? "sim" : ""}" style="left:${X(m.spearman)}"></span></div></div><div class="num" style="text-align:right">${m.top5} of 5</div>`).join("")}
       </div></div></div>`,
     answer: `<div class="answer verdict">Weak at ranking corners.</div>`,
-    cap: `${s.top5} of the 5 worst real corners found; rank correlation ${rho(s.spearman)} (${rho(s.ci95[0])} to ${rho(s.ci95[1])}) ${badge("sim", "Spearman rank correlation with held-out crashes; bootstrap over corners")}`,
-    why: `<b>So the plan ranks corners by people hit, and uses the simulator to choose the fix at each corner</b> and to check what it does to the next block. Past crashes rank no better (${rho(mv("history").spearman)}), but they are facts, not a model.`,
-    rail: `<ul class="facts"><li><span>The simulator never saw a crash. It is scored on the ${fmt(tc.held_out.crashes)} crashes it was not given.</span>${badge("real")}</li></ul>`,
-    extra: `<div class="toggle noprint" role="group" aria-label="Simulator inputs" data-src="With or without the walking speed measured from video"><button type="button" data-m="with_measured_inputs" class="${S.trustMode === "with_measured_inputs" ? "on" : ""}">With video</button><button type="button" data-m="without_measured_inputs" class="${S.trustMode === "without_measured_inputs" ? "on" : ""}">Without</button></div>`,
-    source: `Held-out NYC crashes ${tc.held_out.from} to ${tc.held_out.to}. Spearman ρ; 95% bootstrap intervals over corners.`,
+    cap: `${s.top5} of the 5 worst real corners found; rank correlation ${rho(s.spearman)} (${rho(s.ci95[0])} to ${rho(s.ci95[1])}) ${badge("sim", "Rank correlation with crashes the street model never saw")}`,
+    why: `<b>So the plan ranks corners by people hit, and uses the street model to choose the fix at each corner</b> and to check what it does to the next block. Past crashes rank no better (${rho(mv("history").spearman)}), but they are facts, not a model.`,
+    rail: `<ul class="facts"><li><span>The street model never saw a crash. It is scored on the ${fmt(tc.held_out.crashes)} crashes it was not given.</span>${badge("real")}</li></ul>`,
+    extra: `<div class="toggle noprint" role="group" aria-label="Street model inputs" data-src="With or without the walking speed measured from video"><button type="button" data-m="with_measured_inputs" class="${S.trustMode === "with_measured_inputs" ? "on" : ""}">With video</button><button type="button" data-m="without_measured_inputs" class="${S.trustMode === "without_measured_inputs" ? "on" : ""}">Without</button></div>`,
+    source: `Tested on NYC crashes from ${tc.held_out.from} to ${tc.held_out.to} that the street model never saw. Rank correlation, with a 95% range.`,
     mount() { $$(".toggle button").forEach((b) => (b.onclick = () => { S.trustMode = b.dataset.m; go(4); })); },
   };
 }
@@ -465,7 +465,7 @@ function step5() {
   const runs = S.run.sim_budget?.corridor_evaluations;
   const sel = S.agentSel && a.agents[S.agentSel];
   const SHOW = 8;
-  const triChip = tri && tri.status === "live" ? chip("Muse Glimmer corner-triage", `screened ${tri.score_vs_simulator.corners} corners in ${fmt(tri.wall_s)} s; first guess = simulator's best fix at ${tri.score_vs_simulator.best_change_matches}`) : "";
+  const triChip = tri && tri.status === "live" ? chip("Muse Glimmer corner-triage", `screened ${tri.score_vs_simulator.corners} corners in ${fmt(tri.wall_s)} s; first guess = street model's best fix at ${tri.score_vs_simulator.best_change_matches}`) : "";
   const railSel = sel ? (() => {
     const g = tri?.corners?.[S.agentSel];
     return `<div class="facts" style="border:0"></div><div class="h3">${esc(short(sel.name))}: ${rv.accepted.includes(S.agentSel) ? `<span class="tag sel">selected</span>` : rv.rejected.some((r) => r.id === S.agentSel) ? `<span class="tag rej">rejected</span>` : `<span class="tag drop">dropped</span>`}</div>
@@ -476,25 +476,25 @@ function step5() {
   })() : "";
   return {
     visual: `<div class="decide">
-      <div class="hd"><div class="h2" style="margin:0">The coordinator's decision</div>${chip("Muse Wonder", `${Object.keys(a.agents).length} corner agents + 1 coordinator${runs ? ` · ${runs} simulator runs` : ""}`)}${triChip}</div>
-      <div class="budget"><div class="bb"><i style="width:${Math.min(100, (100 * spent) / Math.max(budget, 1))}%"></i></div><b>${kmoney(spent)} of ${kmoney(budget)}</b>${badge("asm", "quarterly capital for this corridor is an assumption (set with --budget); costs are Spark-cited unit costs, midpoint")}</div>
+      <div class="hd"><div class="h2" style="margin:0">The coordinator's decision</div>${chip("Muse Wonder", `${Object.keys(a.agents).length} corner agents + 1 coordinator${runs ? ` · ${runs} street model runs` : ""}`)}${triChip}</div>
+      <div class="budget"><div class="bb"><i style="width:${Math.min(100, (100 * spent) / Math.max(budget, 1))}%"></i></div><b>${kmoney(spent)} of ${kmoney(budget)}</b>${badge("asm", "The budget for the next 3 months is an assumption (set with --budget); costs are middle estimates from prices found by web search")}</div>
       <div class="two">
         <div style="min-height:0"><h3>Selected for the plan · ${acc.length}</h3>
-          <ul class="rows sel"><li class="muted" style="cursor:default;font-size:13px;letter-spacing:.05em;text-transform:uppercase"><span>Corner</span><span>Hit</span><span>Fix</span><span>Near-misses / h</span></li>
+          <ul class="rows sel"><li class="muted" style="cursor:default;font-size:13px;letter-spacing:.05em;text-transform:uppercase"><span>Corner</span><span>Hit</span><span>Fix</span><span>Close calls / h</span></li>
           ${acc.slice(0, SHOW).map((id) => { const [b, f] = nmPair(id); return `<li data-id="${id}" class="${id === S.agentSel ? "on" : ""}"><span class="cn">${esc(nameOf(id))}</span>${realv(hit(id))}<span>${esc(describe(a.plan_before_stress[id] || clean(a.agents[id].decision?.changes), id))}</span>${simv(b, f)}</li>`; }).join("")}
           ${acc.length > SHOW ? `<li class="more">and ${acc.length - SHOW} more</li>` : ""}</ul></div>
         <div style="min-height:0"><h3>Rejected by the coordinator · ${rej.length}</h3>
           <ul class="rows rej">${rej.slice(0, 6).map((r) => `<li data-id="${r.id}"><span class="tag rej">REJECTED</span><span><b>${esc(nameOf(r.id))}</b> (${hit(r.id)} hit) · ${esc(rejectWhy(r, budget - spent))}</span></li>`).join("") || `<li class="muted">None.</li>`}
           ${rej.length > 6 ? `<li class="more">and ${rej.length - 6} more${dropped.length ? `; ${dropped.length} dropped by their own agent` : ""}</li>` : dropped.length ? `<li class="more">${dropped.length} dropped by their own agent</li>` : ""}</ul></div>
       </div>
-      <div class="defs">Walk head start = walkers get a few seconds before cars (LPI) · Clear the corner = no parking at the kerb (daylighting) · Slower turns = hardened centre line · Separate turn phase = turns never share the walk</div>
+      <div class="defs">Walk head start = walkers get a few seconds before cars · Clear the corner = no parked cars next to the crossing · Slower turns = a raised strip that makes cars turn slowly · Separate turn phase = turning cars never share the walk signal</div>
     </div>`,
     answer: sel ? "" : `<div class="answer">${acc.length} <small>fixes</small></div>`,
-    cap: sel ? "" : `fit the ${kmoney(budget)} quarterly budget ${badge("asm", "quarterly capital for this corridor is an assumption")}`,
-    why: sel ? "" : `<b>${fmt(comb.near_misses_before)} → ${fmt(comb.near_misses_ph)}</b> simulated near-misses an hour, +${pct(comb.added_car_delay_share)} car delay, before the stress tests ${badge("sim")}. Corners go in order of people hit; each agent tests fixes in the simulator; the coordinator funds down the list and rejects a fix that pushes risk onto another corner or buys too little.`,
+    cap: sel ? "" : `fit the ${kmoney(budget)} budget for the next 3 months ${badge("asm", "The budget for the next 3 months is an assumption")}`,
+    why: sel ? "" : `<b>${fmt(comb.near_misses_before)} → ${fmt(comb.near_misses_ph)}</b> simulated close calls an hour, +${pct(comb.added_car_delay_share)} car delay, before the stress tests ${badge("sim")}. Corners go in order of people hit; each agent tests fixes in the street model; the coordinator funds down the list and rejects a fix that pushes risk onto another corner or buys too little.`,
     rail: sel ? railSel : confidence(),
     extra: `<button class="btn ghost noprint" id="replayAgents" type="button">↻ Replay</button>`,
-    source: "Muse Wonder (Responses API, function tools); each test is the corridor simulator, 1 hour × 3 seeds. Costs: Muse Spark web search with citations.",
+    source: "Muse Wonder (Responses API, function tools); each test is the street model of all 30 corners, 1 hour × 3 seeds. Costs: Muse Spark web search with citations.",
     mount() {
       $$(".rows li[data-id]").forEach((li) => (li.onclick = () => { S.agentSel = S.agentSel === li.dataset.id ? null : li.dataset.id; S.corner = li.dataset.id; go(5); }));
       if ($("#backCo")) $("#backCo").onclick = () => { S.agentSel = null; go(5); };
@@ -534,11 +534,11 @@ function step6() {
       ${list.map((x, i) => `<div class="frow ${i === S.futSel ? "on" : ""}" data-i="${i}"><div><div class="fl">${esc(x.label)}</div><div class="fw">${esc(FUT_WHY[x.future] || x.why)}${x.picked === false ? " · not picked by the coordinator, tested anyway" : ""}</div></div>
         <div class="pairs"><div><span>no plan</span><span class="tr"><i class="base" style="width:${(100 * end(x).near_misses_before) / mx}%"></i></span></div><div><span>plan</span><span class="tr"><i class="plan" style="width:${(100 * end(x).near_misses_ph) / mx}%"></i></span></div></div>
         <div class="vd">${verdict(x)}<span class="n">${fmt(end(x).near_misses_before)} → ${fmt(end(x).near_misses_ph)} an hour</span></div></div>${i === S.futSel ? story : ""}`).join("")}
-      <div class="axis"><span></span><span class="ticks">${ticks.map((t) => `<span style="left:${(100 * t) / mx}%">${fmt(t)}</span>`).join("")}</span><span style="text-align:right">simulated near-misses an hour</span></div>
+      <div class="axis"><span></span><span class="ticks">${ticks.map((t) => `<span style="left:${(100 * t) / mx}%">${fmt(t)}</span>`).join("")}</span><span style="text-align:right">simulated close calls an hour</span></div>
     </div>`,
     answer: `<div class="answer words">Holds in ${holds} of ${fin.length} futures</div>`,
     cap: `${broke.length ? `after ${broke.length === 1 ? "one revision" : broke.length + " revisions"}: the first plan broke in ${broke.map((x) => x.label.toLowerCase()).join(" and ")}` : "the first plan held in every future"} ${badge("sim", "each future re-simulated with the final plan vs no plan")}`,
-    why: `The coordinator names the futures it expects to break this plan; the system tests every future anyway. A fix breaks if it leaves any corner worse than doing nothing, keeps less than 30% of its benefit, or blows the car-delay limit.`,
+    why: `The coordinator names the futures it expects to break this plan; the system tests every future anyway. A fix breaks if it leaves any corner worse than doing nothing, loses most of its benefit, or makes cars wait too long.`,
     source: "Futures: holiday crowds ×1.7 walkers; shows letting out ×2.6 at W 43–50; rain at night −12 pts detection; bus lane; 30% ignore the new rules.",
     mount() { $$(".frow").forEach((b) => (b.onclick = () => { S.futSel = +b.dataset.i; go(6); })); },
   };
@@ -562,19 +562,19 @@ function step7() {
   return {
     visual: `<article class="brief">
       <h2>7th Avenue safety plan: W 30th St to Central Park South</h2>
-      <div class="meta">Corner Case run ${esc(S.run.id)} · simulated weekday 5–6 pm · corners in order of people hit (real), fixes chosen in the simulator</div>
+      <div class="meta">Corner Case run ${esc(S.run.id)} · simulated weekday 5–6 pm · corners in order of people hit (real), fixes chosen in the street model</div>
       <div class="sec">1 · Build first, this quarter</div>
-      <table class="t"><thead><tr><th>Corner</th><th>Change</th><th class="r">People hit since 2023</th><th class="r">Near-misses / h</th><th class="r">Expand if camera close calls fall by</th><th class="r">Rough cost</th></tr></thead><tbody>
+      <table class="t"><thead><tr><th>Corner</th><th>Change</th><th class="r">People hit since 2023</th><th class="r">Close calls / h</th><th class="r">Expand if camera close calls fall by</th><th class="r">Rough cost</th></tr></thead><tbody>
       ${first.map((i) => `<tr><td class="nw"><b>${esc(short(i.name))}</b></td><td>${esc(describe(i.changes_raw, i.id))}</td><td class="r">${realv(i.people)}</td><td class="r">${simv(i.near_misses_before, i.near_misses_after)}</td><td class="r"><b>${fmt(rule(i).expand_if_camera_cut_pct_at_least)}%</b> in ${rule(i).within_weeks} weeks</td><td class="r nw">${kmoney(i.cost_low)}–${kmoney(i.cost_high)}</td></tr>`).join("")}</tbody></table>
       <div class="sec">2 · Measure close calls on camera, week by week &nbsp;·&nbsp; 3 · Then fund the rest: ${rest.length} corners</div>
       <div style="font-size:17px">${rest.map((i) => esc(short(i.name))).join(", ")}</div>
       <div class="after"><div class="h3">After it's built: know in weeks, not 3 years</div>${timeline(true)}
-        <div class="defs" style="margin-top:4px">■ <b>Muse Glimmer</b> (open weights, on Modal) watches every changed corner: base Glimmer writes the weekly close-call log${w.status === "live" ? "" : " (not live in this run)"}; a corner-triage LoRA we fine-tuned re-reads all 30 corners in seconds${ft ? ` (in this run its first guess matched the simulator's best fix at ${ft.best_change_matches} of ${ft.corners} corners; risk band ${ft.risk_band_matches} of ${ft.corners})` : ""}.</div></div>
+        <div class="defs" style="margin-top:4px">■ <b>Muse Glimmer</b> (open weights, on Modal) watches every changed corner: base Glimmer writes the weekly close-call log${w.status === "live" ? "" : " (not live in this run)"}; a corner-triage LoRA we fine-tuned re-reads all 30 corners in seconds${ft ? ` (in this run its first guess matched the street model's best fix at ${ft.best_change_matches} of ${ft.corners} corners; risk band ${ft.risk_band_matches} of ${ft.corners})` : ""}.</div></div>
       <div class="sources">Costs, found by Muse Spark web search: ${kinds.map((k) => { const c = p.costs[k]; const u = c.source_urls[0] || ""; return `${esc(COST_LABEL[k] || k)} ${money(c.low_usd)}–${money(c.high_usd)} <a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/, "").split("/")[0])}</a>`; }).join(" · ")}</div>
     </article>`,
     answer: `<div class="answer verdict" style="font-size:38px">Build ${names.slice(0, -1).join(", ")} and ${names.slice(-1)} first. Measure. Then fund the rest.</div>`,
-    cap: `${simv(t.near_misses_before, t.near_misses_after)} simulated near-misses an hour, whole plan, +${pct(t.added_car_delay_share)} car delay ${badge("sim")}`,
-    why: `First wave ${kmoney(w1)}; whole plan ${kmoney(mid)} estimated of the ${kmoney(budget)} budget (range ${kmoney(t.cost_low)}–${kmoney(t.cost_high)}). A corner is expanded only if its camera close calls fall by at least half its simulated cut.`,
+    cap: `${simv(t.near_misses_before, t.near_misses_after)} simulated close calls an hour, whole plan, +${pct(t.added_car_delay_share)} car delay ${badge("sim")}`,
+    why: `First three corners ${kmoney(w1)}; whole plan ${kmoney(mid)} estimated of the ${kmoney(budget)} budget (range ${kmoney(t.cost_low)}–${kmoney(t.cost_high)}). A corner is expanded only if its camera close calls fall by at least half its simulated cut.`,
     rail: confidence(),
     source: "Costs: Muse Spark 1.3 web search with citations (FHWA, NYC DOT). Watcher: Muse Glimmer on Modal (vLLM).",
   };
@@ -817,7 +817,7 @@ function simAnim(cv, tr, nd, opts = {}) {
     ctx.fillStyle = "rgba(255,253,248,.94)"; ctx.fillRect(20, 20, 560, 104);
     ctx.fillStyle = "#141414"; ctx.textAlign = "left"; ctx.font = "bold " + F(17);
     const tt = Math.floor(t); ctx.fillText(`5:${String(Math.floor(tt / 60)).padStart(2, "0")}:${String(tt % 60).padStart(2, "0")} pm · simulated`, 40, 64);
-    ctx.font = F(14); ctx.fillStyle = "#E8590C"; ctx.fillText(`${count} near-misses so far · playing ×${speed}`, 40, 104);
+    ctx.font = F(14); ctx.fillStyle = "#E8590C"; ctx.fillText(`${count} close calls so far · playing ×${speed}`, 40, 104);
     raf = requestAnimationFrame(frame);
   }
   raf = requestAnimationFrame(frame);
@@ -833,7 +833,7 @@ async function startLive() {
   const res = await fetch("/api/live", { method: "POST" });
   const body = await res.json();
   if (!res.ok) { add(body.detail || "Could not start a live run.", "bad"); return; }
-  add("Started. Steps 1–4 use local data and the simulator; step 5 calls Muse Wonder.");
+  add("Started. Steps 1–4 use local data and the street model; step 5 calls Muse Wonder.");
   const es = new EventSource(`/api/live/${body.job}/events`);
   es.onmessage = async (m) => {
     const e = JSON.parse(m.data);

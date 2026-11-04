@@ -21,7 +21,7 @@
         <span class="legend4" aria-label="What each shape means">
           <span class="badge real" tabindex="0" data-src="REAL: police crash records and city open data. What actually happened.">REAL</span>
           <span class="badge meas" tabindex="0" data-src="MEASURED: measured from street video by Meta SAM 3.1 (one 15 s clip at W 45 St).">MEASURED</span>
-          <span class="badge sim" tabindex="0" data-src="SIMULATED: output of the corridor simulator. Simulated near-misses are not injuries.">SIMULATED</span>
+          <span class="badge sim" tabindex="0" data-src="SIMULATED: output of the street model. Simulated close calls are not injuries.">SIMULATED</span>
           <span class="badge asm" tabindex="0" data-src="ASSUMPTION: a labelled guess, used where no data exists.">ASSUMPTION</span>
         </span>
         <button id="playBtn" class="btn ghost" type="button">▶ Play the story</button>
@@ -38,7 +38,7 @@
 <div id="tip" class="tip" role="tooltip" hidden></div>
 <dialog id="liveDlg" class="live">
   <h2>Live run</h2>
-  <p class="muted">Muse Glimmer screens all 30 corners, the coordinator briefs 30 Muse Wonder corner agents, they test fixes in the simulator, and the coordinator funds a plan. About 5 minutes and a few dollars of API credit.</p>
+  <p class="muted">Muse Glimmer screens all 30 corners, the coordinator briefs 30 Muse Wonder corner agents, they test fixes in the street model, and the coordinator funds a plan. About 5 minutes and a few dollars of API credit.</p>
   <ol id="liveLog" class="livelog"></ol>
   <div class="dlgrow"><button class="btn" id="liveClose" type="button">Close</button></div>
 </dialog>
