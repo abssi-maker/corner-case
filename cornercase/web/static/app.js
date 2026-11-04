@@ -122,14 +122,43 @@ function go(n) {
       ${v.sub ? `<p class="sub">${v.sub}</p>` : ""}
       ${v.rail}
       <div class="spacer"></div>
+      ${v.source ? `<p class="src">Source: ${esc(v.source)}</p>` : ""}
       <div class="action">${v.extra || ""}${n < 7 ? `<button class="btn primary" id="nextBtn" type="button">${v.action || NEXT[n]} →</button>` : `<button class="btn primary noprint" id="printBtn" type="button">Print the brief</button>`}</div>
     </aside>`;
-  $("#capText").textContent = v.caption || "";
-  $("#capSrc").textContent = v.source || "";
+  renderLedger();
   if ($("#nextBtn")) $("#nextBtn").onclick = () => { stopPlay(); go(n + 1); };
   if ($("#printBtn")) $("#printBtn").onclick = () => window.print();
   v.mount && v.mount();
   const u = new URL(location); u.searchParams.set("step", n); u.searchParams.set("run", S.run.id); history.replaceState(null, "", u);
+}
+/* the plan ledger: one evolving analysis, carried through every step */
+function ledgerCells() {
+  const r = S.run, h = r.step1.headline, sam = r.step2.measurements.sam, t3 = r.step3.today.totals;
+  const tc = r.step4.with_measured_inputs, sim = tc.methods.find((m) => m.id === "simulator");
+  const co = r.step5.coordinator, fin = r.step6.final_checks, broke = r.step6.stress.filter((x) => x.breaks.length).length;
+  const t7 = r.step7.totals;
+  return [
+    [`${fmt(h.people_hit)} people hit`, "real", "since 2023, 3 killed".replace("3", h.killed)],
+    [`${fmt(sam.people_tracked)} people tracked`, "meas", "W 45 St video"],
+    [`${fmt(t3.near_miss_ph)} near-misses/h`, "sim", "corridor, 5–6 pm"],
+    [`Trust: weak`, "sim", `${sim.top5} of 5 · ρ ${sim.spearman >= 0 ? "+" : ""}${sim.spearman.toFixed(2)}`],
+    [`${co.review.accepted.length} fixes · ${kmoney(co.accepted_cost_usd || 0)}`, "sim", `${co.review.rejected.length} rejected`],
+    [`${fin.filter((c) => c.holds).length}/${fin.length} futures hold`, "sim", `${broke} broke the first plan`],
+    [`${fmt(t7.near_misses_before)} → ${fmt(t7.near_misses_after)}/h`, "sim", `${money(t7.cost_low)}–${money(t7.cost_high)}`],
+  ];
+}
+function renderLedger() {
+  const cells = ledgerCells();
+  const names = { real: "REAL", meas: "MEASURED", sim: "SIMULATED" };
+  $("#ledger").innerHTML = cells.map(([v, k, sub], i) => {
+    const n = i + 1, cls = n === S.step ? "on" : n > S.step ? "future" : "";
+    return `<button type="button" class="${cls}" data-n="${n}" aria-label="Step ${n}: ${esc(v)}"><span class="lv">${n > S.step ? STEPS[i].label : esc(v)}</span><span class="ls">${n > S.step ? "step " + n : `<span class="badge ${k}">${names[k]}</span>${esc(sub)}`}</span></button>`;
+  }).join("");
+  $$("#ledger button").forEach((b) => (b.onclick = () => { stopPlay(); go(+b.dataset.n); }));
+}
+function confidence() {
+  const sim = S.run.step4.with_measured_inputs.methods.find((m) => m.id === "simulator");
+  return `<div class="conf">Confidence: <b>weak</b> (step 4: ${sim.top5} of 5, ρ ${sim.spearman >= 0 ? "+" : ""}${sim.spearman.toFixed(2)}). Pilot, then measure.</div>`;
 }
 function stopAnim() { if (S.anim) { S.anim.stop(); S.anim = null; } }
 
@@ -153,19 +182,18 @@ function bindTips() {
 /* ================================================================ 1 · where people get hurt */
 function step1() {
   const d = S.run.step1, h = d.headline;
-  const top = [...d.nodes].sort((a, b) => b.people_hit - a.people_hit || b.killed - a.killed).slice(0, 6);
+  const top = [...d.nodes].sort((a, b) => b.people_hit - a.people_hit || b.killed - a.killed).slice(0, 5);
   const max = top[0]?.people_hit || 1;
   const sel = node(S.corner);
   return {
-    sub: "Every dot is a real crash that injured or killed someone walking. Click a corner to study it; Times Square is preselected.",
+    sub: "Every dot is a real crash that injured or killed someone walking. W 45 St in Times Square is preselected: it is the corner we have street video for.",
     visual: `<div class="mapwrap card" style="padding:18px 20px">${mapSVG(d)}
-      <div class="legend"><span><i style="background:var(--risk);opacity:.6;border-radius:50%"></i>crash that hurt a pedestrian</span><span><i style="background:var(--ink);border-radius:50%"></i>a pedestrian was killed</span><span><i style="border:2px solid var(--ink);border-radius:50%"></i>corner, sized by people hit</span><span class="muted">Across-street distance stretched 3×</span></div></div>`,
+      <div class="legend"><span><i style="background:var(--risk);opacity:.6;border-radius:50%"></i>crash that hurt a pedestrian</span><span><i style="background:var(--ink);border-radius:50%"></i>a pedestrian was killed</span><span><i style="border:2px solid var(--ink);border-radius:50%"></i>corner, sized by people hit</span><span class="muted">Dots off the avenue happened on the cross street; across-street distance stretched 3×</span></div></div>`,
     rail: `<div class="big">${fmt(h.people_hit)}</div>
       <p class="bigcap">people hit walking on these ${h.blocks} blocks since 2023, ${fmt(h.killed)} killed ${badge("real", d.source)}</p>
-      <ul class="rank">${top.map((n, i) => `<li data-id="${n.id}" class="${n.id === S.corner ? "sel" : ""}"><span class="i">${i + 1}</span><b>${esc(short(n.name))}</b><span class="num">${n.people_hit} hit${n.killed ? ` · ${n.killed} killed` : ""}</span><span class="bar"><i style="width:${(100 * n.people_hit) / max}%"></i></span></li>`).join("")}</ul>
+      <ul class="rank">${top.map((n, i) => `<li data-id="${n.id}" class="${n.id === S.corner ? "sel" : ""}"><span class="i">${i + 1}</span><b>${esc(short(n.name))}</b><span class="num">${n.people_hit} people${n.killed ? ` · ${n.killed} killed` : ""}</span><span class="bar"><i style="width:${(100 * n.people_hit) / max}%"></i></span></li>`).join("")}</ul>
       <ul class="facts">
-        <li><span class="k">Selected: <b style="font-size:17px">${esc(short(sel.name))}</b></span><b>${sel.people_hit} hit</b></li>
-        <li><span class="k">Walk head start today ${badge("open", "NYC DOT VZV Leading Pedestrian Interval list (xc4v-ntf4)")}</span><b>${sel.lpi_installed?.length ? "since " + sel.lpi_installed[0].slice(0, 4) : sel.exclusive_ped_phase ? "walk-only phase" : "none"}</b></li>
+        <li><span class="k">${esc(short(sel.name))}: walk head start today ${badge("open", "NYC DOT VZV Leading Pedestrian Interval list (xc4v-ntf4)")}</span><b>${sel.lpi_installed?.length ? "since " + sel.lpi_installed[0].slice(0, 4) : sel.exclusive_ped_phase ? "walk-only phase" : "none"}</b></li>
       </ul>`,
     action: `Watch ${esc(short(sel.name))}`,
     caption: `${fmt(h.people_hit)} people were hit walking on 7th Avenue between W 30th St and Central Park South since January 2023.`,
@@ -204,6 +232,7 @@ function mapSVG(d) {
   for (const n of d.nodes) {
     const r = 7 + 22 * Math.sqrt(n.people_hit / maxHit);
     s += `<circle class="node ${n.id === S.corner ? "sel" : ""}" data-id="${n.id}" tabindex="0" role="button" aria-label="${esc(n.name)}: ${n.people_hit} people hit" cx="${X(n.gy)}" cy="${cy}" r="${r.toFixed(1)}"><title>${esc(n.name)}: ${n.people_hit} people hit, ${n.killed} killed</title></circle>`;
+    if (n.id === S.corner) s += `<text class="lbl b" x="${X(n.gy)}" y="${cy + r + 24}" text-anchor="middle" style="fill:var(--risk)">${esc(short(n.name))}</text>`;
   }
   d.crashes.forEach((c, i) => {
     s += `<circle class="crash ${c.killed ? "k" : ""}" data-i="${i}" cx="${X(c.gy).toFixed(1)}" cy="${Y(c.gx).toFixed(1)}" r="${c.killed ? 6.5 : 4.5}"><title>${esc(c.date)}: ${c.injured} injured${c.killed ? `, ${c.killed} killed` : ""}. ${esc(c.factor || "")}${c.vehicle ? " (" + esc(c.vehicle) + ")" : ""}</title></circle>`;
@@ -226,7 +255,7 @@ function step2() {
   const dur = m.clip.duration_s;
   const calls = sam.close_call_times || [];
   return {
-    sub: "Real video of 7th Ave and Broadway at W 45th St. SAM 3.1 finds and tracks every person and car; Muse Spark watches for behaviour; each Spark note is checked against SAM.",
+    sub: "A 15-second night clip at 7th Ave and Broadway, W 45 St (Times Square). SAM 3.1 finds and tracks every person and car; Muse Spark watches for behaviour; each Spark note is checked against SAM's tracks.",
     visual: `<div class="watch">
       <div class="vid"><video id="vid" src="/static/${v.video}" muted playsinline preload="auto"></video><canvas id="ov" width="932" height="1656"></canvas>
         <div class="hud"><span>SAM 3.1 · <b id="hudN">0</b> people in view</span><span id="hudRoad" hidden>walker in the roadway</span></div>
@@ -234,8 +263,8 @@ function step2() {
       </div>
       <div class="wcol">
         <div class="pipe">
-          <div><em>1 · Detect</em><b>${fmt(sam.people_peak_in_frame)}</b><span>people in one frame. Image mode returns every instance; video mode stops at 16.</span></div>
-          <div><em>2 · Track</em><b>${fmt(sam.people_tracked)}</b><span>people and ${fmt(sam.vehicles_tracked)} vehicles, from ${fmt(meth.seeds)} box-prompt seeds in ${fmt(meth.track_requests)} requests</span></div>
+          <div><em>1 · Detect</em><b>${fmt(sam.people_peak_in_frame)}</b><span>people in the busiest frame. Image mode returns every instance; video mode stops at 16.</span></div>
+          <div><em>2 · Track</em><b>${fmt(sam.people_tracked)}</b><span>different people over 15 s (the camera pans) and ${fmt(sam.vehicles_tracked)} vehicles, from ${fmt(meth.seeds)} box-prompt seeds in ${fmt(meth.track_requests)} requests</span></div>
           <div><em>3 · Read masks</em><b>${fmt(sam.people_in_roadway)}</b><span>walkers stood on asphalt road (${fmt(sam.people_in_roadway_seconds, 1)} person-seconds); ${fmt(sam.close_calls)} close calls with moving cars</span></div>
           <div><em>4 · Check Spark</em><b>${conf}/${evs.length}</b><span>Spark notes confirmed by SAM tracks at that moment</span></div>
         </div>
@@ -361,7 +390,7 @@ function step3() {
       <canvas class="simc" id="simc" width="1656" height="1656" aria-label="Top-down simulation of ${esc(n.name)}"></canvas>
       <div class="scol">
         <div class="card" style="padding:14px 16px">
-          <div class="panelh">Simulated risk on every corner ${badge("sim", "severity-weighted near-misses per hour; click a bar to watch that corner")}</div>
+          <div class="panelh">Simulated risk on every corner ${badge("sim", "severity-weighted near-misses per hour; click a bar to watch that corner")}</div><div class="muted" style="font-size:13px;margin:-4px 0 6px">risk = near-misses / h weighted by car speed²; click a bar</div>
           <div class="strip" id="strip">${nodes.map((x) => `<button class="${x.id === n.id ? "sel" : ""}" data-id="${x.id}" style="height:${(100 * today.nodes[x.id].sev_ph) / maxSev}%" data-src="${esc(x.name)}: risk ${fmt(today.nodes[x.id].sev_ph, 1)}"></button>`).join("")}</div>
           <div class="striplbl">${nodes.map((x, i) => `<span>${i % 3 === 0 ? (x.street_num === 59 ? "CPS" : x.street_num) : ""}</span>`).join("")}</div>
         </div>
@@ -373,7 +402,7 @@ function step3() {
         </div>
       </div></div>`,
     rail: `<div class="big">${fmt(today.totals.near_miss_ph)}</div>
-      <p class="bigcap">simulated near-misses an hour on the corridor ${badge("sim", "corridor simulator: 1 hour × 3 seeds, common random numbers")}. At ${esc(short(n.name))}: ${fmt(r.near_miss_ph)} an hour, ${fmt(r.serious_ph)} serious.</p>
+      <p class="bigcap">simulated near-misses an hour on the corridor ${badge("sim", "corridor simulator: 1 hour × 3 seeds, common random numbers")}. At ${esc(short(n.name))}: ${fmt(r.near_miss_ph)} an hour, ${fmt(r.serious_ph)} serious (under 0.5 s, car at speed).</p>
       <div class="panelh" style="margin-top:20px">What the simulator knows about ${esc(short(n.name))}</div>
       <p class="muted" style="margin:0 0 4px;font-size:14px">${cnt("measured")} measured from video · ${cnt("open-data")} from city data · ${cnt("assumption")} labelled assumptions</p>
       <ul class="inputs">${rows.slice(0, 10).map((i) => `<li><span>${PRETTY[i.input][0]}</span><b>${PRETTY[i.input][1](i.v)}</b>${kindBadge(i.kind, i.source)}</li>`).join("")}</ul>`,
@@ -511,7 +540,7 @@ function simAnim(cv, tr, nd, opts = {}) {
     ctx.fillStyle = "rgba(255,253,248,.94)"; ctx.fillRect(20, 20, 560, 104);
     ctx.fillStyle = "#141414"; ctx.textAlign = "left"; ctx.font = "bold " + F(17);
     const tt = Math.floor(t); ctx.fillText(`5:${String(Math.floor(tt / 60)).padStart(2, "0")}:${String(tt % 60).padStart(2, "0")} pm · simulated`, 40, 64);
-    ctx.font = F(14); ctx.fillStyle = "#E8590C"; ctx.fillText(`${count} near-misses so far · ×${speed} speed`, 40, 104);
+    ctx.font = F(14); ctx.fillStyle = "#E8590C"; ctx.fillText(`${count} near-misses so far ≈ ${t > 20 ? fmt((count / t) * 3600) : "…"} an hour · ×${speed}`, 40, 104);
     raf = requestAnimationFrame(frame);
   }
   raf = requestAnimationFrame(frame);
@@ -542,14 +571,17 @@ function step4() {
         <div class="h">How each method ranks the ${tc.held_out.corners} corners</div><div class="h" style="text-align:right"><span style="text-transform:none">ρ</span></div><div class="h">95% interval, −1 to +1 (line = 0)</div><div class="h" style="text-align:right">Top 5</div>
         ${meth.map((m) => `<div>${esc(m.label.replace("Baseline: ", ""))} ${m.id === "simulator" ? badge("sim", "Spearman rank correlation with held-out crashes; bootstrap over corners") : badge("real", m.label)}</div><div class="num" style="text-align:right"><b>${rho(m.spearman)}</b></div><div><div class="ci"><span class="w" style="left:${X(m.ci95[0])};width:calc(${X(m.ci95[1])} - ${X(m.ci95[0])})"></span><span class="d ${m.id === "simulator" ? "sim" : ""}" style="left:${X(m.spearman)}"></span></div></div><div class="num" style="text-align:right">${m.top5} of 5</div>`).join("")}
       </div></div></div>`,
-    rail: `<p style="font-size:30px;font-weight:700;line-height:1.2;margin:0;letter-spacing:-0.01em">${esc(tc.verdict)}</p>
+    rail: `<div class="big">${s.top5} of 5</div>
+      <p class="bigcap">real top-5 corners the simulator also ranks top 5. Rank correlation ${rho(s.spearman)} (95% interval ${rho(s.ci95[0])} to ${rho(s.ci95[1])}) ${badge("sim", "Spearman rank correlation with held-out crashes; bootstrap over corners")}</p>
+      <p style="font-size:24px;font-weight:700;line-height:1.25;margin:16px 0 0">Weak but real signal: use it to choose what to pilot, not to promise results.</p>
       <ul class="facts">
         <li><span class="k">Traffic volume alone</span><b>ρ ${rho(mv("volume").spearman)}</b></li>
         <li><span class="k">Crash history 2023–24</span><b>ρ ${rho(mv("history").spearman)}</b></li>
         <li><span class="k">One-sided p, simulator</span><b>${s.p_one_sided}</b></li>
       </ul>
       <p class="note warn">Shown as measured: the simulator ranks corners about as well as the previous two years of crashes, and less well than traffic volume. About 3 held-out crashes per corner, so every ranking is noisy.</p>
-      <p class="note">No crash data went into the simulator's inputs or parameters.</p>`,
+      <p class="note">No crash data went into the simulator's inputs or parameters. Toggle: with or without the walking speed measured from video at W 45 St.</p>`,
+    action: "Use it to choose pilots",
     extra: `<div class="toggle noprint" role="group" aria-label="Simulator inputs"><button type="button" data-m="with_measured_inputs" class="${S.trustMode === "with_measured_inputs" ? "on" : ""}">With video</button><button type="button" data-m="without_measured_inputs" class="${S.trustMode === "without_measured_inputs" ? "on" : ""}">Without</button></div>`,
     caption: tc.verdict,
     source: `Held-out: NYC crashes ${tc.held_out.from} to ${tc.held_out.to}. Spearman ρ; 95% bootstrap intervals over corners (2,000 resamples).`,
@@ -573,7 +605,7 @@ function agentStates(p) {
 function tileHTML(id) {
   const a = S.run.step5, ag = a.agents[id], d = ag.decision, rv = a.coordinator.review;
   const accepted = new Set(rv.accepted), rejected = Object.fromEntries(rv.rejected.map((r) => [r.id, r.reason]));
-  let state = !d ? "error" : accepted.has(id) ? "funded" : rejected[id] ? "rejected" : d.decision === "keep" ? "kept" : "dropped";
+  let state = !d ? "error" : accepted.has(id) ? "selected" : rejected[id] ? "rejected" : d.decision === "keep" ? "kept" : "dropped";
   let what = d ? (d.decision === "keep" ? describe(clean(d.changes)) : "No change worth its cost") : "Agent failed";
   const live = S.agentP < 1 ? agentStates(S.agentP) : null;
   if (live) {
@@ -582,17 +614,17 @@ function tileHTML(id) {
     if (state === "busy") what = live[id]?.last?.changes?.length ? "Testing " + live[id].last.changes.join(" + ") : "Reading its brief";
     if (state === "idle") what = "Waiting for its brief";
   }
-  const label = { funded: "funded", kept: "kept", dropped: "dropped", rejected: "rejected", error: "error", busy: "testing", idle: "waiting" }[state] || state;
-  const cls = { testing: "busy", waiting: "idle" }[label] || label;
+  const label = { selected: "selected", kept: "kept", dropped: "dropped", rejected: "rejected", error: "error", busy: "testing", idle: "waiting" }[state] || state;
+  const cls = { testing: "busy", waiting: "idle", selected: "funded" }[label] || label;
   const tests = ag.tests || [];
   const keptT = d && d.decision === "keep" ? tests.find((t) => JSON.stringify(t.changes) === JSON.stringify(clean(d.changes))) : null;
   const r = keptT?.result;
-  const show = r && ["funded", "kept", "rejected"].includes(state);
+  const show = r && ["selected", "kept", "rejected"].includes(state);
   return `<button class="tile ${S.agentSel === id ? "sel" : ""}" data-id="${id}" type="button">
     <div class="hd"><span class="nm">${esc(short(ag.name))}</span><span class="st ${cls}">${label}</span></div>
     <div class="pr">${esc(ag.brief?.priority || "")} priority · ${tests.length} test${tests.length === 1 ? "" : "s"}</div>
     <div class="what">${esc(what)}</div>
-    ${show ? `<div class="res">risk ${fmt(r.risk_before, 0)} → <span class="${r.risk < r.risk_before ? "down" : "up"}">${fmt(r.risk, 0)}</span> · ${sign(r.car_delay_s_per_veh - r.car_delay_before)} s</div>` : `<div class="res muted">&nbsp;</div>`}
+    ${show ? `<div class="res">risk ${fmt(r.risk_before, 0)} → <span class="${r.risk < r.risk_before ? "down" : "up"}">${fmt(r.risk, 0)}</span> · ${sign(r.car_delay_s_per_veh - r.car_delay_before)} s/car</div>` : `<div class="res muted">&nbsp;</div>`}
   </button>`;
 }
 function step5() {
@@ -603,25 +635,27 @@ function step5() {
   const comb = a.combined;
   const sel = S.agentSel && a.agents[S.agentSel];
   const funded = sel && rv.accepted.includes(S.agentSel);
-  const railDefault = `<div class="big">${rv.accepted.length} <small>fixes funded</small></div>
+  const railDefault = `<div class="big">${rv.accepted.length} <small>fixes selected</small></div>
       <p class="bigcap">${kmoney(spent)} of the ${kmoney(budget)} quarterly budget ${badge("asm", "quarterly capital for this corridor is an assumption (set with --budget); costs are Spark-cited unit costs, midpoint")} · ${rv.rejected.length} rejected</p>
-      <ul class="rej">${rv.rejected.slice(0, 5).map((r) => `<li><span class="st rejected">rejected</span> <b>${esc(nameOf(r.id))}</b>: ${esc(r.reason)}</li>`).join("") || `<li class="muted">No proposal was rejected.</li>`}</ul>
-      <p class="note">Every number on a tile is a simulator run the agent asked for: ${tests} runs in total. Click a tile to see them.</p>`;
-  const railSel = sel ? `<div class="panelh" style="font-size:20px">${esc(sel.name)} <span class="st ${funded ? "funded" : "dropped"}">${funded ? "funded" : "not funded"}</span></div>
+      <ul class="rej">${rv.rejected.slice(0, 3).map((r) => `<li><span class="st rejected">rejected</span> <b>${esc(nameOf(r.id))}</b>: ${esc(r.reason)}</li>`).join("") || `<li class="muted">No proposal was rejected.</li>`}</ul>
+      <p class="note">Every number on a tile is a simulator run the agent asked for: ${tests} runs in total. Click a tile to see them.</p>
+      ${confidence()}`;
+  const railSel = sel ? `<div class="panelh" style="font-size:20px">${esc(sel.name)} <span class="st ${funded ? "funded" : "dropped"}">${funded ? "selected" : "not selected"}</span></div>
       ${sel.brief ? `<p class="note" style="margin-top:0">Coordinator's brief: ${esc(sel.brief.objective)}. Focus: ${esc(sel.brief.focus)}.</p>` : ""}
       <ul class="tests" style="margin-top:12px">${(sel.tests || []).map((t) => `<li><span>${esc(describe(t.changes))}${t.result.future !== "today" ? ` <span class="chip">${esc(t.result.future)}</span>` : ""}${t.by === "system" ? ` <span class="chip">verified</span>` : ""}</span><span class="num">${fmt(t.result.risk_before, 0)} → <span class="${t.result.risk < t.result.risk_before ? "down" : "up"}">${fmt(t.result.risk, 0)}</span> · ${sign(t.result.car_delay_s_per_veh - t.result.car_delay_before)} s</span></li>`).join("")}</ul>
       ${sel.decision ? `<p class="note">${esc(sel.decision.reason)}</p>` : ""}
       <p style="margin:12px 0 0"><button class="btn ghost" id="backCo" type="button" style="font-size:14px;padding:6px 12px">← Coordinator's view</button></p>` : "";
   return {
-    sub: "A Muse Wonder coordinator briefs one Wonder agent per corner. Each agent tests changes in the simulator and keeps or drops them; the coordinator funds the best set within budget and rejects fixes that push risk to the next block.",
+    sub: "A Muse Wonder coordinator briefs one Wonder agent per corner. Each agent tests changes in the simulator; the coordinator selects the best set within budget. Tiles show simulated risk before → after and added car delay.",
     visual: `<div class="agents">
       <div class="card coord"><div><h3>Coordinator ${chip("Muse Wonder", `${ids.length} corner agents`)}</h3><p>${esc(co.plan_note || rv.note || "")}</p>
         <p style="margin-top:6px">Combined plan, simulated: risk ${fmt(comb.risk_before, 0)} → <b>${fmt(comb.risk, 0)}</b> ${badge("sim", "severity-weighted near-misses per hour, all 30 corners")}, added car delay ${fmt(comb.added_car_delay_share * 100, 1)}%</p></div>
-        <div class="budget"><div class="lab"><span>Budget used</span><b>${kmoney(spent)} / ${kmoney(budget)}</b></div><div class="bar"><i style="width:${Math.min(100, (100 * spent) / Math.max(budget, 1))}%"></i></div></div></div>
+        <div class="budget"><div class="lab"><span>Budget used</span><b>${kmoney(spent)} / ${kmoney(budget)}</b></div><div class="bar"><i style="width:${Math.min(100, (100 * spent) / Math.max(budget, 1))}%"></i></div>
+          <div class="keyrow"><span><span class="st funded">selected</span>in the plan</span><span><span class="st rejected">rejected</span>by the coordinator</span><span><span class="st dropped">dropped</span>by its agent</span></div></div></div>
       <div class="tiles" id="tiles">${ids.map(tileHTML).join("")}</div></div>`,
     rail: sel ? railSel : railDefault,
     extra: `<button class="btn ghost noprint" id="replayAgents" type="button">↻ Replay</button>`,
-    caption: `The coordinator briefed ${ids.length} Wonder agents; they ran ${tests} simulations; ${rv.accepted.length} fixes funded for ${kmoney(spent)}, ${rv.rejected.length} rejected.`,
+    caption: "",
     source: "Muse Wonder (Responses API, function tools). Each test: corridor simulator, 1 hour × 3 seeds. Costs: Muse Spark web search with citations.",
     mount() {
       bindTiles();
@@ -670,7 +704,7 @@ function step6() {
           ${f.after ? `<p>Corridor risk ${fmt(f.after.risk_before, 0)} without, <b>${fmt(f.after.risk, 0)}</b> with the revised plan.</p><p><span class="st ${f.holds ? "holds" : "breaks"}">${f.holds ? "holds" : "still breaks"}</span></p>${(f.breaks_after || []).slice(0, 2).map((b) => `<p class="muted" style="font-size:14px">${esc(b.problem)}</p>`).join("")}` : `<p class="muted">No retest needed.</p>`}</div>
       </div></div>`,
     rail: `<div class="big">${holds} <small>of ${fin.length} futures hold</small></div>
-      <p class="bigcap">with the final plan ${badge("sim", "each future re-simulated with the final plan vs no plan")}</p>
+      <p class="bigcap">with the final plan, after ${list.filter((x) => x.breaks.length).length} of ${list.length} futures broke the first plan and its agents revised it ${badge("sim", "each future re-simulated with the final plan vs no plan")}</p>
       <ul class="facts">${fin.map((c) => `<li><span class="k">${esc(c.label)}</span><span class="st ${c.holds ? "holds" : "breaks"}">${c.holds ? "holds" : "breaks"}</span></li>`).join("")}</ul>`,
     caption: `${list.filter((x) => x.breaks.length).length} of ${list.length} futures broke the first plan; after revision the final plan holds under ${holds} of ${fin.length}.`,
     source: "Futures: holiday crowds ×1.7 walkers; shows letting out ×2.6 at W 43–50; rain at night −12 pts detection; bus lane; 30% ignore turn bans.",
@@ -695,16 +729,18 @@ function step7() {
       ${p.items.length > shown.length ? `<tr><td></td><td colspan="6" class="muted">and ${p.items.length - shown.length} more corners in the printed brief</td></tr>` : ""}
       <tr class="total"><td></td><td>Corridor</td><td>${p.items.length} corners</td><td class="r">${fmt(t.near_misses_before)} → ${fmt(t.near_misses_after)}</td><td class="r">${fmt(t.serious_before)} → ${fmt(t.serious_after)}</td><td class="r">+${fmt(t.added_car_delay_share * 100, 1)}%</td><td class="r">${money(t.cost_low)}–${money(t.cost_high)}</td></tr>
       </tbody></table>
-      <p class="note">Order: simulated risk cut per dollar. Near-misses are simulated, not injuries. Within the ${kmoney(co.budget_usd || 0)} quarterly budget (assumption).</p>
+      <p class="note">Order: simulated risk cut per dollar. Serious = a near-miss under 0.5 s with the car at speed. Near-misses are simulated, not injuries. Within the ${kmoney(co.budget_usd || 0)} quarterly budget (assumption). The simulator's ranking of corners is only weakly confirmed by real crashes (step 4): pilot the top changes and measure them.</p>
       <div class="spacer"></div>
       <h3>Cost sources, found by Muse Spark web search</h3>
       <ol class="sources">${kinds.map((k) => { const c = p.costs[k]; return `<li><b>${esc(c.item)}</b>: ${money(c.low_usd)}–${money(c.high_usd)} ${esc(c.unit)}. ${c.source_urls.slice(0, 2).map((u) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/, "").slice(0, 60))}</a>`).join(" · ")}</li>`; }).join("")}</ol>
     </article>`,
     rail: `<div class="big">${fmt(t.near_misses_before)} → ${fmt(t.near_misses_after)}</div>
       <p class="bigcap">simulated near-misses an hour, for ${money(t.cost_low)}–${money(t.cost_high)} and +${fmt(t.added_car_delay_share * 100, 1)}% car delay ${badge("sim", "corridor simulator; costs Spark-cited")}</p>
+      ${confidence()}
       <div class="panelh" style="margin-top:22px;font-size:19px">After it's built: know in weeks, not years</div>
       <p style="font-size:16px;line-height:1.4;margin:0 0 10px;color:var(--ink-2)">A camera at each changed corner feeds SAM 3.1 tracks to an always-on <b>Muse Glimmer</b> watcher (open weights, on Modal). It logs close calls between walkers and moving cars every week.</p>
-      <table class="t"><thead><tr><th>W 45 St clip</th><th class="r">Walkers</th><th class="r">Vehicles</th><th class="r">Close calls</th></tr></thead><tbody>
+      <div class="muted" style="font-size:13px;margin-bottom:4px">The watcher's input, counted by SAM 3.1 in the 15 s W 45 St clip today:</div>
+      <table class="t"><thead><tr><th>Interval</th><th class="r">Walkers</th><th class="r">Vehicles</th><th class="r">Close calls</th></tr></thead><tbody>
         ${w.summaries.map((s) => `<tr><td>${esc(s.interval)}</td><td class="r">${s.walkers}</td><td class="r">${s.vehicles}</td><td class="r">${s.close_calls}</td></tr>`).join("")}</tbody></table>
       <p class="note">${w.status === "live" ? `Glimmer (${esc(w.model)}): ${esc(w.result?.trend_note || "")}` : `Watcher status in this run: <b>${w.status === "not_deployed" ? "not deployed" : esc(w.status)}</b>; counts above come from SAM tracks.`}</p>`,
     caption: `Fund ${p.items.length} changes: simulated near-misses ${fmt(t.near_misses_before)} → ${fmt(t.near_misses_after)} an hour, +${fmt(t.added_car_delay_share * 100, 1)}% car delay, ${money(t.cost_low)}–${money(t.cost_high)}.`,

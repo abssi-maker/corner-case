@@ -16,7 +16,14 @@
         <span class="name">Corner Case</span>
         <span class="tagline">Test the fix before the next crash.</span>
       </a>
-      <div class="where"><b>7th Avenue</b>, W 30th St to Central Park South · for a city street-safety engineer</div>
+      <div class="where"><b>7th Avenue</b>, W 30th St – Central Park South · for a street-safety engineer
+        <span class="evid">Evidence:
+          <span class="badge real" tabindex="0" data-src="REAL: public records (NYC crash reports). What actually happened.">REAL</span>
+          <span class="badge meas" tabindex="0" data-src="MEASURED: measured by Meta SAM 3.1 / Muse Spark from street video (one 15 s clip at W 45 St).">MEASURED</span>
+          <span class="badge real" tabindex="0" data-src="OPEN DATA: city and MTA datasets (street geometry, signals, counts, ridership).">OPEN DATA</span>
+          <span class="badge asm" tabindex="0" data-src="ASSUMPTION: a labelled guess, used where no data exists. Hover any badge for its source.">ASSUMPTION</span>
+          <span class="badge sim" tabindex="0" data-src="SIMULATED: output of the corridor simulator. Simulated near-misses are not injuries.">SIMULATED</span>
+        </span></div>
       <div class="controls">
         <select id="runSel" aria-label="Recorded run"></select>
         <button id="playBtn" class="btn ghost" type="button">▶ Play the story</button>
@@ -25,7 +32,7 @@
     </header>
     <nav class="stepper" id="stepper" aria-label="Steps"></nav>
     <main class="stage" id="stage"><div class="loading"><div class="crosswalk"><i></i><i></i><i></i><i></i><i></i></div><p>Loading the recorded run…</p></div></main>
-    <footer class="caption" id="caption"><span id="capText"></span><span id="capSrc" class="src"></span></footer>
+    <footer class="ledger" id="ledger" aria-label="The plan so far"></footer>
     <div class="playbar" id="playbar" hidden><div class="fill" id="playfill"></div></div>
   </div>
 </div>

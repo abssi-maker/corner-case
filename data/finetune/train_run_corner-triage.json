@@ -1,0 +1,139 @@
+{
+ "run_name": "corner-triage",
+ "adapter_dir": "/lora/corner-triage",
+ "base_4bit": "unsloth/Muse-Glimmer-30B-unsloth-bnb-4bit",
+ "base_4bit_sha": "ecedda395d4d099b477d135a9a573eedaa5a7aad",
+ "versions": {
+  "unsloth": "2026.11.1",
+  "transformers": "5.15.0",
+  "trl": "0.22.2",
+  "peft": "0.21.2",
+  "torch": "2.11.0+cu128"
+ },
+ "gpu": "NVIDIA H100 80GB HBM3",
+ "peak_mem_gib": 27.8,
+ "config": {
+  "method": "QLoRA 4-bit (Unsloth dynamic bnb)",
+  "r": 16,
+  "alpha": 32,
+  "dropout": 0,
+  "targets": "language model q/k/v/o + MLP gate/up/down, all 52 layers",
+  "max_len": 1024,
+  "epochs": 1.0,
+  "max_steps": -1,
+  "batch": 8,
+  "grad_accum": 2,
+  "lr": 0.0002,
+  "optim": "adamw_8bit",
+  "schedule": "linear, 10 warmup steps",
+  "loss": "assistant tokens only",
+  "n_train": 3000,
+  "n_val": 300
+ },
+ "steps": 188,
+ "train_loss": 0.3118,
+ "val_loss": 0.2799,
+ "loss_log": [
+  {
+   "step": 10,
+   "loss": 0.5251328945159912
+  },
+  {
+   "step": 20,
+   "loss": 0.3419582605361938
+  },
+  {
+   "step": 30,
+   "loss": 0.31492350101470945
+  },
+  {
+   "step": 40,
+   "loss": 0.31349029541015627
+  },
+  {
+   "step": 50,
+   "loss": 0.30818002223968505
+  },
+  {
+   "step": 60,
+   "loss": 0.31180288791656496
+  },
+  {
+   "step": 70,
+   "loss": 0.30283050537109374
+  },
+  {
+   "step": 80,
+   "loss": 0.30539631843566895
+  },
+  {
+   "step": 90,
+   "loss": 0.29907124042510985
+  },
+  {
+   "step": 100,
+   "loss": 0.2964732885360718
+  },
+  {
+   "step": 110,
+   "loss": 0.2942871809005737
+  },
+  {
+   "step": 120,
+   "loss": 0.29392175674438475
+  },
+  {
+   "step": 130,
+   "loss": 0.2922881841659546
+  },
+  {
+   "step": 140,
+   "loss": 0.2917759656906128
+  },
+  {
+   "step": 150,
+   "loss": 0.2872257471084595
+  },
+  {
+   "step": 160,
+   "loss": 0.28648767471313474
+  },
+  {
+   "step": 170,
+   "loss": 0.2885860204696655
+  },
+  {
+   "step": 180,
+   "loss": 0.28449811935424807
+  }
+ ],
+ "wall_s": {
+  "load": 43,
+  "train": 920,
+  "total": 1089,
+  "call": 1100
+ },
+ "stopped_by_budget": false,
+ "val_samples": [
+  {
+   "want": "{\"risk_band\":\"medium\",\"near_miss_ph\":90.0,\"top_conflict\":\"ave_through_s\",\"best_single_change\":\"daylighting\",\"expected_risk_cut_pct\":14.2}",
+   "got": " to=user<|message|>{\"risk_band\":\"medium\",\"near_miss_ph\":90.0,\"top_conflict\":\"ave_through_n\",\"best_single_change\":\"daylighting\",\"expected_risk_cut_pct\":10.6}<|eot|>"
+  },
+  {
+   "want": "{\"risk_band\":\"high\",\"near_miss_ph\":140.0,\"top_conflict\":\"ave_through_n\",\"best_single_change\":\"daylighting\",\"expected_risk_cut_pct\":10.2}",
+   "got": " to=user<|message|>{\"risk_band\":\"high\",\"near_miss_ph\":108.7,\"top_conflict\":\"ave_through_n\",\"best_single_change\":\"daylighting\",\"expected_risk_cut_pct\":10.6}<|eot|>"
+  },
+  {
+   "want": "{\"risk_band\":\"very_high\",\"near_miss_ph\":222.3,\"top_conflict\":\"ave_through_s\",\"best_single_change\":\"daylighting\",\"expected_risk_cut_pct\":6.9}",
+   "got": " to=user<|message|>{\"risk_band\":\"high\",\"near_miss_ph\":180.0,\"top_conflict\":\"ave_through_n\",\"best_single_change\":\"daylighting\",\"expected_risk_cut_pct\":10.1}<|eot|>"
+  },
+  {
+   "want": "{\"risk_band\":\"medium\",\"near_miss_ph\":100.0,\"top_conflict\":\"ave_through_s\",\"best_single_change\":\"lpi_7\",\"expected_risk_cut_pct\":19.3}",
+   "got": " to=user<|message|>{\"risk_band\":\"high\",\"near_miss_ph\":101.7,\"top_conflict\":\"ave_through_n\",\"best_single_change\":\"lpi_7\",\"expected_risk_cut_pct\":25.0}<|eot|>"
+  },
+  {
+   "want": "{\"risk_band\":\"very_high\",\"near_miss_ph\":291.7,\"top_conflict\":\"ave_through_n\",\"best_single_change\":\"ave_share_68\",\"expected_risk_cut_pct\":16.9}",
+   "got": " to=user<|message|>{\"risk_band\":\"very_high\",\"near_miss_ph\":255.0,\"top_conflict\":\"ave_through_n\",\"best_single_change\":\"daylighting\",\"expected_risk_cut_pct\":10.2}<|eot|>"
+  }
+ ]
+}

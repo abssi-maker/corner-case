@@ -1,138 +1,174 @@
 {
- "run": "20261104-104610",
- "budget_corridor_evaluations": 26,
- "risk_today": 1023.621,
+ "run": "20261104-115932",
+ "budget_corridor_evaluations": 111,
+ "risk_today": 1017.608,
  "corridor_delay_limit": 0.08,
  "methods": {
   "Muse Wonder agents": {
-   "objective": 972.42,
-   "risk": 972.422,
-   "added_delay_share": 0.0169,
+   "objective": 890.34,
+   "risk": 890.336,
+   "added_delay_share": 0.0445,
    "feasible": true,
-   "corners_changed": 4,
-   "risk_cut_pct": 5.0,
+   "corners_changed": 13,
+   "risk_cut_pct": 12.5,
    "under_futures": {
     "ban_ignored": {
-     "risk": 972.422,
-     "risk_no_plan": 1023.621,
+     "risk": 890.336,
+     "risk_no_plan": 1017.608,
      "feasible": true
     },
     "show_out": {
-     "risk": 1346.776,
-     "risk_no_plan": 1402.186,
+     "risk": 1259.803,
+     "risk_no_plan": 1394.03,
      "feasible": true
     },
     "rain_night": {
-     "risk": 1767.746,
-     "risk_no_plan": 1819.033,
+     "risk": 1682.665,
+     "risk_no_plan": 1808.117,
      "feasible": true
     },
     "holiday": {
-     "risk": 1688.568,
-     "risk_no_plan": 1759.539,
+     "risk": 1591.042,
+     "risk_no_plan": 1751.824,
      "feasible": true
     }
    },
    "plan": {
     "w42": {
-     "lpi_s": 4.0,
+     "lpi_s": 7.0,
+     "hardened_centerline": true,
      "daylighting": true
     },
-    "w45": {
+    "w59": {
+     "lpi_s": 7.0,
+     "hardened_centerline": false,
+     "daylighting": true,
+     "split_phase": false
+    },
+    "w52": {
+     "lpi_s": 7.0,
+     "hardened_centerline": false,
+     "daylighting": true,
+     "split_phase": false
+    },
+    "w46": {
      "daylighting": true
     },
     "w34": {
      "lpi_s": 7.0,
      "hardened_centerline": false,
      "daylighting": true,
-     "split_phase": false
-    },
-    "w44": {
-     "daylighting": true
-    }
-   }
-  },
-  "Random search": {
-   "objective": 1002.48,
-   "risk": 1002.476,
-   "added_delay_share": -0.0013,
-   "feasible": true,
-   "corners_changed": 6,
-   "risk_cut_pct": 2.1,
-   "under_futures": {
-    "ban_ignored": {
-     "risk": 1002.652,
-     "risk_no_plan": 1023.621,
-     "feasible": true
-    },
-    "show_out": {
-     "risk": 1393.732,
-     "risk_no_plan": 1402.186,
-     "feasible": true
-    },
-    "rain_night": {
-     "risk": 1793.207,
-     "risk_no_plan": 1819.033,
-     "feasible": true
-    },
-    "holiday": {
-     "risk": 1733.687,
-     "risk_no_plan": 1759.539,
-     "feasible": true
-    }
-   },
-   "plan": {
-    "w33": {
-     "lpi_s": 4.0,
-     "cycle_s": 110.0
-    },
-    "w39": {
-     "daylighting": true,
-     "cycle_s": 70.0
+     "split_phase": false,
+     "cycle_s": 60.0
     },
     "w55": {
      "daylighting": true
     },
-    "w50": {
-     "turn_ban": "left",
-     "ave_share": 0.68
+    "w41": {
+     "daylighting": true
     },
-    "w52": {
+    "w43": {
+     "lpi_s": 12.0,
+     "turn_ban": "none",
+     "hardened_centerline": true,
+     "daylighting": true,
+     "split_phase": false
+    },
+    "w45": {
+     "lpi_s": 12.0,
      "hardened_centerline": true,
      "daylighting": true
     },
-    "w46": {
-     "lpi_s": 10.0
+    "w40": {
+     "daylighting": true
+    },
+    "w39": {
+     "daylighting": true
+    },
+    "w38": {
+     "daylighting": true
+    },
+    "w35": {
+     "daylighting": true,
+     "split_phase": true,
+     "cycle_s": 60.0
+    }
+   }
+  },
+  "Random search": {
+   "objective": 994.26,
+   "risk": 994.262,
+   "added_delay_share": 0.0117,
+   "feasible": true,
+   "corners_changed": 4,
+   "risk_cut_pct": 2.3,
+   "under_futures": {
+    "ban_ignored": {
+     "risk": 994.262,
+     "risk_no_plan": 1017.608,
+     "feasible": true
+    },
+    "show_out": {
+     "risk": 1368.567,
+     "risk_no_plan": 1394.03,
+     "feasible": true
+    },
+    "rain_night": {
+     "risk": 1793.023,
+     "risk_no_plan": 1808.117,
+     "feasible": true
+    },
+    "holiday": {
+     "risk": 1715.807,
+     "risk_no_plan": 1751.824,
+     "feasible": true
+    }
+   },
+   "plan": {
+    "w32": {
+     "daylighting": true,
+     "ave_share": 0.68
+    },
+    "w30": {
+     "split_phase": true,
+     "ave_share": 0.5
+    },
+    "w34": {
+     "lpi_s": 4.0,
+     "hardened_centerline": true
+    },
+    "w35": {
+     "cycle_s": 70.0
     }
    }
   },
   "Greedy, one change at a time": {
-   "objective": 984.45,
-   "risk": 984.449,
-   "added_delay_share": 0.0283,
-   "feasible": true,
-   "corners_changed": 2,
-   "risk_cut_pct": 3.8,
+   "objective": 909.23,
+   "risk": 908.775,
+   "added_delay_share": 0.0811,
+   "feasible": false,
+   "corners_changed": 9,
+   "risk_cut_pct": 10.7,
    "under_futures": {
     "ban_ignored": {
-     "risk": 984.617,
-     "risk_no_plan": 1023.621,
-     "feasible": true
+     "risk": 909.018,
+     "risk_no_plan": 1017.608,
+     "feasible": false
     },
     "show_out": {
-     "risk": 1355.317,
-     "risk_no_plan": 1402.186,
+     "risk": 1281.025,
+     "risk_no_plan": 1394.03,
      "feasible": true
     },
     "rain_night": {
-     "risk": 1790.308,
-     "risk_no_plan": 1819.033,
-     "feasible": true
+     "risk": 1691.002,
+     "risk_no_plan": 1808.117,
+     "feasible": false
     },
     "holiday": {
-     "risk": 1708.548,
-     "risk_no_plan": 1759.539,
-     "feasible": true
+     "risk": 1618.067,
+     "risk_no_plan": 1751.824,
+     "feasible": false
     }
    },
    "plan": {
@@ -143,10 +179,49 @@
      "cycle_s": 70.0
     },
     "w44": {
-     "turn_ban": "left",
+     "lpi_s": 10.0,
+     "hardened_centerline": true,
+     "daylighting": true,
+     "split_phase": true,
+     "cycle_s": 70.0,
+     "ave_share": 0.68
+    },
+    "w47": {
+     "hardened_centerline": true,
+     "daylighting": true,
+     "split_phase": true
+    },
+    "w32": {
+     "hardened_centerline": true,
+     "daylighting": true,
+     "ave_share": 0.68
+    },
+    "w45": {
+     "lpi_s": 10.0,
+     "hardened_centerline": true,
+     "daylighting": true,
+     "split_phase": true
+    },
+    "w46": {
+     "lpi_s": 10.0,
+     "hardened_centerline": true,
      "daylighting": true,
      "split_phase": true,
      "cycle_s": 110.0
+    },
+    "w34": {
+     "lpi_s": 4.0,
+     "turn_ban": "left",
+     "daylighting": true
+    },
+    "w43": {
+     "hardened_centerline": true,
+     "daylighting": true
+    },
+    "w57": {
+     "hardened_centerline": true,
+     "daylighting": true,
+     "cycle_s": 70.0
     }
    }
   }
